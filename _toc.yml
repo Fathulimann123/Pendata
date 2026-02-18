@@ -3,7 +3,7 @@ root: intro
 chapters:
 - file: md/00_panduan-dev
   title: "Panduan Pengembangan"
-- file: md/01_mulai-disini
-  title: "Mulai Menulis"
 - file: md/02_Bussiness-Understanding
   title: "Business understanding"
+- file: md/03_Edit
+  title: "Edit"

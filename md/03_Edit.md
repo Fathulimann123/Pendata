@@ -1,4 +1,4 @@
-# Mulai Menulis
+# Edit
 
 ## Cara Cepat (Rekomendasi)
 Daripada bikin file manual, kamu bisa pakai **Markdown Canvas** buat paste materi langsung dari browser:
