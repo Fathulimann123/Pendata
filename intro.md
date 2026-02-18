@@ -1,11 +1,9 @@
-# Welcome to your Jupyter Book
+# Profile
+Halo, perkenalkan.
+Saya Muhammad Fathul Iman Wahid, mahasiswa Program Studi Teknik Informatika, kelas Penambangna Data IF 4B, dengan NIM 240411100180.
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Halaman ini digunakan sebagai ruang dokumentasi pembelajaran selama perkuliahan, khususnya untuk mata kuliah Penambangan Data. Seluruh pembahasan disusun dalam bentuk rangkuman, latihan, dan eksplorasi mandiri untuk membantu pemahaman materi.
 
-Check out the content pages bundled with this sample book to see more.
+Materi akan diperbarui secara bertahap seiring proses belajar.
 
-```{tableofcontents}
-```
+Apabila terdapat hal yang perlu dikoreksi atau didiskusikan, saya dapat dihubungi melalui email rahulmfiw@gmail.com

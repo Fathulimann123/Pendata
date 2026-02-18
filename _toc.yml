@@ -1,4 +1,4 @@
-﻿format: jb-book
+format: jb-book
 root: intro
 chapters:
 - file: md/00_panduan-dev
