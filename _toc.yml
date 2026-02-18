@@ -1,7 +1,9 @@
-﻿format: jb-book
+format: jb-book
 root: intro
 chapters:
 - file: md/00_panduan-dev
   title: "Panduan Pengembangan"
 - file: md/01_mulai-disini
   title: "Mulai Menulis"
+- file: md/02_Bussiness-Understanding
+  title: "Business understanding"
