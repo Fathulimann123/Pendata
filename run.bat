@@ -36,7 +36,7 @@ if "%CMD%"=="config" (
     goto :eof
 )
 if "%CMD%"=="reset" (
-    echo Resetting project...
+    echo Menghapus file sampah dan build artifacts...
     if exist __pycache__ rmdir /S /Q __pycache__
     if exist _build rmdir /S /Q _build
     if exist docs rmdir /S /Q docs
@@ -44,8 +44,12 @@ if "%CMD%"=="reset" (
     if exist scripts\dev.log del scripts\dev.log
     if exist scripts\dev_server.log del scripts\dev_server.log
     if exist venv rmdir /S /Q venv
-    if exist Pendat rmdir /S /Q Pendat
-    echo Done. All build artifacts and virtual environment removed.
+    
+    :: Menghapus folder Pendata (diperbaiki dari Pendat)
+    :: Hati-hati: ini akan menghapus folder hasil kloning jika ada di dalam root
+    if exist Pendata rmdir /S /Q Pendata
+    
+    echo Selesai. Lingkungan bersih kembali.
     goto :eof
 )
 
