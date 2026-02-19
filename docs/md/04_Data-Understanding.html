@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Panduan Pengembangan &#8212; My sample book</title>
+    <title>Data Understanding &#8212; My sample book</title>
   
   
   
@@ -57,11 +57,10 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'md/00_panduan-dev';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'md/04_Data-Understanding';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Business understanding" href="02_Bussiness-Understanding.html" />
-    <link rel="prev" title="Profile" href="../intro.html" />
+    <link rel="prev" title="Edit" href="03_Edit.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,10 +179,10 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Panduan Pengembangan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_panduan-dev.html">Panduan Pengembangan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_Bussiness-Understanding.html">Business understanding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_Edit.html">Edit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_Data-Understanding.html">Data Understanding</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Understanding</a></li>
 </ul>
 
     </div>
@@ -255,7 +254,7 @@
       
       
       
-      <li><a href="https://github.com/Fathulimann123/Pendata.git/issues/new?title=Issue%20on%20page%20%2Fmd/00_panduan-dev.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/Fathulimann123/Pendata.git/issues/new?title=Issue%20on%20page%20%2Fmd/04_Data-Understanding.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -285,7 +284,7 @@
       
       
       
-      <li><a href="../_sources/md/00_panduan-dev.md" target="_blank"
+      <li><a href="../_sources/md/04_Data-Understanding.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -369,7 +368,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Panduan Pengembangan</h1>
+    <h1>Data Understanding</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -379,13 +378,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-konfigurasi">1. Persiapan &amp; Konfigurasi</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengatur-identitas-project">Mengatur Identitas Project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describe-data">2.1 Describe Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampel-data">Sampel Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-dataset">Struktur Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-atribut-tipe-data">Deskripsi Atribut (Tipe Data)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menjalankan-dev-server-canvas">2. Menjalankan Dev Server &amp; Canvas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-kerja-markdown-canvas">3. Alur Kerja Markdown Canvas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keuntungan-sistem-baru">4. Keuntungan Sistem Baru</a></li>
 </ul>
             </nav>
         </div>
@@ -397,62 +395,105 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="panduan-pengembangan">
-<h1>Panduan Pengembangan<a class="headerlink" href="#panduan-pengembangan" title="Link to this heading">#</a></h1>
-<p>Halaman ini menjelaskan alur kerja pengembangan dan fitur <strong>Markdown Canvas</strong> yang dirancang untuk mempercepat proses pembuatan konten tanpa harus berurusan dengan konfigurasi manual.</p>
-<section id="persiapan-konfigurasi">
-<h2>1. Persiapan &amp; Konfigurasi<a class="headerlink" href="#persiapan-konfigurasi" title="Link to this heading">#</a></h2>
-<p>Kita telah menyederhanakan sistem sehingga <strong>tidak lagi memerlukan file <code class="docutils literal notranslate"><span class="pre">.env</span></code></strong>. Semua konfigurasi identitas sekarang langsung disimpan ke dalam <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code>.</p>
-<section id="mengatur-identitas-project">
-<h3>Mengatur Identitas Project<a class="headerlink" href="#mengatur-identitas-project" title="Link to this heading">#</a></h3>
-<p>Jika Anda ingin mengubah Nama Penulis, Tahun, atau URL Repository, gunakan perintah:</p>
-<ul class="simple">
-<li><p><strong>Windows:</strong> <code class="docutils literal notranslate"><span class="pre">.\run.bat</span> <span class="pre">config</span></code></p></li>
-<li><p><strong>Linux/macOS:</strong> <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">run.sh</span> <span class="pre">config</span></code></p></li>
-</ul>
-<p>Script ini akan secara otomatis memperbarui <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> dan memberikan opsi untuk langsung membangun ulang (rebuild) buku.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
+<h1>Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
+<section id="describe-data">
+<h2>2.1 Describe Data<a class="headerlink" href="#describe-data" title="Link to this heading">#</a></h2>
+<p>Tahap ini bertujuan untuk mendokumentasikan properti permukaan dari dataset yang digunakan, termasuk format data, jumlah rekaman, serta identitas setiap kolom (field).</p>
+<section id="sampel-data">
+<h3>Sampel Data<a class="headerlink" href="#sampel-data" title="Link to this heading">#</a></h3>
+<p>Berikut adalah gambaran 5 baris pertama (head) dari dataset Iris untuk menunjukkan format data awal:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>sepal_length</p></th>
+<th class="head text-left"><p>sepal_width</p></th>
+<th class="head text-left"><p>petal_length</p></th>
+<th class="head text-left"><p>petal_width</p></th>
+<th class="head text-left"><p>species</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>5.1</p></td>
+<td class="text-left"><p>3.5</p></td>
+<td class="text-left"><p>1.4</p></td>
+<td class="text-left"><p>0.2</p></td>
+<td class="text-left"><p>Iris-setosa</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>4.9</p></td>
+<td class="text-left"><p>3.0</p></td>
+<td class="text-left"><p>1.4</p></td>
+<td class="text-left"><p>0.2</p></td>
+<td class="text-left"><p>Iris-setosa</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>4.7</p></td>
+<td class="text-left"><p>3.2</p></td>
+<td class="text-left"><p>1.3</p></td>
+<td class="text-left"><p>0.2</p></td>
+<td class="text-left"><p>Iris-setosa</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>4.6</p></td>
+<td class="text-left"><p>3.1</p></td>
+<td class="text-left"><p>1.5</p></td>
+<td class="text-left"><p>0.2</p></td>
+<td class="text-left"><p>Iris-setosa</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>5.0</p></td>
+<td class="text-left"><p>3.6</p></td>
+<td class="text-left"><p>1.4</p></td>
+<td class="text-left"><p>0.2</p></td>
+<td class="text-left"><p>Iris-setosa</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
-</section>
-<section id="menjalankan-dev-server-canvas">
-<h2>2. Menjalankan Dev Server &amp; Canvas<a class="headerlink" href="#menjalankan-dev-server-canvas" title="Link to this heading">#</a></h2>
-<p>Untuk mulai menulis materi baru dengan antarmuka web (Markdown Canvas), jalankan:</p>
+<section id="struktur-dataset">
+<h3>Struktur Dataset<a class="headerlink" href="#struktur-dataset" title="Link to this heading">#</a></h3>
+<p>Berdasarkan pemeriksaan awal terhadap Iris Flower Dataset, diperoleh informasi struktur sebagai berikut:</p>
 <ul class="simple">
-<li><p><strong>Windows:</strong> <code class="docutils literal notranslate"><span class="pre">.\run.bat</span> <span class="pre">dev</span></code></p></li>
-<li><p><strong>Linux/macOS:</strong> <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">run.sh</span> <span class="pre">dev</span></code></p></li>
-</ul>
-<p>Server akan berjalan secara lokal di <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:5000</span></code>.</p>
-<ul class="simple">
-<li><p><strong>Book Preview:</strong> <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:5000/</span></code></p></li>
-<li><p><strong>Markdown Canvas:</strong> <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:5000/canvas</span></code></p></li>
+<li><p><strong>Jumlah Baris</strong>: Dataset ini memiliki total <strong>150 baris</strong> (records).</p></li>
+<li><p><strong>Jumlah Kolom</strong>: Terdapat <strong>5 kolom</strong> utama yang digunakan untuk proses analisis.</p></li>
+<li><p><strong>Sumber Data</strong>: Dataset diperoleh dari repositori publik Kaggle.</p></li>
 </ul>
 </section>
-<section id="alur-kerja-markdown-canvas">
-<h2>3. Alur Kerja Markdown Canvas<a class="headerlink" href="#alur-kerja-markdown-canvas" title="Link to this heading">#</a></h2>
-<p>Di dalam antarmuka Canvas, Anda dapat:</p>
-<ol class="arabic simple">
-<li><p><strong>Paste &amp; Edit</strong>: Tulis atau tempel materi Markdown Anda. Pastikan setiap file memiliki <strong>H1 Title</strong> (<code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">Judul</span></code>) di baris pertama.</p></li>
-<li><p><strong>Simpan &amp; Bangun</strong>: Masukkan nama file (misal: <code class="docutils literal notranslate"><span class="pre">materi-baru</span></code>).</p>
-<ul class="simple">
-<li><p><strong>Auto-Prefix</strong>: Sistem akan otomatis mendeteksi urutan dan menambahkan prefix angka (seperti <code class="docutils literal notranslate"><span class="pre">05_materi-baru.md</span></code>).</p></li>
-</ul>
-</li>
-<li><p><strong>Otomasi Total</strong>: Setelah klik simpan, sistem akan:</p>
-<ul class="simple">
-<li><p>Menyimpan file ke folder <code class="docutils literal notranslate"><span class="pre">md/</span></code>.</p></li>
-<li><p>Membangun ulang daftar isi (<code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code>) secara otomatis.</p></li>
-<li><p>Membangun ulang file HTML (<code class="docutils literal notranslate"><span class="pre">jupyter-book</span> <span class="pre">build</span></code>).</p></li>
-</ul>
-</li>
-</ol>
+<section id="deskripsi-atribut-tipe-data">
+<h3>Deskripsi Atribut (Tipe Data)<a class="headerlink" href="#deskripsi-atribut-tipe-data" title="Link to this heading">#</a></h3>
+<p>Dataset ini terdiri dari 4 fitur numerik sebagai prediktor dan 1 kolom kategorikal sebagai target klasifikasi. Semua pengukuran dimensi fisik menggunakan satuan <strong>centimeter (cm)</strong>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Nama Atribut</p></th>
+<th class="head text-left"><p>Tipe Data</p></th>
+<th class="head text-left"><p>Deskripsi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>sepal_length</strong></p></td>
+<td class="text-left"><p>Numerik (Float)</p></td>
+<td class="text-left"><p>Panjang kelopak bunga dalam cm.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>sepal_width</strong></p></td>
+<td class="text-left"><p>Numerik (Float)</p></td>
+<td class="text-left"><p>Lebar kelopak bunga dalam cm.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>petal_length</strong></p></td>
+<td class="text-left"><p>Numerik (Float)</p></td>
+<td class="text-left"><p>Panjang mahkota bunga dalam cm.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>petal_width</strong></p></td>
+<td class="text-left"><p>Numerik (Float)</p></td>
+<td class="text-left"><p>Lebar mahkota bunga dalam cm.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>species</strong></p></td>
+<td class="text-left"><p>Kategorikal (String)</p></td>
+<td class="text-left"><p>Label spesies bunga (<em>Setosa, Versicolor, Virginica</em>).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>Catatan</strong>: Atribut numerik akan digunakan sebagai variabel independen, sedangkan atribut <code class="docutils literal notranslate"><span class="pre">species</span></code> akan menjadi variabel dependen dalam pemodelan nanti.</p>
+</div></blockquote>
 </section>
-<section id="keuntungan-sistem-baru">
-<h2>4. Keuntungan Sistem Baru<a class="headerlink" href="#keuntungan-sistem-baru" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>Zero Config</strong>: Tidak ada lagi urusan dengan file <code class="docutils literal notranslate"><span class="pre">.env</span></code> atau setting manual yang rumit.</p></li>
-<li><p><strong>Auto TOC</strong>: Daftar isi di sidebar akan selalu sinkron dengan file yang ada di folder <code class="docutils literal notranslate"><span class="pre">md/</span></code> berdasarkan urutan angka.</p></li>
-<li><p><strong>Single Master Script</strong>: Semua operasi (install, dev, publish, config, reset) dikelola melalui satu perintah <code class="docutils literal notranslate"><span class="pre">run.bat</span></code> atau <code class="docutils literal notranslate"><span class="pre">run.sh</span></code>.</p></li>
-<li><p><strong>Deployment Ready</strong>: Menjalankan <code class="docutils literal notranslate"><span class="pre">run.bat</span> <span class="pre">publish</span></code> akan langsung menyiapkan folder <code class="docutils literal notranslate"><span class="pre">docs/</span></code> yang siap di-push ke GitHub Pages.</p></li>
-</ul>
 </section>
 </section>
 
@@ -487,22 +528,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../intro.html"
+       href="03_Edit.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Profile</p>
+        <p class="prev-next-title">Edit</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="02_Bussiness-Understanding.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Business understanding</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -520,13 +552,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-konfigurasi">1. Persiapan &amp; Konfigurasi</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengatur-identitas-project">Mengatur Identitas Project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describe-data">2.1 Describe Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampel-data">Sampel Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-dataset">Struktur Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-atribut-tipe-data">Deskripsi Atribut (Tipe Data)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menjalankan-dev-server-canvas">2. Menjalankan Dev Server &amp; Canvas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-kerja-markdown-canvas">3. Alur Kerja Markdown Canvas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keuntungan-sistem-baru">4. Keuntungan Sistem Baru</a></li>
 </ul>
   </nav></div>
 
