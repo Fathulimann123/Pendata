@@ -1,4 +1,4 @@
-﻿format: jb-book
+format: jb-book
 root: intro
 chapters:
 - file: md/00_panduan-dev
@@ -7,3 +7,5 @@ chapters:
   title: "Business understanding"
 - file: md/03_Edit
   title: "Edit"
+- file: md/04_Data-Understanding
+  title: "Data Understanding"
