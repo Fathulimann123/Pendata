@@ -4,6 +4,6 @@ chapters:
 - file: md/00_panduan-dev
   title: "Panduan Pengembangan"
 - file: md/02_Bussiness-Understanding
-  title: "Business understanding"
+  title: "Bussiness Understanding"
 - file: md/04_Data-Understanding
   title: "Data Understanding"

@@ -57,10 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'md/04_Data-Understanding';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Business understanding" href="02_Bussiness-Understanding.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="02_Bussiness-Understanding.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,7 +182,6 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="00_panduan-dev.html">Panduan Pengembangan</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_Bussiness-Understanding.html">Business understanding</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Understanding</a></li>
 </ul>
 
@@ -377,10 +378,70 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describe-data">2.1 Describe Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-metodologi-crisp-dm">Apa itu Metodologi CRISP-DM?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#posisi-sekarang-fase-ke-2">Posisi Sekarang: Fase Ke-2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-utama-fase-ini">Tujuan Utama Fase Ini:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-sumber-data">Deskripsi Sumber Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-memuat-dan-cek-struktur-data">Implementasi: Memuat dan Cek Struktur Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-file-csv">Membaca File CSV</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampel-data">Sampel Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-dataset">Struktur Dataset</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-atribut-tipe-data">Deskripsi Atribut (Tipe Data)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data-data-exploration">Eksplorasi Data (Data Exploration)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif">Statistik Deskriptif</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mengenal-quartiles-25-50-75">Mengenal Quartiles (25%, 50%, 75%)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-kualitas-data-null-duplicate">Verifikasi Kualitas Data (Null &amp; Duplicate)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pemeriksaan-nilai-null-missing-values">Pemeriksaan Nilai Null (Missing Values)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumlah-data-null-per-kolom">Jumlah Data Null per Kolom</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemeriksaan-data-duplikat">Pemeriksaan Data Duplikat</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumlah-data-duplikat">Jumlah Data Duplikat</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-histogram">Apa itu Histogram?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kenapa-kita-melakukan-visualisasi-ini">Kenapa Kita Melakukan Visualisasi Ini?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#panduan-membaca-sumbu-x-y">Panduan Membaca Sumbu (X &amp; Y)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-1-histogram-distribusi-frekuensi-fitur-sepal-length">Fig. 1 Histogram Distribusi Frekuensi Fitur sepal_length</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-2-histogram-distribusi-frekuensi-fitur-sepal-width">Fig. 2 Histogram Distribusi Frekuensi Fitur sepal_width</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-3-histogram-distribusi-frekuensi-fitur-petal-length">Fig. 3 Histogram Distribusi Frekuensi Fitur petal_length</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-4-histogram-distribusi-frekuensi-fitur-petal-width">Fig. 4 Histogram Distribusi Frekuensi Fitur petal_width</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-5-histogram-distribusi-frekuensi-fitur-species">Fig. 5 Histogram Distribusi Frekuensi Fitur species</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-scatter-plot">Apa itu Scatter Plot?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Kenapa Kita Melakukan Visualisasi Ini?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#memahami-sumbu-x-dan-y-titik-pertemuan">Memahami Sumbu X dan Y (Titik Pertemuan)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot-sepal-length-dan-sepal-width">Scatter Plot sepal_length dan sepal_width</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-6-scatter-plot-fitur-sepal-length-dan-sepal-width">Fig. 6 Scatter Plot Fitur sepal_length dan sepal width</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot-petal-dan-petal-width">Scatter Plot petal dan petal_width</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-7-scatter-plot-fitur-petal-length-dan-petal-width">Fig. 7 Scatter Plot Fitur petal_length dan petal_width</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outlier">Outlier</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-outlier">Apa itu Outlier?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kenapa-kita-harus-mendeteksi-outlier">Kenapa Kita Harus Mendeteksi Outlier?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-local-outlier-factor-lof">Metode: Local Outlier Factor (LOF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-8-outlier">Fig. 8 Outlier</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -396,51 +457,97 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
 <h1>Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
-<section id="describe-data">
-<h2>2.1 Describe Data<a class="headerlink" href="#describe-data" title="Link to this heading">#</a></h2>
-<p>Tahap ini bertujuan untuk mendokumentasikan properti permukaan dari dataset yang digunakan, termasuk format data, jumlah rekaman, serta identitas setiap kolom (field).</p>
+<section id="apa-itu-metodologi-crisp-dm">
+<h2>Apa itu Metodologi CRISP-DM?<a class="headerlink" href="#apa-itu-metodologi-crisp-dm" title="Link to this heading">#</a></h2>
+<p>Dalam mengerjakan proyek penambangan data ini, kita mengikuti alur <strong>CRISP-DM</strong> (<em>Cross-Industry Standard Process for Data Mining</em>). Metodologi ini punya 6 tahapan utama, mulai dari memahami bisnis sampai modelnya siap dipakai.</p>
+<section id="posisi-sekarang-fase-ke-2">
+<h3>Posisi Sekarang: Fase Ke-2<a class="headerlink" href="#posisi-sekarang-fase-ke-2" title="Link to this heading">#</a></h3>
+<p>Tahap <strong>Data Understanding</strong> adalah fase kedua setelah <em>Business Understanding</em>. Kalau di fase pertama kita fokus ke “apa masalahnya?”, di fase kedua ini kita fokus ke “mana datanya?” dan “gimana kondisi datanya?”.</p>
+</section>
+<section id="tujuan-utama-fase-ini">
+<h3>Tujuan Utama Fase Ini:<a class="headerlink" href="#tujuan-utama-fase-ini" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Kenalan sama data</strong>: Biar kita gak asing sama isi tabelnya.</p></li>
+<li><p><strong>Cek Kualitas</strong>: Mastiin datanya bersih, gak ada yang kosong (<em>missing values</em>), atau gak ada yang aneh (<em>outliers</em>).</p></li>
+<li><p><strong>Cari Insight Awal</strong>: Nemu pola-pola menarik lewat statistik simpel.</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="deskripsi-sumber-data">
+<h2>Deskripsi Sumber Data<a class="headerlink" href="#deskripsi-sumber-data" title="Link to this heading">#</a></h2>
+<p>Data yang kita pakai bukan sembarang data, tapi dataset legendaris di dunia informatika.</p>
+<ul class="simple">
+<li><p><strong>Nama Dataset</strong>: Iris Flower Dataset.</p></li>
+<li><p><strong>Sumber</strong>: Data ini sebelumnya sudah kita kelola di database <strong>MySQL</strong> lewat <strong>Laragon</strong> di laptop Lenovo Ideapad 330-14AST, lalu kita ekspor ke format CSV.</p></li>
+<li><p><strong>Isi Data</strong>: Pengukuran fisik dari 3 jenis bunga Iris (<em>Setosa, Versicolor, Virginica</em>).</p></li>
+</ul>
+<hr class="docutils" />
+<section id="implementasi-memuat-dan-cek-struktur-data">
+<h3>Implementasi: Memuat dan Cek Struktur Data<a class="headerlink" href="#implementasi-memuat-dan-cek-struktur-data" title="Link to this heading">#</a></h3>
+<p>Sekarang saatnya kita “panggil” datanya ke lingkungan Python di Google Colab biar bisa kita bedah.</p>
+</section>
+<section id="membaca-file-csv">
+<h3>Membaca File CSV<a class="headerlink" href="#membaca-file-csv" title="Link to this heading">#</a></h3>
+<p>Kita pakai library <code class="docutils literal notranslate"><span class="pre">pandas</span></code> buat baca filenya. Kode di bawah ini bisa langsung disalin:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;iris.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>pd.read_csv(‘iris.csv’) untuk Membaca data yang sudah diupload <br><br>
+df.head() untuk Intip 5 baris pertama</p>
+</div></blockquote>
+</section>
 <section id="sampel-data">
 <h3>Sampel Data<a class="headerlink" href="#sampel-data" title="Link to this heading">#</a></h3>
 <p>Berikut adalah gambaran 5 baris pertama (head) dari dataset Iris untuk menunjukkan format data awal:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head text-left"><p>sepal_length</p></th>
-<th class="head text-left"><p>sepal_width</p></th>
-<th class="head text-left"><p>petal_length</p></th>
-<th class="head text-left"><p>petal_width</p></th>
-<th class="head text-left"><p>species</p></th>
+<tr class="row-odd"><th class="head"><p>index</p></th>
+<th class="head"><p>sepal_length</p></th>
+<th class="head"><p>sepal_width</p></th>
+<th class="head"><p>petal_length</p></th>
+<th class="head"><p>petal_width</p></th>
+<th class="head"><p>species</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p>5.1</p></td>
-<td class="text-left"><p>3.5</p></td>
-<td class="text-left"><p>1.4</p></td>
-<td class="text-left"><p>0.2</p></td>
-<td class="text-left"><p>Iris-setosa</p></td>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>5.1</p></td>
+<td><p>3.5</p></td>
+<td><p>1.4</p></td>
+<td><p>0.2</p></td>
+<td><p>Iris-setosa</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>4.9</p></td>
-<td class="text-left"><p>3.0</p></td>
-<td class="text-left"><p>1.4</p></td>
-<td class="text-left"><p>0.2</p></td>
-<td class="text-left"><p>Iris-setosa</p></td>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>4.9</p></td>
+<td><p>3.0</p></td>
+<td><p>1.4</p></td>
+<td><p>0.2</p></td>
+<td><p>Iris-setosa</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>4.7</p></td>
-<td class="text-left"><p>3.2</p></td>
-<td class="text-left"><p>1.3</p></td>
-<td class="text-left"><p>0.2</p></td>
-<td class="text-left"><p>Iris-setosa</p></td>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>4.7</p></td>
+<td><p>3.2</p></td>
+<td><p>1.3</p></td>
+<td><p>0.2</p></td>
+<td><p>Iris-setosa</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>4.6</p></td>
-<td class="text-left"><p>3.1</p></td>
-<td class="text-left"><p>1.5</p></td>
-<td class="text-left"><p>0.2</p></td>
-<td class="text-left"><p>Iris-setosa</p></td>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>4.6</p></td>
+<td><p>3.1</p></td>
+<td><p>1.5</p></td>
+<td><p>0.2</p></td>
+<td><p>Iris-setosa</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>5.0</p></td>
-<td class="text-left"><p>3.6</p></td>
-<td class="text-left"><p>1.4</p></td>
-<td class="text-left"><p>0.2</p></td>
-<td class="text-left"><p>Iris-setosa</p></td>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>5.0</p></td>
+<td><p>3.6</p></td>
+<td><p>1.4</p></td>
+<td><p>0.2</p></td>
+<td><p>Iris-setosa</p></td>
 </tr>
 </tbody>
 </table>
@@ -457,7 +564,13 @@ document.write(`
 </section>
 <section id="deskripsi-atribut-tipe-data">
 <h3>Deskripsi Atribut (Tipe Data)<a class="headerlink" href="#deskripsi-atribut-tipe-data" title="Link to this heading">#</a></h3>
-<p>Dataset ini terdiri dari 4 fitur numerik sebagai prediktor dan 1 kolom kategorikal sebagai target klasifikasi. Semua pengukuran dimensi fisik menggunakan satuan <strong>centimeter (cm)</strong>.</p>
+<p>Dataset ini terdiri dari 4 atribut numerik yang merepresentasikan ukuran bagian bunga dalam satuan <strong>centimeter (cm)</strong> dan 1 atribut kategorikal yang berfungsi sebagai <strong>label atau target klasifikasi bunga</strong> tersebut.</p>
+<blockquote>
+<div><p>Kita pakai fungsi <a class="reference external" href="http://df.info">df.info</a>() buat lihat tipe data tiap kolom dan mastiin nggak ada data yang bolong.</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Nama Atribut</p></th>
@@ -490,8 +603,385 @@ document.write(`
 </table>
 </div>
 <blockquote>
-<div><p><strong>Catatan</strong>: Atribut numerik akan digunakan sebagai variabel independen, sedangkan atribut <code class="docutils literal notranslate"><span class="pre">species</span></code> akan menjadi variabel dependen dalam pemodelan nanti.</p>
+<div><p><strong>Catatan</strong>: Atribut numerik akan digunakan sebagai variabel independen, sedangkan atribut <code class="docutils literal notranslate"><span class="pre">species</span></code> akan menjadi variabel dependen.</p>
 </div></blockquote>
+<p>Analisis Singkat:<br></p>
+<ul class="simple">
+<li><p>Total Sampel: 150 data.</p></li>
+<li><p>Kondisi: Data sangat sehat karena tidak ditemukan nilai kosong (Non-Null).</p></li>
+<li><p>Atribut: Terdiri dari 4 fitur angka (panjang &amp; lebar kelopak/mahkota) dan 1 kolom target (spesies).</p></li>
+</ul>
+</section>
+</section>
+<section id="eksplorasi-data-data-exploration">
+<h2>Eksplorasi Data (Data Exploration)<a class="headerlink" href="#eksplorasi-data-data-exploration" title="Link to this heading">#</a></h2>
+<p>Setelah tahu struktur atributnya, sekarang kita masuk ke tahap pencarian pola. Tahap ini penting dalam <strong>Data Understanding</strong> agar kita tahu karakteristik unik dari masing-masing spesies.</p>
+<section id="statistik-deskriptif">
+<h3>Statistik Deskriptif<a class="headerlink" href="#statistik-deskriptif" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>Kita hitung nilai rata-rata (<span class="math notranslate nohighlight">\(\bar{x}\)</span>) dan sebaran datanya (<span class="math notranslate nohighlight">\(\sigma\)</span>) untuk melihat ringkasan angka dari 150 sampel yang kita punya.</p>
+</div></blockquote>
+<p><strong>Kode Python:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menampilkan ringkasan statistik untuk semua fitur numerik</span>
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>index</p></th>
+<th class="head"><p>sepal_length</p></th>
+<th class="head"><p>sepal_width</p></th>
+<th class="head"><p>petal_length</p></th>
+<th class="head"><p>petal_width</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>count</p></td>
+<td><p>150.0</p></td>
+<td><p>150.0</p></td>
+<td><p>150.0</p></td>
+<td><p>150.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>mean</p></td>
+<td><p>5.843333333333334</p></td>
+<td><p>3.0540000000000003</p></td>
+<td><p>3.758666666666666</p></td>
+<td><p>1.1986666666666668</p></td>
+</tr>
+<tr class="row-even"><td><p>std</p></td>
+<td><p>0.8280661279778629</p></td>
+<td><p>0.4335943113621737</p></td>
+<td><p>1.7644204199522617</p></td>
+<td><p>0.7631607417008414</p></td>
+</tr>
+<tr class="row-odd"><td><p>min</p></td>
+<td><p>4.3</p></td>
+<td><p>2.0</p></td>
+<td><p>1.0</p></td>
+<td><p>0.1</p></td>
+</tr>
+<tr class="row-even"><td><p>25%</p></td>
+<td><p>5.1</p></td>
+<td><p>2.8</p></td>
+<td><p>1.6</p></td>
+<td><p>0.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>50%</p></td>
+<td><p>5.8</p></td>
+<td><p>3.0</p></td>
+<td><p>4.35</p></td>
+<td><p>1.3</p></td>
+</tr>
+<tr class="row-even"><td><p>75%</p></td>
+<td><p>6.4</p></td>
+<td><p>3.3</p></td>
+<td><p>5.1</p></td>
+<td><p>1.8</p></td>
+</tr>
+<tr class="row-odd"><td><p>max</p></td>
+<td><p>7.9</p></td>
+<td><p>4.4</p></td>
+<td><p>6.9</p></td>
+<td><p>2.5</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Penjelasan Parameter:</strong></p>
+<blockquote>
+<div><p>Setelah menjalankan fungsi <code class="docutils literal notranslate"><span class="pre">df.describe()</span></code>, kita akan mendapatkan beberapa parameter kunci yang menjelaskan karakteristik data Iris kita:</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p><strong>Count</strong>: Menunjukkan jumlah total baris data yang ada. Untuk dataset ini, jumlahnya adalah 150 sampel.</p></li>
+<li><p><strong>Mean</strong>: Nilai rata-rata dari seluruh data pada atribut tertentu.</p></li>
+<li><p><strong>Std</strong>: Standar deviasi, yang menunjukkan seberapa jauh data tersebar dari nilai rata-ratanya. Semakin besar nilainya, berarti data semakin bervariasi.</p></li>
+<li><p><strong>Min</strong>: Nilai terkecil yang ditemukan dalam kolom tersebut.</p></li>
+<li><p><strong>Max</strong>: Nilai terbesar yang ditemukan dalam kolom tersebut.</p></li>
+</ol>
+<section id="mengenal-quartiles-25-50-75">
+<h4>Mengenal Quartiles (25%, 50%, 75%)<a class="headerlink" href="#mengenal-quartiles-25-50-75" title="Link to this heading">#</a></h4>
+<p>Parameter ini membagi data kita yang sudah diurutkan menjadi empat bagian yang sama besar:</p>
+<ul class="simple">
+<li><p><strong>25% (Q_1)</strong>: Kuartil pertama. Artinya, 25% data nilainya lebih kecil atau sama dengan angka ini. Ini membantu kita melihat sebaran data di bagian bawah.</p></li>
+<li><p><strong>50% (Q_2 / Median)</strong>: Nilai tengah. Artinya, tepat 50% data berada di bawah angka ini dan 50% lagi di atasnya.</p></li>
+<li><p><strong>75% (Q_3)</strong>: Kuartil ketiga. Artinya, 75% data nilainya lebih kecil atau sama dengan angka ini, sedangkan 25% sisanya lebih besar.</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Fungsi Quartile</strong>: Dengan melihat selisih antara Q_3 dan Q_1, kita bisa menghitung <strong>Interquartile Range (IQR)</strong> yang berguna untuk mendeteksi apakah ada data yang aneh (<em>outlier</em>) di dataset kita.</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="verifikasi-kualitas-data-null-duplicate">
+<h2>Verifikasi Kualitas Data (Null &amp; Duplicate)<a class="headerlink" href="#verifikasi-kualitas-data-null-duplicate" title="Link to this heading">#</a></h2>
+<p>Setelah kita cek angka-angkanya, sekarang kita pastikan data ini benar-benar bersih. Di dunia penambangan data, ada istilah <strong>“Garbage In, Garbage Out”</strong>; kalau datanya sampah, hasilnya pun bakal sampah.</p>
+<section id="pemeriksaan-nilai-null-missing-values">
+<h3>Pemeriksaan Nilai Null (Missing Values)<a class="headerlink" href="#pemeriksaan-nilai-null-missing-values" title="Link to this heading">#</a></h3>
+<p>Data kosong bisa bikin algoritma kita <em>error</em> atau salah hitung. Kita pakai fungsi <code class="docutils literal notranslate"><span class="pre">isnull()</span></code> untuk melihat apakah ada baris yang bolong.</p>
+<p><strong>Kode Python:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cek jumlah data kosong di setiap kolom</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah Data Null:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Pemeriksaan dilakukan untuk mengidentifikasi keberadaan nilai kosong (missing values) pada setiap variabel dalam dataset. Berdasarkan hasil pengecekan, seluruh kolom tidak memiliki nilai null.</p>
+</section>
+<section id="jumlah-data-null-per-kolom">
+<h3>Jumlah Data Null per Kolom<a class="headerlink" href="#jumlah-data-null-per-kolom" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Nama Kolom</p></th>
+<th class="head"><p>Jumlah Null</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>sepal_length</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>sepal_width</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>petal_length</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>petal_width</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>species</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>dtype: int6</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Analisis:</strong> <br>
+Jika hasilnya semua 0, berarti data Iris kamu sudah aman dan lengkap. Tidak perlu ada proses “tambal sulam” data (imputasi).</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="pemeriksaan-data-duplikat">
+<h2>Pemeriksaan Data Duplikat<a class="headerlink" href="#pemeriksaan-data-duplikat" title="Link to this heading">#</a></h2>
+<p>Data duplikat adalah baris yang memiliki seluruh nilai kolom identik satu sama lain. Keberadaan data duplikat dalam jumlah signifikan dapat memengaruhi hasil analisis, terutama pada pemodelan machine learning, karena dapat menyebabkan bias distribusi dan meningkatkan risiko overfitting.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cek jumlah data yang kembar</span>
+<span class="n">jml_duplikat</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah data duplikat: </span><span class="si">{</span><span class="n">jml_duplikat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Kalau mau lihat data mana aja yang kembar:</span>
+<span class="k">if</span> <span class="n">jml_duplikat</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()])</span>
+</pre></div>
+</div>
+<p>Berdasarkan hasil pengecekan, ditemukan adanya data duplikat dalam dataset.</p>
+<section id="jumlah-data-duplikat">
+<h3>Jumlah Data Duplikat<a class="headerlink" href="#jumlah-data-duplikat" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Total data duplikat: <strong>3 baris</strong></p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Index</p></th>
+<th class="head"><p>sepal_length</p></th>
+<th class="head"><p>sepal_width</p></th>
+<th class="head"><p>petal_length</p></th>
+<th class="head"><p>petal_width</p></th>
+<th class="head"><p>species</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>34</p></td>
+<td><p>4.9</p></td>
+<td><p>3.1</p></td>
+<td><p>1.5</p></td>
+<td><p>0.1</p></td>
+<td><p>Iris-setosa</p></td>
+</tr>
+<tr class="row-odd"><td><p>37</p></td>
+<td><p>4.9</p></td>
+<td><p>3.1</p></td>
+<td><p>1.5</p></td>
+<td><p>0.1</p></td>
+<td><p>Iris-setosa</p></td>
+</tr>
+<tr class="row-even"><td><p>142</p></td>
+<td><p>5.8</p></td>
+<td><p>2.7</p></td>
+<td><p>5.1</p></td>
+<td><p>1.9</p></td>
+<td><p>Iris-virginica</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>Ditemukan tiga baris dengan nilai identik.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="visualisasi-data">
+<h2>Visualisasi Data<a class="headerlink" href="#visualisasi-data" title="Link to this heading">#</a></h2>
+<section id="histogram">
+<h3>Histogram<a class="headerlink" href="#histogram" title="Link to this heading">#</a></h3>
+<section id="apa-itu-histogram">
+<h4>Apa itu Histogram?<a class="headerlink" href="#apa-itu-histogram" title="Link to this heading">#</a></h4>
+<p>Histogram adalah grafik batang yang menggambarkan distribusi atau penyebaran frekuensi data. Alih alih melihat tumpukan angka dalam tabel, histogram mengubahnya menjadi bentuk visual agar kita bisa melihat pola data secara instan.</p>
+</section>
+<section id="kenapa-kita-melakukan-visualisasi-ini">
+<h4>Kenapa Kita Melakukan Visualisasi Ini?<a class="headerlink" href="#kenapa-kita-melakukan-visualisasi-ini" title="Link to this heading">#</a></h4>
+<p>Tujuannya adalah untuk memahami karakteristik fisik (seperti panjang dan lebar kelopak bunga) secara cepat. Kita bisa langsung mengetahui:</p>
+<ul class="simple">
+<li><p>Pola Utama: Nilai mana yang paling sering muncul (rata-rata).</p></li>
+<li><p>Variasi: Seberapa luas rentang datanya.</p></li>
+<li><p>Anomali: Apakah ada data yang letaknya sangat jauh dari kelompok utama.</p></li>
+</ul>
+</section>
+<section id="panduan-membaca-sumbu-x-y">
+<h4>Panduan Membaca Sumbu (X &amp; Y)<a class="headerlink" href="#panduan-membaca-sumbu-x-y" title="Link to this heading">#</a></h4>
+<p>Agar mudah dipahami, bayangkan sumbu ini sebagai koordinat dasar:</p>
+<ul class="simple">
+<li><p><strong>Sumbu X (Horizontal/Mendatar)</strong>: Mewakili Nilai atau Ukuran. Misalnya, panjang kelopak dalam satuan cm (5cm, 6cm, dst).</p></li>
+<li><p><strong>Sumbu Y (Vertical/Tegak)</strong>: Mewakili Frekuensi atau Jumlah. Menunjukkan berapa kali ukuran di sumbu X tersebut muncul dalam data kita.</p></li>
+</ul>
+<p>Logika Singkat: Sumbu X adalah “Apa ukurannya?”, Sumbu Y adalah “Berapa banyak jumlahnya?”.</p>
+<p><img alt="Statistik Orange" src="../_images/Histogram-sepal_length.png" /></p>
+</section>
+<section id="fig-1-histogram-distribusi-frekuensi-fitur-sepal-length">
+<h4>Fig. 1 Histogram Distribusi Frekuensi Fitur sepal_length<a class="headerlink" href="#fig-1-histogram-distribusi-frekuensi-fitur-sepal-length" title="Link to this heading">#</a></h4>
+<p><img alt="Statistik Orange" src="../_images/sepal_width.png" /></p>
+</section>
+<section id="fig-2-histogram-distribusi-frekuensi-fitur-sepal-width">
+<h4>Fig. 2 Histogram Distribusi Frekuensi Fitur sepal_width<a class="headerlink" href="#fig-2-histogram-distribusi-frekuensi-fitur-sepal-width" title="Link to this heading">#</a></h4>
+<p><img alt="Statistik Orange" src="../_images/petal_length.png" /></p>
+</section>
+<section id="fig-3-histogram-distribusi-frekuensi-fitur-petal-length">
+<h4>Fig. 3 Histogram Distribusi Frekuensi Fitur petal_length<a class="headerlink" href="#fig-3-histogram-distribusi-frekuensi-fitur-petal-length" title="Link to this heading">#</a></h4>
+<p><img alt="Statistik Orange" src="../_images/petal_width.png" /></p>
+</section>
+<section id="fig-4-histogram-distribusi-frekuensi-fitur-petal-width">
+<h4>Fig. 4 Histogram Distribusi Frekuensi Fitur petal_width<a class="headerlink" href="#fig-4-histogram-distribusi-frekuensi-fitur-petal-width" title="Link to this heading">#</a></h4>
+<p><img alt="Statistik Orange" src="../_images/species.png" /></p>
+</section>
+<section id="fig-5-histogram-distribusi-frekuensi-fitur-species">
+<h4>Fig. 5 Histogram Distribusi Frekuensi Fitur species<a class="headerlink" href="#fig-5-histogram-distribusi-frekuensi-fitur-species" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<hr class="docutils" />
+<section id="scatter-plot">
+<h3>Scatter plot<a class="headerlink" href="#scatter-plot" title="Link to this heading">#</a></h3>
+<section id="apa-itu-scatter-plot">
+<h4>Apa itu Scatter Plot?<a class="headerlink" href="#apa-itu-scatter-plot" title="Link to this heading">#</a></h4>
+<p>Scatter plot (diagram titik) adalah grafik yang digunakan untuk melihat hubungan antara dua variabel angka. Jika histogram hanya melihat satu fitur, scatter plot mempertemukan dua fitur sekaligus untuk melihat apakah mereka saling memengaruhi.</p>
+</section>
+<section id="id1">
+<h4>Kenapa Kita Melakukan Visualisasi Ini?<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<p>Tujuannya adalah untuk mencari Korelasi (pola hubungan). Dengan scatter plot, kita bisa menjawab pertanyaan seperti:</p>
+<ul class="simple">
+<li><p>“Kalau kelopak bunganya makin panjang, apakah lebarnya otomatis makin besar juga?”</p></li>
+<li><p>“Apakah ada kelompok data yang terpisah secara jelas?” (Ini sangat penting untuk teknik Clustering di mata kuliah Penambangan Data).</p></li>
+</ul>
+</section>
+<section id="memahami-sumbu-x-dan-y-titik-pertemuan">
+<h4>Memahami Sumbu X dan Y (Titik Pertemuan)<a class="headerlink" href="#memahami-sumbu-x-dan-y-titik-pertemuan" title="Link to this heading">#</a></h4>
+<p>Cara membacanya sangat sederhana, bayangkan seperti koordinat di peta:</p>
+<ul class="simple">
+<li><p><em><strong>Sumbu X (Horizontal)</strong></em>: Variabel pertama (misal: Panjang Sepal).</p></li>
+<li><p><em><strong>Sumbu Y (Vertical)</strong></em>: Variabel kedua (misal: Lebar Sepal).</p></li>
+</ul>
+<p>Titik (Dot): Setiap satu titik di grafik mewakili satu sampel data yang merupakan pertemuan antara nilai X dan nilai Y.</p>
+</section>
+</section>
+<section id="scatter-plot-sepal-length-dan-sepal-width">
+<h3>Scatter Plot sepal_length dan sepal_width<a class="headerlink" href="#scatter-plot-sepal-length-dan-sepal-width" title="Link to this heading">#</a></h3>
+<p><img alt="Statistik Orange" src="../_images/sepal_length-sepal_width.png" /></p>
+<section id="fig-6-scatter-plot-fitur-sepal-length-dan-sepal-width">
+<h4>Fig. 6 Scatter Plot Fitur sepal_length dan sepal width<a class="headerlink" href="#fig-6-scatter-plot-fitur-sepal-length-dan-sepal-width" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Korelasi: Nilai <span class="math notranslate nohighlight">\(r = -0.11\)</span> menunjukkan korelasi negatif yang sangat lemah, hampir mendekati nol.</p></li>
+<li><p>Insight: Artinya, panjang sepal tidak terlalu memengaruhi lebarnya. Titik-titik data terlihat menyebar (scattered) tanpa membentuk pola garis yang jelas. Untuk klasifikasi, fitur sepal ini biasanya lebih sulit membedakan antar spesies dibanding fitur petal.</p></li>
+</ul>
+</section>
+</section>
+<section id="scatter-plot-petal-dan-petal-width">
+<h3>Scatter Plot petal dan petal_width<a class="headerlink" href="#scatter-plot-petal-dan-petal-width" title="Link to this heading">#</a></h3>
+<p><img alt="Statistik Orange" src="../_images/petal_length-petal_width.png" /></p>
+<section id="fig-7-scatter-plot-fitur-petal-length-dan-petal-width">
+<h4>Fig. 7 Scatter Plot Fitur petal_length dan petal_width<a class="headerlink" href="#fig-7-scatter-plot-fitur-petal-length-dan-petal-width" title="Link to this heading">#</a></h4>
+<p>berikut jika di implementasikan di python</p>
+<div class="highlight-import notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+df=pd.read_csv(&quot;IRIS.csv&quot;)
+print(&quot;Korelasi petal_length dan petal_width: &quot;,round(df[&#39;petal_width&#39;].corr(df[&#39;petal_length&#39;]), 2))
+plt.scatter(df[&#39;petal_length&#39;], df[&#39;petal_width&#39;])
+plt.xlabel(&#39;petal_length&#39;)
+plt.ylabel(&#39;petal_width&#39;)
+plt.title(&#39;Scatter Plot petal_length vs petal_width&#39;)
+plt.show()
+</pre></div>
+</div>
+<p><img alt="Statistik Orange" src="../_images/python-petal_length-petal_width.png" /></p>
+<ul class="simple">
+<li><p>Korelasi: Nilai <span class="math notranslate nohighlight">\(r = 0.96\)</span> menunjukkan korelasi positif yang sangat kuat (mendekati sempurna). <strong>Insight</strong>: Ada hubungan linear yang sangat konsisten semakin panjang kelopak (petal), maka lebarnya hampir pasti bertambah secara proporsional.</p></li>
+<li><p>Cluster: Kamu bisa melihat ada kelompok kecil di pojok kiri bawah yang terpisah jauh dari kelompok besar lainnya. Itu adalah spesies Setosa, yang secara fisik memang jauh lebih kecil dibanding Versicolor dan Virginica.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="outlier">
+<h2>Outlier<a class="headerlink" href="#outlier" title="Link to this heading">#</a></h2>
+<section id="apa-itu-outlier">
+<h3>Apa itu Outlier?<a class="headerlink" href="#apa-itu-outlier" title="Link to this heading">#</a></h3>
+<p>Outlier (Pencilan) adalah titik data yang nilainya sangat jauh berbeda dari mayoritas data lainnya dalam satu kelompok. Bayangkan jika kamu mendata tinggi badan mahasiswa di kelasmu yang rata-rata 160–170 cm, tiba-tiba ada satu orang yang tingginya 210 cm. Nah, orang tersebut adalah outlier.</p>
+</section>
+<section id="kenapa-kita-harus-mendeteksi-outlier">
+<h3>Kenapa Kita Harus Mendeteksi Outlier?<a class="headerlink" href="#kenapa-kita-harus-mendeteksi-outlier" title="Link to this heading">#</a></h3>
+<p>Dalam pengolahan data, outlier bisa terjadi karena dua hal:</p>
+<ol class="arabic simple">
+<li><p>Kesalahan Input: Misalnya salah ketik angka (seharusnya 1.5 jadi 15).</p></li>
+<li><p>Variasi Alami: Memang ada sampel yang unik/langka.</p></li>
+</ol>
+<p>Penting untuk mendeteksi mereka karena outlier bisa “merusak” hasil statistik (seperti rata-rata) dan membuat model prediksi menjadi tidak akurat.</p>
+</section>
+<section id="metode-local-outlier-factor-lof">
+<h3>Metode: Local Outlier Factor (LOF)<a class="headerlink" href="#metode-local-outlier-factor-lof" title="Link to this heading">#</a></h3>
+<p>Berdasarkan gambar laporan, saya menggunakan metode LOF.</p>
+<ul class="simple">
+<li><p><strong>Cara Kerjanya</strong>: LOF tidak hanya melihat nilai angka, tapi melihat kepadatan di sekitar sebuah titik. Jika sebuah titik berada di area yang sangat sepi (jauh dari tetangganya/neighbors), maka sistem akan menandainya sebagai outlier.</p></li>
+<li><p><strong>Sumbu X &amp; Y pada Outlier</strong> : Dalam visualisasi yang kamu buat, sumbu X dan Y tetap mewakili fitur data, namun sistem menambahkan tanda khusus (biasanya warna atau bentuk berbeda) pada titik-titik yang dianggap “aneh” oleh algoritma LOF tersebut.</p></li>
+</ul>
+<p><img alt="Statistik Orange" src="../_images/data-table.png" /></p>
+<section id="fig-8-outlier">
+<h4>Fig. 8 Outlier<a class="headerlink" href="#fig-8-outlier" title="Link to this heading">#</a></h4>
+<p>berikut jika di implementasikan di python</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalOutlierFactor</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;IRIS.csv&quot;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">values</span>
+<span class="n">lof</span> <span class="o">=</span> <span class="n">LocalOutlierFactor</span><span class="p">(</span>
+    <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">contamination</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span>
+<span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">lof</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;LOF_Score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">lof</span><span class="o">.</span><span class="n">negative_outlier_factor_</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Outlier&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_pred</span>
+
+<span class="n">outlier_lines</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Outlier&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Outlier:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">outlier_lines</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nomor Baris Outlier:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">outlier_lines</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Total Outlier: 15 <br>
+Nomor Baris Outlier: <br>
+[14, 15, 16, 34, 42, 58, 61, 94, 99, 106, 107, 118, 119, 123, 132]</p>
+</div></blockquote>
+</section>
 </section>
 </section>
 </section>
@@ -532,7 +1022,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Business understanding</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
       </div>
     </a>
 </div>
@@ -551,10 +1041,70 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describe-data">2.1 Describe Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-metodologi-crisp-dm">Apa itu Metodologi CRISP-DM?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#posisi-sekarang-fase-ke-2">Posisi Sekarang: Fase Ke-2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-utama-fase-ini">Tujuan Utama Fase Ini:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-sumber-data">Deskripsi Sumber Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-memuat-dan-cek-struktur-data">Implementasi: Memuat dan Cek Struktur Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-file-csv">Membaca File CSV</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampel-data">Sampel Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-dataset">Struktur Dataset</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-atribut-tipe-data">Deskripsi Atribut (Tipe Data)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data-data-exploration">Eksplorasi Data (Data Exploration)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif">Statistik Deskriptif</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mengenal-quartiles-25-50-75">Mengenal Quartiles (25%, 50%, 75%)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-kualitas-data-null-duplicate">Verifikasi Kualitas Data (Null &amp; Duplicate)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pemeriksaan-nilai-null-missing-values">Pemeriksaan Nilai Null (Missing Values)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumlah-data-null-per-kolom">Jumlah Data Null per Kolom</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemeriksaan-data-duplikat">Pemeriksaan Data Duplikat</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumlah-data-duplikat">Jumlah Data Duplikat</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-histogram">Apa itu Histogram?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kenapa-kita-melakukan-visualisasi-ini">Kenapa Kita Melakukan Visualisasi Ini?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#panduan-membaca-sumbu-x-y">Panduan Membaca Sumbu (X &amp; Y)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-1-histogram-distribusi-frekuensi-fitur-sepal-length">Fig. 1 Histogram Distribusi Frekuensi Fitur sepal_length</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-2-histogram-distribusi-frekuensi-fitur-sepal-width">Fig. 2 Histogram Distribusi Frekuensi Fitur sepal_width</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-3-histogram-distribusi-frekuensi-fitur-petal-length">Fig. 3 Histogram Distribusi Frekuensi Fitur petal_length</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-4-histogram-distribusi-frekuensi-fitur-petal-width">Fig. 4 Histogram Distribusi Frekuensi Fitur petal_width</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-5-histogram-distribusi-frekuensi-fitur-species">Fig. 5 Histogram Distribusi Frekuensi Fitur species</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-scatter-plot">Apa itu Scatter Plot?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Kenapa Kita Melakukan Visualisasi Ini?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#memahami-sumbu-x-dan-y-titik-pertemuan">Memahami Sumbu X dan Y (Titik Pertemuan)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot-sepal-length-dan-sepal-width">Scatter Plot sepal_length dan sepal_width</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-6-scatter-plot-fitur-sepal-length-dan-sepal-width">Fig. 6 Scatter Plot Fitur sepal_length dan sepal width</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot-petal-dan-petal-width">Scatter Plot petal dan petal_width</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-7-scatter-plot-fitur-petal-length-dan-petal-width">Fig. 7 Scatter Plot Fitur petal_length dan petal_width</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outlier">Outlier</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-outlier">Apa itu Outlier?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kenapa-kita-harus-mendeteksi-outlier">Kenapa Kita Harus Mendeteksi Outlier?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-local-outlier-factor-lof">Metode: Local Outlier Factor (LOF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-8-outlier">Fig. 8 Outlier</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
