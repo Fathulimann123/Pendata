@@ -316,3 +316,110 @@ print(outlier_lines)
 >Total Outlier: 15 <br>
 Nomor Baris Outlier: <br>
 [14, 15, 16, 34, 42, 58, 61, 94, 99, 106, 107, 118, 119, 123, 132]
+
+## Mengukur jarak (distance)
+Dalam proses data mining, pengukuran jarak digunakan untuk mengetahui tingkat kemiripan antar data. Semakin kecil nilai jarak, maka semakin mirip karakteristik antar objek tersebut.
+
+Namun dalam praktiknya, data di dunia nyata jarang memiliki satu tipe atribut saja. Sebagian besar dataset memiliki kombinasi angka, kategori, bahkan skala peringkat. Kondisi ini disebut sebagai data campuran.
+
+
+|index|id|Gender|Age|City|Profession|Academic Pressure|Work Pressure|CGPA|Study Satisfaction|Job Satisfaction|Sleep Duration|Dietary Habits|Degree|Have you ever had suicidal thoughts ?|Work/Study Hours|Financial Stress|Family History of Mental Illness|Depression|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|0|2|Male|33\.0|Visakhapatnam|Student|5\.0|0\.0|8\.97|2\.0|0\.0|'5-6 hours'|Healthy|B\.Pharm|Yes|3\.0|1\.0|No|1|
+|1|8|Female|24\.0|Bangalore|Student|2\.0|0\.0|5\.9|5\.0|0\.0|'5-6 hours'|Moderate|BSc|No|3\.0|2\.0|Yes|0|
+|2|26|Male|31\.0|Srinagar|Student|3\.0|0\.0|7\.03|5\.0|0\.0|'Less than 5 hours'|Healthy|BA|No|9\.0|1\.0|Yes|0|
+|3|30|Female|28\.0|Varanasi|Student|3\.0|0\.0|5\.59|2\.0|0\.0|'7-8 hours'|Moderate|BCA|Yes|4\.0|5\.0|Yes|1|
+|4|32|Female|25\.0|Jaipur|Student|4\.0|0\.0|8\.13|3\.0|0\.0|'5-6 hours'|Moderate|M\.Tech|Yes|1\.0|1\.0|No|0|
+
+Metode seperti Euclidean Distance hanya cocok untuk data numerik. Jika digunakan pada data campuran, hasilnya tidak akurat karena tidak mampu menangani data kategori.
+
+Untuk mengatasi hal tersebut digunakan **Gower Distance**, yaitu metode yang mampu menghitung jarak pada data campuran dengan cara:
+
+- Atribut numerik → selisih dibagi range
+- Atribut ordinal → dikonversi ke ranking lalu dinormalisasi
+- Atribut kategorikal → 0 jika sama, 1 jika berbeda
+- Seluruh kontribusi dirata-rata
+
+### Identifikasi Tipe Data
+Sebelum menghitung jarak, langkah pertama yang dilakukan adalah memeriksa struktur dan tipe data dari setiap kolom.
+
+| No | Column Name                             | Non-Null Count | Dtype   |
+|----|-----------------------------------------|----------------|---------|
+| 0  | id                                      | 27901          | int64   |
+| 1  | Gender                                  | 27901          | object  |
+| 2  | Age                                     | 27901          | float64 |
+| 3  | City                                    | 27901          | object  |
+| 4  | Profession                              | 27901          | object  |
+| 5  | Academic Pressure                       | 27901          | float64 |
+| 6  | Work Pressure                           | 27901          | float64 |
+| 7  | CGPA                                    | 27901          | float64 |
+| 8  | Study Satisfaction                      | 27901          | float64 |
+| 9  | Job Satisfaction                        | 27901          | float64 |
+| 10 | Sleep Duration                          | 27901          | object  |
+| 11 | Dietary Habits                          | 27901          | object  |
+| 12 | Degree                                  | 27901          | object  |
+| 13 | Have you ever had suicidal thoughts ?   | 27901          | object  |
+| 14 | Work/Study Hours                        | 27901          | float64 |
+| 15 | Financial Stress                        | 27901          | object  |
+| 16 | Family History of Mental Illness        | 27901          | object  |
+| 17 | Depression                              | 27901          | int64   |
+
+Tabel ini merangkum:
+- Jumlah kolom: 18
+- Jumlah baris: 27,901
+- Tipe data: 7 kolom ```float64```, 2 kolom ```int64```, dan 9 kolom ```object```.
+
+```
+import pandas as pd
+import gower
+
+# pilih fitur
+features = ['Age','Academic Pressure','CGPA','Sleep Duration','Financial Stress']
+
+# ambil 5 data pertama
+df_subset = df[features].head()
+
+# hitung matriks jarak
+distance_matrix = gower.gower_matrix(df_subset)
+
+print(distance_matrix)
+```
+| Obs | 1      | 2      | 3      | 4      | 5      |
+|-----|--------|--------|--------|--------|--------|
+| 1   | 0.0000 | 0.7817 | 0.4926 | 0.8444 | 0.2941 |
+| 2   | 0.7817 | 0.0000 | 0.6891 | 0.5739 | 0.4875 |
+| 3   | 0.4926 | 0.6891 | 0.0000 | 0.5519 | 0.4651 |
+| 4   | 0.8444 | 0.5739 | 0.5519 | 0.0000 | 0.6836 |
+| 5   | 0.2941 | 0.4875 | 0.4651 | 0.6836 | 0.0000 |
+
+
+Perhitungan jarak dilakukan menggunakan metode Gower Distance karena dataset memiliki tipe data campuran (numerik dan kategorikal). Lima atribut yang digunakan yaitu Age, Academic Pressure, CGPA, Sleep Duration, dan Financial Stress.
+
+Fungsi gower_matrix() menghasilkan matriks jarak antar seluruh data. Nilai jarak berada pada rentang 0 hingga 1, di mana:
+
+- Nilai mendekati 0 → data sangat mirip
+- Nilai mendekati 1 → data sangat berbeda
+
+### Konversi Sleep Duration dan Penggunaan Euclidean
+
+![Statistik Orange](../img/data-understanding/euclidean.png)
+
+Atribut Sleep Duration dikonversi ke skala ordinal numerik (1–4) agar dapat diproses menggunakan Euclidean Distance. Setelah seluruh atribut berbentuk numerik, perhitungan jarak dilakukan menggunakan Euclidean Distance dengan normalisasi untuk memastikan kontribusi setiap variabel seimbang.
+
+##  Implementasi Pengukuran Jarak pada Dataset Iris
+
+Dataset Iris terdiri dari empat atribut numerik, yaitu Sepal Length, Sepal Width, Petal Length, dan Petal Width. Karena seluruh atribut bertipe numerik kontinu, maka metode pengukuran jarak yang digunakan adalah Euclidean Distance.
+
+Euclidean Distance menghitung jarak geometris antar dua objek dalam ruang multidimensi menggunakan rumus:
+
+![Statistik Orange](../img/data-understanding/rumus-euclidean.png)
+
+Metode ini sesuai digunakan karena tidak terdapat atribut kategorikal pada dataset Iris, sehingga tidak diperlukan metode khusus untuk data campuran seperti Gower Distance.
+
+Dalam implementasi menggunakan Orange Data Mining, widget Distance digunakan dengan memilih metode Euclidean (normalized). Hasilnya berupa matriks jarak yang menunjukkan kedekatan antar setiap data bunga.
+
+![Statistik Orange](../img/data-understanding/iris-euclidean.png)
+
+Semakin kecil nilai jarak, maka semakin mirip karakteristik kedua bunga tersebut.
+
+

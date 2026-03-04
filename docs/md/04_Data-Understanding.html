@@ -444,6 +444,12 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-distance">Mengukur jarak (distance)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-tipe-data">Identifikasi Tipe Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konversi-sleep-duration-dan-penggunaan-euclidean">Konversi Sleep Duration dan Penggunaan Euclidean</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-pengukuran-jarak-pada-dataset-iris">Implementasi Pengukuran Jarak pada Dataset Iris</a></li>
 </ul>
             </nav>
         </div>
@@ -984,6 +990,343 @@ Nomor Baris Outlier: <br>
 </section>
 </section>
 </section>
+<section id="mengukur-jarak-distance">
+<h2>Mengukur jarak (distance)<a class="headerlink" href="#mengukur-jarak-distance" title="Link to this heading">#</a></h2>
+<p>Dalam proses data mining, pengukuran jarak digunakan untuk mengetahui tingkat kemiripan antar data. Semakin kecil nilai jarak, maka semakin mirip karakteristik antar objek tersebut.</p>
+<p>Namun dalam praktiknya, data di dunia nyata jarang memiliki satu tipe atribut saja. Sebagian besar dataset memiliki kombinasi angka, kategori, bahkan skala peringkat. Kondisi ini disebut sebagai data campuran.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>index</p></th>
+<th class="head"><p>id</p></th>
+<th class="head"><p>Gender</p></th>
+<th class="head"><p>Age</p></th>
+<th class="head"><p>City</p></th>
+<th class="head"><p>Profession</p></th>
+<th class="head"><p>Academic Pressure</p></th>
+<th class="head"><p>Work Pressure</p></th>
+<th class="head"><p>CGPA</p></th>
+<th class="head"><p>Study Satisfaction</p></th>
+<th class="head"><p>Job Satisfaction</p></th>
+<th class="head"><p>Sleep Duration</p></th>
+<th class="head"><p>Dietary Habits</p></th>
+<th class="head"><p>Degree</p></th>
+<th class="head"><p>Have you ever had suicidal thoughts ?</p></th>
+<th class="head"><p>Work/Study Hours</p></th>
+<th class="head"><p>Financial Stress</p></th>
+<th class="head"><p>Family History of Mental Illness</p></th>
+<th class="head"><p>Depression</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>2</p></td>
+<td><p>Male</p></td>
+<td><p>33.0</p></td>
+<td><p>Visakhapatnam</p></td>
+<td><p>Student</p></td>
+<td><p>5.0</p></td>
+<td><p>0.0</p></td>
+<td><p>8.97</p></td>
+<td><p>2.0</p></td>
+<td><p>0.0</p></td>
+<td><p>‘5-6 hours’</p></td>
+<td><p>Healthy</p></td>
+<td><p>B.Pharm</p></td>
+<td><p>Yes</p></td>
+<td><p>3.0</p></td>
+<td><p>1.0</p></td>
+<td><p>No</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>8</p></td>
+<td><p>Female</p></td>
+<td><p>24.0</p></td>
+<td><p>Bangalore</p></td>
+<td><p>Student</p></td>
+<td><p>2.0</p></td>
+<td><p>0.0</p></td>
+<td><p>5.9</p></td>
+<td><p>5.0</p></td>
+<td><p>0.0</p></td>
+<td><p>‘5-6 hours’</p></td>
+<td><p>Moderate</p></td>
+<td><p>BSc</p></td>
+<td><p>No</p></td>
+<td><p>3.0</p></td>
+<td><p>2.0</p></td>
+<td><p>Yes</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>26</p></td>
+<td><p>Male</p></td>
+<td><p>31.0</p></td>
+<td><p>Srinagar</p></td>
+<td><p>Student</p></td>
+<td><p>3.0</p></td>
+<td><p>0.0</p></td>
+<td><p>7.03</p></td>
+<td><p>5.0</p></td>
+<td><p>0.0</p></td>
+<td><p>‘Less than 5 hours’</p></td>
+<td><p>Healthy</p></td>
+<td><p>BA</p></td>
+<td><p>No</p></td>
+<td><p>9.0</p></td>
+<td><p>1.0</p></td>
+<td><p>Yes</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>30</p></td>
+<td><p>Female</p></td>
+<td><p>28.0</p></td>
+<td><p>Varanasi</p></td>
+<td><p>Student</p></td>
+<td><p>3.0</p></td>
+<td><p>0.0</p></td>
+<td><p>5.59</p></td>
+<td><p>2.0</p></td>
+<td><p>0.0</p></td>
+<td><p>‘7-8 hours’</p></td>
+<td><p>Moderate</p></td>
+<td><p>BCA</p></td>
+<td><p>Yes</p></td>
+<td><p>4.0</p></td>
+<td><p>5.0</p></td>
+<td><p>Yes</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>32</p></td>
+<td><p>Female</p></td>
+<td><p>25.0</p></td>
+<td><p>Jaipur</p></td>
+<td><p>Student</p></td>
+<td><p>4.0</p></td>
+<td><p>0.0</p></td>
+<td><p>8.13</p></td>
+<td><p>3.0</p></td>
+<td><p>0.0</p></td>
+<td><p>‘5-6 hours’</p></td>
+<td><p>Moderate</p></td>
+<td><p>M.Tech</p></td>
+<td><p>Yes</p></td>
+<td><p>1.0</p></td>
+<td><p>1.0</p></td>
+<td><p>No</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Metode seperti Euclidean Distance hanya cocok untuk data numerik. Jika digunakan pada data campuran, hasilnya tidak akurat karena tidak mampu menangani data kategori.</p>
+<p>Untuk mengatasi hal tersebut digunakan <strong>Gower Distance</strong>, yaitu metode yang mampu menghitung jarak pada data campuran dengan cara:</p>
+<ul class="simple">
+<li><p>Atribut numerik → selisih dibagi range</p></li>
+<li><p>Atribut ordinal → dikonversi ke ranking lalu dinormalisasi</p></li>
+<li><p>Atribut kategorikal → 0 jika sama, 1 jika berbeda</p></li>
+<li><p>Seluruh kontribusi dirata-rata</p></li>
+</ul>
+<section id="identifikasi-tipe-data">
+<h3>Identifikasi Tipe Data<a class="headerlink" href="#identifikasi-tipe-data" title="Link to this heading">#</a></h3>
+<p>Sebelum menghitung jarak, langkah pertama yang dilakukan adalah memeriksa struktur dan tipe data dari setiap kolom.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>No</p></th>
+<th class="head"><p>Column Name</p></th>
+<th class="head"><p>Non-Null Count</p></th>
+<th class="head"><p>Dtype</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>id</p></td>
+<td><p>27901</p></td>
+<td><p>int64</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Gender</p></td>
+<td><p>27901</p></td>
+<td><p>object</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Age</p></td>
+<td><p>27901</p></td>
+<td><p>float64</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>City</p></td>
+<td><p>27901</p></td>
+<td><p>object</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Profession</p></td>
+<td><p>27901</p></td>
+<td><p>object</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Academic Pressure</p></td>
+<td><p>27901</p></td>
+<td><p>float64</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Work Pressure</p></td>
+<td><p>27901</p></td>
+<td><p>float64</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>CGPA</p></td>
+<td><p>27901</p></td>
+<td><p>float64</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Study Satisfaction</p></td>
+<td><p>27901</p></td>
+<td><p>float64</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Job Satisfaction</p></td>
+<td><p>27901</p></td>
+<td><p>float64</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Sleep Duration</p></td>
+<td><p>27901</p></td>
+<td><p>object</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Dietary Habits</p></td>
+<td><p>27901</p></td>
+<td><p>object</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>Degree</p></td>
+<td><p>27901</p></td>
+<td><p>object</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>Have you ever had suicidal thoughts ?</p></td>
+<td><p>27901</p></td>
+<td><p>object</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>Work/Study Hours</p></td>
+<td><p>27901</p></td>
+<td><p>float64</p></td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p>Financial Stress</p></td>
+<td><p>27901</p></td>
+<td><p>object</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>Family History of Mental Illness</p></td>
+<td><p>27901</p></td>
+<td><p>object</p></td>
+</tr>
+<tr class="row-odd"><td><p>17</p></td>
+<td><p>Depression</p></td>
+<td><p>27901</p></td>
+<td><p>int64</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Tabel ini merangkum:</p>
+<ul class="simple">
+<li><p>Jumlah kolom: 18</p></li>
+<li><p>Jumlah baris: 27,901</p></li>
+<li><p>Tipe data: 7 kolom <code class="docutils literal notranslate"><span class="pre">float64</span></code>, 2 kolom <code class="docutils literal notranslate"><span class="pre">int64</span></code>, dan 9 kolom <code class="docutils literal notranslate"><span class="pre">object</span></code>.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gower</span>
+
+<span class="c1"># pilih fitur</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span><span class="s1">&#39;Academic Pressure&#39;</span><span class="p">,</span><span class="s1">&#39;CGPA&#39;</span><span class="p">,</span><span class="s1">&#39;Sleep Duration&#39;</span><span class="p">,</span><span class="s1">&#39;Financial Stress&#39;</span><span class="p">]</span>
+
+<span class="c1"># ambil 5 data pertama</span>
+<span class="n">df_subset</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1"># hitung matriks jarak</span>
+<span class="n">distance_matrix</span> <span class="o">=</span> <span class="n">gower</span><span class="o">.</span><span class="n">gower_matrix</span><span class="p">(</span><span class="n">df_subset</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">distance_matrix</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Obs</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0.0000</p></td>
+<td><p>0.7817</p></td>
+<td><p>0.4926</p></td>
+<td><p>0.8444</p></td>
+<td><p>0.2941</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>0.7817</p></td>
+<td><p>0.0000</p></td>
+<td><p>0.6891</p></td>
+<td><p>0.5739</p></td>
+<td><p>0.4875</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>0.4926</p></td>
+<td><p>0.6891</p></td>
+<td><p>0.0000</p></td>
+<td><p>0.5519</p></td>
+<td><p>0.4651</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>0.8444</p></td>
+<td><p>0.5739</p></td>
+<td><p>0.5519</p></td>
+<td><p>0.0000</p></td>
+<td><p>0.6836</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>0.2941</p></td>
+<td><p>0.4875</p></td>
+<td><p>0.4651</p></td>
+<td><p>0.6836</p></td>
+<td><p>0.0000</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Perhitungan jarak dilakukan menggunakan metode Gower Distance karena dataset memiliki tipe data campuran (numerik dan kategorikal). Lima atribut yang digunakan yaitu Age, Academic Pressure, CGPA, Sleep Duration, dan Financial Stress.</p>
+<p>Fungsi gower_matrix() menghasilkan matriks jarak antar seluruh data. Nilai jarak berada pada rentang 0 hingga 1, di mana:</p>
+<ul class="simple">
+<li><p>Nilai mendekati 0 → data sangat mirip</p></li>
+<li><p>Nilai mendekati 1 → data sangat berbeda</p></li>
+</ul>
+</section>
+<section id="konversi-sleep-duration-dan-penggunaan-euclidean">
+<h3>Konversi Sleep Duration dan Penggunaan Euclidean<a class="headerlink" href="#konversi-sleep-duration-dan-penggunaan-euclidean" title="Link to this heading">#</a></h3>
+<p><img alt="Statistik Orange" src="../_images/euclidean.png" /></p>
+<p>Atribut Sleep Duration dikonversi ke skala ordinal numerik (1–4) agar dapat diproses menggunakan Euclidean Distance. Setelah seluruh atribut berbentuk numerik, perhitungan jarak dilakukan menggunakan Euclidean Distance dengan normalisasi untuk memastikan kontribusi setiap variabel seimbang.</p>
+</section>
+</section>
+<section id="implementasi-pengukuran-jarak-pada-dataset-iris">
+<h2>Implementasi Pengukuran Jarak pada Dataset Iris<a class="headerlink" href="#implementasi-pengukuran-jarak-pada-dataset-iris" title="Link to this heading">#</a></h2>
+<p>Dataset Iris terdiri dari empat atribut numerik, yaitu Sepal Length, Sepal Width, Petal Length, dan Petal Width. Karena seluruh atribut bertipe numerik kontinu, maka metode pengukuran jarak yang digunakan adalah Euclidean Distance.</p>
+<p>Euclidean Distance menghitung jarak geometris antar dua objek dalam ruang multidimensi menggunakan rumus:</p>
+<p><img alt="Statistik Orange" src="../_images/rumus-euclidean.png" /></p>
+<p>Metode ini sesuai digunakan karena tidak terdapat atribut kategorikal pada dataset Iris, sehingga tidak diperlukan metode khusus untuk data campuran seperti Gower Distance.</p>
+<p>Dalam implementasi menggunakan Orange Data Mining, widget Distance digunakan dengan memilih metode Euclidean (normalized). Hasilnya berupa matriks jarak yang menunjukkan kedekatan antar setiap data bunga.</p>
+<p><img alt="Statistik Orange" src="../_images/iris-euclidean.png" /></p>
+<p>Semakin kecil nilai jarak, maka semakin mirip karakteristik kedua bunga tersebut.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1107,6 +1450,12 @@ Nomor Baris Outlier: <br>
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-distance">Mengukur jarak (distance)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-tipe-data">Identifikasi Tipe Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konversi-sleep-duration-dan-penggunaan-euclidean">Konversi Sleep Duration dan Penggunaan Euclidean</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-pengukuran-jarak-pada-dataset-iris">Implementasi Pengukuran Jarak pada Dataset Iris</a></li>
 </ul>
   </nav></div>
 
