@@ -343,31 +343,31 @@ Untuk mengatasi hal tersebut digunakan **Gower Distance**, yaitu metode yang mam
 ### Identifikasi Tipe Data
 Sebelum menghitung jarak, langkah pertama yang dilakukan adalah memeriksa struktur dan tipe data dari setiap kolom.
 
-| No | Column Name                             | Non-Null Count | Dtype   |
-|----|-----------------------------------------|----------------|---------|
-| 0  | id                                      | 27901          | int64   |
-| 1  | Gender                                  | 27901          | object  |
-| 2  | Age                                     | 27901          | float64 |
-| 3  | City                                    | 27901          | object  |
-| 4  | Profession                              | 27901          | object  |
-| 5  | Academic Pressure                       | 27901          | float64 |
-| 6  | Work Pressure                           | 27901          | float64 |
-| 7  | CGPA                                    | 27901          | float64 |
-| 8  | Study Satisfaction                      | 27901          | float64 |
-| 9  | Job Satisfaction                        | 27901          | float64 |
-| 10 | Sleep Duration                          | 27901          | object  |
-| 11 | Dietary Habits                          | 27901          | object  |
-| 12 | Degree                                  | 27901          | object  |
-| 13 | Have you ever had suicidal thoughts ?   | 27901          | object  |
-| 14 | Work/Study Hours                        | 27901          | float64 |
-| 15 | Financial Stress                        | 27901          | object  |
-| 16 | Family History of Mental Illness        | 27901          | object  |
-| 17 | Depression                              | 27901          | int64   |
+| No | Column Name                           | Non-Null Count | Tipe Data (Data Mining) |
+| -- | ------------------------------------- | -------------- | ----------------------- |
+| 0  | id                                    | 27901          | Identifier (Numerik)    |
+| 1  | Gender                                | 27901          | Nominal                 |
+| 2  | Age                                   | 27901          | Numerik (Kontinu)       |
+| 3  | City                                  | 27901          | Nominal                 |
+| 4  | Profession                            | 27901          | Nominal                 |
+| 5  | Academic Pressure                     | 27901          | Numerik (Diskrit/Skala) |
+| 6  | Work Pressure                         | 27901          | Numerik (Diskrit/Skala) |
+| 7  | CGPA                                  | 27901          | Numerik (Kontinu)       |
+| 8  | Study Satisfaction                    | 27901          | Numerik (Diskrit/Skala) |
+| 9  | Job Satisfaction                      | 27901          | Numerik (Diskrit/Skala) |
+| 10 | Sleep Duration                        | 27901          | Ordinal                 |
+| 11 | Dietary Habits                        | 27901          | Nominal                 |
+| 12 | Degree                                | 27901          | Nominal                 |
+| 13 | Have you ever had suicidal thoughts ? | 27901          | Biner                   |
+| 14 | Work/Study Hours                      | 27901          | Numerik (Kontinu)       |
+| 15 | Financial Stress                      | 27901          | Ordinal                 |
+| 16 | Family History of Mental Illness      | 27901          | Nominal                 |
+| 17 | Depression                            | 27901          | Biner                   |
 
 Tabel ini merangkum:
 - Jumlah kolom: 18
 - Jumlah baris: 27,901
-- Tipe data: 7 kolom ```float64```, 2 kolom ```int64```, dan 9 kolom ```object```.
+
 
 ```
 import pandas as pd
