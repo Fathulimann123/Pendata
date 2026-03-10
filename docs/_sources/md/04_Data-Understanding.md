@@ -1,10 +1,7 @@
-# Data Understanding
+## Data Understanding
 
-## Apa itu Metodologi CRISP-DM?
-Dalam mengerjakan proyek penambangan data ini, kita mengikuti alur **CRISP-DM** (*Cross-Industry Standard Process for Data Mining*). Metodologi ini punya 6 tahapan utama, mulai dari memahami bisnis sampai modelnya siap dipakai.
-
-### Posisi Sekarang: Fase Ke-2
-Tahap **Data Understanding** adalah fase kedua setelah *Business Understanding*. Kalau di fase pertama kita fokus ke "apa masalahnya?", di fase kedua ini kita fokus ke "mana datanya?" dan "gimana kondisi datanya?".
+### Apa itu Metodologi CRISP-DM?
+Dalam mengerjakan proyek penambangan data ini, kita mengikuti alur **CRISP-DM** (*Cross-Industry Standard Process for Data Mining*). Metodologi ini punya 6 tahapan utama, mulai dari memahami bisnis sampai modelnya siap dipakai. Tahap **Data Understanding** adalah fase kedua setelah *Business Understanding*. Kalau di fase pertama kita fokus ke "apa masalahnya?", di fase kedua ini kita fokus ke "mana datanya?" dan "gimana kondisi datanya?".
 
 ### Tujuan Utama Fase Ini:
 1. **Kenalan sama data**: Biar kita gak asing sama isi tabelnya.
@@ -12,35 +9,39 @@ Tahap **Data Understanding** adalah fase kedua setelah *Business Understanding*.
 3. **Cari Insight Awal**: Nemu pola-pola menarik lewat statistik simpel.
 
 ---
+## Persiapan Akses Data
+Sebelum kita bisa memahami pola dan karakteristik data, kita perlu memastikan data bisa diakses dengan baik. Tahap ini termasuk bagian dari **Data Understanding**, karena kita sedang mengenali sumber data dan cara membacanya.
 
-## Deskripsi Sumber Data
-Data yang kita pakai bukan sembarang data, tapi dataset legendaris di dunia informatika.
-
-* **Nama Dataset**: Iris Flower Dataset.
-* **Sumber**: Data ini sebelumnya sudah kita kelola di database **MySQL** lewat **Laragon** di laptop Lenovo Ideapad 330-14AST, lalu kita ekspor ke format CSV.
-* **Isi Data**: Pengukuran fisik dari 3 jenis bunga Iris (*Setosa, Versicolor, Virginica*).
-
-
----
-
-### Implementasi: Memuat dan Cek Struktur Data
-Sekarang saatnya kita "panggil" datanya ke lingkungan Python di Google Colab biar bisa kita bedah.
-
-### Membaca File CSV
-Kita pakai library `pandas` buat baca filenya. Kode di bawah ini bisa langsung disalin:
+**Install Library & Connect Python ke Database**  
+Jalankan perintah berikut di terminal/command prompt untuk menginstal library yang dibutuhkan:
 
 ```python
-import pandas as pd
-df = pd.read_csv('iris.csv')
-df.head()
+pip install pandas seaborn matplotlib numpy sqlalchemy pymysql
+
 ```
->pd.read_csv('iris.csv') untuk Membaca data yang sudah diupload <br><br>
-df.head() untuk Intip 5 baris pertama
+Kenapa perintahnya panjang? Karena kita mengunduh beberapa alat sekaligus:
+- **SQLAlchemy**: Mesin pengolah database.
+- **PyMySQL**: "Kabel" penghubung ke MySQL Laragon.
+- **Pandas**: Pembuat tabel agar data rapi.
+- **Seaborn & Matplotlib**: Alat visualisasi untuk grafik.
+- **NumPy**: Mesin hitung numerik yang dipakai Pandas dan Seaborn.
 
+```
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
+from sqlalchemy import create_engine
 
+# Koneksi ke MySQL Laragon
+engine = create_engine("mysql+pymysql://root:@localhost/pendata")
+df = pd.read_sql("SELECT * FROM iris", engine)
 
-### Sampel Data
+print("✅ Data Berhasil Diambil dari MySQL!")
+```
+**Sampel Data** <br>
 Berikut adalah gambaran 5 baris pertama (head) dari dataset Iris untuk menunjukkan format data awal:
+
 
 |index|sepal\_length|sepal\_width|petal\_length|petal\_width|species|
 |---|---|---|---|---|---|
@@ -50,13 +51,13 @@ Berikut adalah gambaran 5 baris pertama (head) dari dataset Iris untuk menunjukk
 |3|4\.6|3\.1|1\.5|0\.2|Iris-setosa|
 |4|5\.0|3\.6|1\.4|0\.2|Iris-setosa|
 
-### Struktur Dataset
+**Struktur Dataset** <br>
 Berdasarkan pemeriksaan awal terhadap Iris Flower Dataset, diperoleh informasi struktur sebagai berikut:
 * **Jumlah Baris**: Dataset ini memiliki total **150 baris** (records).
 * **Jumlah Kolom**: Terdapat **5 kolom** utama yang digunakan untuk proses analisis.
 * **Sumber Data**: Dataset diperoleh dari repositori publik Kaggle.
 
-### Deskripsi Atribut (Tipe Data)
+**Deskripsi Atribut (Tipe Data)** <br>
 Dataset ini terdiri dari 4 atribut numerik yang merepresentasikan ukuran bagian bunga dalam satuan **centimeter (cm)** dan 1 atribut kategorikal yang berfungsi sebagai **label atau target klasifikasi bunga** tersebut.
 
 >Kita pakai fungsi df.info() buat lihat tipe data tiap kolom dan mastiin nggak ada data yang bolong.
@@ -81,10 +82,7 @@ Analisis Singkat:<br>
 * Kondisi: Data sangat sehat karena tidak ditemukan nilai kosong (Non-Null).
 * Atribut: Terdiri dari 4 fitur angka (panjang & lebar kelopak/mahkota) dan 1 kolom target (spesies).
 
-## Eksplorasi Data (Data Exploration)
-Setelah tahu struktur atributnya, sekarang kita masuk ke tahap pencarian pola. Tahap ini penting dalam **Data Understanding** agar kita tahu karakteristik unik dari masing-masing spesies.
-
-### Statistik Deskriptif
+**Statistik Deskriptif**
 >Kita hitung nilai rata-rata ($\bar{x}$) dan sebaran datanya ($\sigma$) untuk melihat ringkasan angka dari 150 sampel yang kita punya.
 
 **Kode Python:**
@@ -112,23 +110,13 @@ df.describe()
 3. **Std**: Standar deviasi, yang menunjukkan seberapa jauh data tersebar dari nilai rata-ratanya. Semakin besar nilainya, berarti data semakin bervariasi.
 4. **Min**: Nilai terkecil yang ditemukan dalam kolom tersebut.
 5. **Max**: Nilai terbesar yang ditemukan dalam kolom tersebut.
-
-#### Mengenal Quartiles (25%, 50%, 75%)
-Parameter ini membagi data kita yang sudah diurutkan menjadi empat bagian yang sama besar:
-
-* **25% (Q_1)**: Kuartil pertama. Artinya, 25% data nilainya lebih kecil atau sama dengan angka ini. Ini membantu kita melihat sebaran data di bagian bawah.
-* **50% (Q_2 / Median)**: Nilai tengah. Artinya, tepat 50% data berada di bawah angka ini dan 50% lagi di atasnya.
-* **75% (Q_3)**: Kuartil ketiga. Artinya, 75% data nilainya lebih kecil atau sama dengan angka ini, sedangkan 25% sisanya lebih besar.
-
-> **Fungsi Quartile**: Dengan melihat selisih antara Q_3 dan Q_1, kita bisa menghitung **Interquartile Range (IQR)** yang berguna untuk mendeteksi apakah ada data yang aneh (*outlier*) di dataset kita.
-
 ---
 
 ## Verifikasi Kualitas Data (Null & Duplicate)
 
 Setelah kita cek angka-angkanya, sekarang kita pastikan data ini benar-benar bersih. Di dunia penambangan data, ada istilah **"Garbage In, Garbage Out"**; kalau datanya sampah, hasilnya pun bakal sampah.
 
-### Pemeriksaan Nilai Null (Missing Values)
+**Pemeriksaan Nilai Null (Missing Values)**
 
 Data kosong bisa bikin algoritma kita *error* atau salah hitung. Kita pakai fungsi `isnull()` untuk melihat apakah ada baris yang bolong.
 
@@ -141,7 +129,7 @@ print(df.isnull().sum())
 
 Pemeriksaan dilakukan untuk mengidentifikasi keberadaan nilai kosong (missing values) pada setiap variabel dalam dataset. Berdasarkan hasil pengecekan, seluruh kolom tidak memiliki nilai null.
 
-### Jumlah Data Null per Kolom
+**Jumlah Data Null per Kolom**
 
 | Nama Kolom      | Jumlah Null |
 |-----------------|------------|
@@ -157,7 +145,7 @@ Jika hasilnya semua 0, berarti data Iris kamu sudah aman dan lengkap. Tidak perl
 
 ---
 
-## Pemeriksaan Data Duplikat
+**Pemeriksaan Data Duplikat**
 
 Data duplikat adalah baris yang memiliki seluruh nilai kolom identik satu sama lain. Keberadaan data duplikat dalam jumlah signifikan dapat memengaruhi hasil analisis, terutama pada pemodelan machine learning, karena dapat menyebabkan bias distribusi dan meningkatkan risiko overfitting.
 
@@ -173,7 +161,7 @@ if jml_duplikat > 0:
 
 Berdasarkan hasil pengecekan, ditemukan adanya data duplikat dalam dataset.
 
-### Jumlah Data Duplikat
+**Jumlah Data Duplikat**
 - Total data duplikat: **3 baris**
 
 
@@ -191,14 +179,14 @@ Berdasarkan hasil pengecekan, ditemukan adanya data duplikat dalam dataset.
 #### Apa itu Histogram?
 Histogram adalah grafik batang yang menggambarkan distribusi atau penyebaran frekuensi data. Alih alih melihat tumpukan angka dalam tabel, histogram mengubahnya menjadi bentuk visual agar kita bisa melihat pola data secara instan.
 
-#### Kenapa Kita Melakukan Visualisasi Ini?
+**Kenapa Kita Melakukan Visualisasi Ini?** <br>
 Tujuannya adalah untuk memahami karakteristik fisik (seperti panjang dan lebar kelopak bunga) secara cepat. Kita bisa langsung mengetahui:
 
 * Pola Utama: Nilai mana yang paling sering muncul (rata-rata).
 * Variasi: Seberapa luas rentang datanya.
 * Anomali: Apakah ada data yang letaknya sangat jauh dari kelompok utama.
 
-#### Panduan Membaca Sumbu (X & Y)
+**Panduan Membaca Sumbu (X & Y)** <br>
 Agar mudah dipahami, bayangkan sumbu ini sebagai koordinat dasar:
 
 * **Sumbu X (Horizontal/Mendatar)**: Mewakili Nilai atau Ukuran. Misalnya, panjang kelopak dalam satuan cm (5cm, 6cm, dst).
@@ -207,20 +195,20 @@ Agar mudah dipahami, bayangkan sumbu ini sebagai koordinat dasar:
 Logika Singkat: Sumbu X adalah "Apa ukurannya?", Sumbu Y adalah "Berapa banyak jumlahnya?".
 
 ![Statistik Orange](../img/data-understanding/Histogram-sepal_length.png)
-#### Fig. 1 Histogram Distribusi Frekuensi Fitur sepal_length
+**Fig. 1 Histogram Distribusi Frekuensi Fitur sepal_length**
 
 ![Statistik Orange](../img/data-understanding/sepal_width.png)
-#### Fig. 2 Histogram Distribusi Frekuensi Fitur sepal_width
+**Fig. 2 Histogram Distribusi Frekuensi Fitur sepal_width**
 
 ![Statistik Orange](../img/data-understanding/petal_length.png)
-#### Fig. 3 Histogram Distribusi Frekuensi Fitur petal_length
+**Fig. 3 Histogram Distribusi Frekuensi Fitur petal_length**
 
 ![Statistik Orange](../img/data-understanding/petal_width.png)
-#### Fig. 4 Histogram Distribusi Frekuensi Fitur petal_width
+**Fig. 4 Histogram Distribusi Frekuensi Fitur petal_width**
 
 ![Statistik Orange](../img/data-understanding/species.png)
-#### Fig. 5 Histogram Distribusi Frekuensi Fitur species
----
+**Fig. 5 Histogram Distribusi Frekuensi Fitur species**
+
 
 ### Scatter plot
 #### Apa itu Scatter Plot?
@@ -240,20 +228,18 @@ Cara membacanya sangat sederhana, bayangkan seperti koordinat di peta:
 
 Titik (Dot): Setiap satu titik di grafik mewakili satu sampel data yang merupakan pertemuan antara nilai X dan nilai Y.
 
-### Scatter Plot sepal_length dan sepal_width
+**Scatter Plot sepal_length dan sepal_width** <br>
 ![Statistik Orange](../img/data-understanding/sepal_length-sepal_width.png)
-#### Fig. 6 Scatter Plot Fitur sepal_length dan sepal width
+**Fig. 6 Scatter Plot Fitur sepal_length dan sepal width**
 * Korelasi: Nilai $r = -0.11$ menunjukkan korelasi negatif yang sangat lemah, hampir mendekati nol.
 * Insight: Artinya, panjang sepal tidak terlalu memengaruhi lebarnya. Titik-titik data terlihat menyebar (scattered) tanpa membentuk pola garis yang jelas. Untuk klasifikasi, fitur sepal ini biasanya lebih sulit membedakan antar spesies dibanding fitur petal.
 
-### Scatter Plot petal dan petal_width
+**Scatter Plot petal dan petal_width** <br>
 ![Statistik Orange](../img/data-understanding/petal_length-petal_width.png)
-#### Fig. 7 Scatter Plot Fitur petal_length dan petal_width
+**Fig. 7 Scatter Plot Fitur petal_length dan petal_width**
 berikut jika di implementasikan di python
 
-```import pandas as pd
-import matplotlib.pyplot as plt
-df=pd.read_csv("IRIS.csv")
+```
 print("Korelasi petal_length dan petal_width: ",round(df['petal_width'].corr(df['petal_length']), 2))
 plt.scatter(df['petal_length'], df['petal_width'])
 plt.xlabel('petal_length')
@@ -266,20 +252,19 @@ plt.show()
 * Korelasi: Nilai $r = 0.96$ menunjukkan korelasi positif yang sangat kuat (mendekati sempurna). **Insight**: Ada hubungan linear yang sangat konsisten semakin panjang kelopak (petal), maka lebarnya hampir pasti bertambah secara proporsional.
 * Cluster: Kamu bisa melihat ada kelompok kecil di pojok kiri bawah yang terpisah jauh dari kelompok besar lainnya. Itu adalah spesies Setosa, yang secara fisik memang jauh lebih kecil dibanding Versicolor dan Virginica.
 
-## Outlier
+### Outlier
 #### Apa itu Outlier?
 Outlier (Pencilan) adalah titik data yang nilainya sangat jauh berbeda dari mayoritas data lainnya dalam satu kelompok. Bayangkan jika kamu mendata tinggi badan mahasiswa di kelasmu yang rata-rata 160–170 cm, tiba-tiba ada satu orang yang tingginya 210 cm. Nah, orang tersebut adalah outlier.
 
-#### Kenapa Kita Harus Mendeteksi Outlier?
+**Kenapa Kita Harus Mendeteksi Outlier?** <br> 
 Dalam pengolahan data, outlier bisa terjadi karena dua hal:
 
 1. Kesalahan Input: Misalnya salah ketik angka (seharusnya 1.5 jadi 15).
-
 2. Variasi Alami: Memang ada sampel yang unik/langka.
 
 Penting untuk mendeteksi mereka karena outlier bisa "merusak" hasil statistik (seperti rata-rata) dan membuat model prediksi menjadi tidak akurat.
 
-### Metode: Local Outlier Factor (LOF)
+**Metode: Local Outlier Factor (LOF)** <br>
 Berdasarkan gambar laporan, saya menggunakan metode LOF.
 
 * **Cara Kerjanya**: LOF tidak hanya melihat nilai angka, tapi melihat kepadatan di sekitar sebuah titik. Jika sebuah titik berada di area yang sangat sepi (jauh dari tetangganya/neighbors), maka sistem akan menandainya sebagai outlier.
@@ -287,15 +272,10 @@ Berdasarkan gambar laporan, saya menggunakan metode LOF.
 * **Sumbu X & Y pada Outlier** : Dalam visualisasi yang kamu buat, sumbu X dan Y tetap mewakili fitur data, namun sistem menambahkan tanda khusus (biasanya warna atau bentuk berbeda) pada titik-titik yang dianggap "aneh" oleh algoritma LOF tersebut.
 
 ![Statistik Orange](../img/data-understanding/data-table.png)
-#### Fig. 8 Outlier
+**Fig. 8 Outlier**
 
 berikut jika di implementasikan di python 
 ```
-import pandas as pd
-import numpy as np
-from sklearn.neighbors import LocalOutlierFactor
-
-df = pd.read_csv("IRIS.csv")
 X = df.select_dtypes(include=[np.number]).values
 lof = LocalOutlierFactor(
     n_neighbors=20,
@@ -317,109 +297,219 @@ print(outlier_lines)
 Nomor Baris Outlier: <br>
 [14, 15, 16, 34, 42, 58, 61, 94, 99, 106, 107, 118, 119, 123, 132]
 
-## Mengukur jarak (distance)
-Dalam proses data mining, pengukuran jarak digunakan untuk mengetahui tingkat kemiripan antar data. Semakin kecil nilai jarak, maka semakin mirip karakteristik antar objek tersebut.
+## Mengukur jarak data  (distance)
 
-Namun dalam praktiknya, data di dunia nyata jarang memiliki satu tipe atribut saja. Sebagian besar dataset memiliki kombinasi angka, kategori, bahkan skala peringkat. Kondisi ini disebut sebagai data campuran.
+### Menghitung jarak data iris <br>
+Diatas tadi kita sudah explorasi data kita sudah tau bahwa data pada ```IRIS``` yang semua datanya Numerik, sehingga kita hanya akan menggunakan tipe jarak Euclidean, dan jarak kategorikal pada kolom spesies
+| Fitur / Kolom | Baris 0 | Baris 1 | Tipe Data |
+| :--- | :--- | :--- | :--- |
+| **sepal_length** | 5.1 | 4.9 | Numerik |
+| **sepal_width** | 3.5 | 3.0 | Numerik |
+| **petal_length** | 1.4 | 1.4 | Numerik |
+| **petal_width** | 0.2 | 0.2 | Numerik |
+| **species** | setosa | setosa | Kategorikal |
 
+#### Menghitung Jarak Numerik Pada IRIS
 
-|index|id|Gender|Age|City|Profession|Academic Pressure|Work Pressure|CGPA|Study Satisfaction|Job Satisfaction|Sleep Duration|Dietary Habits|Degree|Have you ever had suicidal thoughts ?|Work/Study Hours|Financial Stress|Family History of Mental Illness|Depression|
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|0|2|Male|33\.0|Visakhapatnam|Student|5\.0|0\.0|8\.97|2\.0|0\.0|'5-6 hours'|Healthy|B\.Pharm|Yes|3\.0|1\.0|No|1|
-|1|8|Female|24\.0|Bangalore|Student|2\.0|0\.0|5\.9|5\.0|0\.0|'5-6 hours'|Moderate|BSc|No|3\.0|2\.0|Yes|0|
-|2|26|Male|31\.0|Srinagar|Student|3\.0|0\.0|7\.03|5\.0|0\.0|'Less than 5 hours'|Healthy|BA|No|9\.0|1\.0|Yes|0|
-|3|30|Female|28\.0|Varanasi|Student|3\.0|0\.0|5\.59|2\.0|0\.0|'7-8 hours'|Moderate|BCA|Yes|4\.0|5\.0|Yes|1|
-|4|32|Female|25\.0|Jaipur|Student|4\.0|0\.0|8\.13|3\.0|0\.0|'5-6 hours'|Moderate|M\.Tech|Yes|1\.0|1\.0|No|0|
+Tujuan perhitungan ini adalah untuk mengukur kemiripan (*similarity*) dua sampel data dengan melihat selisih nilai pada tiap fitur ```numeriknya```.
 
-Metode seperti Euclidean Distance hanya cocok untuk data numerik. Jika digunakan pada data campuran, hasilnya tidak akurat karena tidak mampu menangani data kategori.
-
-Untuk mengatasi hal tersebut digunakan **Gower Distance**, yaitu metode yang mampu menghitung jarak pada data campuran dengan cara:
-
-- Atribut numerik → selisih dibagi range
-- Atribut ordinal → dikonversi ke ranking lalu dinormalisasi
-- Atribut kategorikal → 0 jika sama, 1 jika berbeda
-- Seluruh kontribusi dirata-rata
-
-### Identifikasi Tipe Data
-Sebelum menghitung jarak, langkah pertama yang dilakukan adalah memeriksa struktur dan tipe data dari setiap kolom.
-
-| No | Column Name                           | Non-Null Count | Tipe Data (Data Mining) |
-| -- | ------------------------------------- | -------------- | ----------------------- |
-| 0  | id                                    | 27901          | Identifier (Numerik)    |
-| 1  | Gender                                | 27901          | Nominal                 |
-| 2  | Age                                   | 27901          | Numerik (Kontinu)       |
-| 3  | City                                  | 27901          | Nominal                 |
-| 4  | Profession                            | 27901          | Nominal                 |
-| 5  | Academic Pressure                     | 27901          | Numerik (Diskrit/Skala) |
-| 6  | Work Pressure                         | 27901          | Numerik (Diskrit/Skala) |
-| 7  | CGPA                                  | 27901          | Numerik (Kontinu)       |
-| 8  | Study Satisfaction                    | 27901          | Numerik (Diskrit/Skala) |
-| 9  | Job Satisfaction                      | 27901          | Numerik (Diskrit/Skala) |
-| 10 | Sleep Duration                        | 27901          | Ordinal                 |
-| 11 | Dietary Habits                        | 27901          | Nominal                 |
-| 12 | Degree                                | 27901          | Nominal                 |
-| 13 | Have you ever had suicidal thoughts ? | 27901          | Biner                   |
-| 14 | Work/Study Hours                      | 27901          | Numerik (Kontinu)       |
-| 15 | Financial Stress                      | 27901          | Ordinal                 |
-| 16 | Family History of Mental Illness      | 27901          | Nominal                 |
-| 17 | Depression                            | 27901          | Biner                   |
-
-Tabel ini merangkum:
-- Jumlah kolom: 18
-- Jumlah baris: 27,901
+| Fitur | Row 0 | Row 1 | Selisih ($A-B$) | Kuadrat $(A-B)^2$ |
+| :--- | :---: | :---: | :---: | :---: |
+| **sepal_length** | 5.1 | 4.9 | $0.2$ | $0.04$ |
+| **sepal_width** | 3.5 | 3.0 | $0.5$ | $0.25$ |
+| **petal_length** | 1.4 | 1.4 | $0$ | $0$ |
+| **petal_width** | 0.2 | 0.2 | $0$ | $0$ |
 
 
-```
-import pandas as pd
-import gower
 
-# pilih fitur
-features = ['Age','Academic Pressure','CGPA','Sleep Duration','Financial Stress']
+**Langkah Penyelesaian:**
 
-# ambil 5 data pertama
-df_subset = df[features].head()
-
-# hitung matriks jarak
-distance_matrix = gower.gower_matrix(df_subset)
-
-print(distance_matrix)
-```
-| Obs | 1      | 2      | 3      | 4      | 5      |
-|-----|--------|--------|--------|--------|--------|
-| 1   | 0.0000 | 0.7817 | 0.4926 | 0.8444 | 0.2941 |
-| 2   | 0.7817 | 0.0000 | 0.6891 | 0.5739 | 0.4875 |
-| 3   | 0.4926 | 0.6891 | 0.0000 | 0.5519 | 0.4651 |
-| 4   | 0.8444 | 0.5739 | 0.5519 | 0.0000 | 0.6836 |
-| 5   | 0.2941 | 0.4875 | 0.4651 | 0.6836 | 0.0000 |
+1.  **Total Kuadrat ($\sum$):** Menjumlahkan seluruh kolom hasil kuadrat.
+    * $0.04 + 0.25 + 0 + 0 = \mathbf{0.29}$
+2.  **Jarak Akhir ($\sqrt{}$):** Melakukan akar kuadrat dari total penjumlahan untuk mendapatkan jarak Euclidean.
+    * $d = \sqrt{0.29} \approx \mathbf{0.5385}$
 
 
-Perhitungan jarak dilakukan menggunakan metode Gower Distance karena dataset memiliki tipe data campuran (numerik dan kategorikal). Lima atribut yang digunakan yaitu Age, Academic Pressure, CGPA, Sleep Duration, dan Financial Stress.
 
-Fungsi gower_matrix() menghasilkan matriks jarak antar seluruh data. Nilai jarak berada pada rentang 0 hingga 1, di mana:
+**Interpretasi Singkat:** <br>
+Nilai jarak **0.5385** yang mendekati angka **0** membuktikan secara matematis bahwa **Row 0** dan **Row 1** memiliki karakteristik fisik yang sangat identik. Dalam Penambangan Data, ini mengindikasikan bahwa kedua data tersebut kemungkinan besar berada dalam satu kelompok (*cluster*) yang sama.
 
-- Nilai mendekati 0 → data sangat mirip
-- Nilai mendekati 1 → data sangat berbeda
+---
+#### Menghitung Jarak Kategorikal Pada IRIS
 
-### Konversi Sleep Duration dan Penggunaan Euclidean
+Untuk atribut non-numerik seperti 'Species', kita menggunakan metode **```Simple Matching```**. Logikanya sederhana: jika data sama maka jaraknya 0 (identik), jika berbeda maka jaraknya 1 (maksimal). 
 
-![Statistik Orange](../img/data-understanding/euclidean.png)
+Rumus yang digunakan adalah $D_{cat} = \frac{P - M}{P}$, di mana $P$ adalah total fitur kategorikal dan $M$ adalah jumlah kecocokan (*match*).
 
-Atribut Sleep Duration dikonversi ke skala ordinal numerik (1–4) agar dapat diproses menggunakan Euclidean Distance. Setelah seluruh atribut berbentuk numerik, perhitungan jarak dilakukan menggunakan Euclidean Distance dengan normalisasi untuk memastikan kontribusi setiap variabel seimbang.
+| Variabel Kategorikal | Baris 0 (Sampel A) | Baris 1 (Sampel B) | Hasil Observasi |
+| :--- | :---: | :---: | :---: |
+| **species** | setosa | setosa | *Match* (Cocok) |
 
-##  Implementasi Pengukuran Jarak pada Dataset Iris
 
-Dataset Iris terdiri dari empat atribut numerik, yaitu Sepal Length, Sepal Width, Petal Length, dan Petal Width. Karena seluruh atribut bertipe numerik kontinu, maka metode pengukuran jarak yang digunakan adalah Euclidean Distance.
 
-Euclidean Distance menghitung jarak geometris antar dua objek dalam ruang multidimensi menggunakan rumus:
+**Kalkulasi Jarak:**
 
-![Statistik Orange](../img/data-understanding/rumus-euclidean.png)
+* **Total Dimensi Kategorikal ($P$):** 1
+* **Jumlah Atribut yang Sama ($M$):** 1
+* **Skor Jarak Kategorikal ($D_{cat}$):** $\frac{1 - 1}{1} = \frac{0}{1} = \mathbf{0}$
 
-Metode ini sesuai digunakan karena tidak terdapat atribut kategorikal pada dataset Iris, sehingga tidak diperlukan metode khusus untuk data campuran seperti Gower Distance.
 
-Dalam implementasi menggunakan Orange Data Mining, widget Distance digunakan dengan memilih metode Euclidean (normalized). Hasilnya berupa matriks jarak yang menunjukkan kedekatan antar setiap data bunga.
+> **Kesimpulan:** Karena skor $D_{cat}$ adalah **0**, ini mengonfirmasi bahwa secara kategoris tidak ada perbedaan antara Baris 0 dan Baris 1. Keduanya memiliki label yang sama persis, sehingga nilai "penalti" jaraknya adalah nol.
 
+---
+
+#### Akumulasi Jarak Akhir Pada IRIS 
+
+Setelah mendapatkan nilai dari dua aspek berbeda (Numerik dan Kategorikal), kita menggabungkannya untuk mendapatkan skor jarak total. Dalam kasus ini, kita menggunakan penjumlahan sederhana:
+
+$$D_{total} = D_{num} + D_{cat}$$
+
+**Kalkulasi:**
+$$D_{total} = 0.5385 + 0 = \mathbf{0.5385}$$
+
+---
+
+#### Analisis Tambahan: Cosine Similarity (Arah Kedekatan)
+
+Selain melihat jarak "garis lurus" (Euclidean), kita juga menggunakan **Cosine Similarity** untuk melihat kemiripan proporsi atau arah sudut antar fitur numerik. Jika Euclidean melihat seberapa "jauh" perbedaannya, Cosine melihat seberapa "searah" polanya.
+
+**Rumus Komputasi:**
+$$\cos(\theta) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\| \|\mathbf{B}\|}$$
+
+**Proses Kalkulasi:**
+1. **Dot Product (Atas):** $(5.1 \times 4.9) + (3.5 \times 3.0) + (1.4 \times 1.4) + (0.2 \times 0.2) = \mathbf{37.49}$
+2. **Magnitude (Bawah):** $\sqrt{5.1^2 + 3.5^2 + 1.4^2 + 0.2^2} \times \sqrt{4.9^2 + 3.0^2 + 1.4^2 + 0.2^2}$
+   * $\mathbf{6.345 \times 5.918 \approx 37.550}$
+3. **Hasil Akhir:** $\frac{37.49}{37.550} \approx \mathbf{0.9984}$
+
+
+#### Insight Akhir
+
+* **Jarak Total (0.5385):** Mengonfirmasi bahwa secara fisik, kedua bunga ini berada pada posisi yang berdekatan di ruang data.
+* **Cosine Similarity (0.9984):** Angka yang sangat mendekati **1.0** ini menunjukkan bahwa pola pertumbuhan (proporsi) antara Baris 0 dan Baris 1 hampir identik secara arah sudut.
+
+> **Kesimpulan Final:** Kedua sampel data ini tidak hanya memiliki nilai yang mirip secara angka, tetapi juga memiliki "pola" fitur yang sangat searah.
+
+#### Implementasi pada Orange Data Mining
+Dalam praktikum menggunakan Orange Data Mining, kita memanfaatkan widget Distances. Poin krusial dalam langkah ini adalah penggunaan metode Normalized Euclidean.
+
+Mengapa Harus Normalisasi? Karena setiap fitur mungkin memiliki skala yang berbeda. Normalisasi memastikan bahwa fitur dengan angka besar (misal Sepal Length) tidak mendominasi fitur dengan angka kecil (misal Petal Width).
+
+Output: Hasilnya diproyeksikan ke dalam Distance Matrix, yang memvisualisasikan skor jarak antar setiap sampel data secara head-to-head.
 ![Statistik Orange](../img/data-understanding/iris-euclidean.png)
 
-Semakin kecil nilai jarak, maka semakin mirip karakteristik kedua bunga tersebut.
+Berdasarkan hasil pemrosesan pada widget Distance Matrix:
+- Nilai mendekati 0 (Warna Gelap): Menunjukkan bahwa kedua bunga memiliki karakteristik fisik yang hampir identik.
+- Nilai tinggi (Warna Terang): Menunjukkan perbedaan morfologi yang signifikan antar bunga.
+---
+
+### Menghitung jarak data student
+Berikut adalah data sampel untuk pengujian (Row 0 dan Row 1):
+
+| Fitur / Kolom | Baris 0 | Baris 1 | Tipe Data (DM) |
+| :--- | :--- | :--- | :--- |
+| **Gender** | Male | Female | Nominal |
+| **Age** | 33.0 | 24.0 | Numerik |
+| **City** | Visakhapatnam | Bangalore | Nominal |
+| **Academic Pressure** | 5.0 | 2.0 | Ordinal |
+| **CGPA** | 8.97 | 5.9 | Numerik |
+| **Study Satisfaction** | 2.0 | 5.0 | Ordinal |
+| **Sleep Duration** | '5-6 hours' | '5-6 hours' | Ordinal |
+| **Dietary Habits** | Healthy | Moderate | Ordinal |
+| **Financial Stress** | 1.0 | 2.0 | Ordinal |
+| **Depression** | 1 | 0 | Nominal (Target) |
+
+**Kenapa Harus Dipilah? Ini Alasannya:** <br>
+Dalam Data Mining, kita tidak bisa asal menjumlahkan semua kolom karena "cara ngukurnya" beda-beda. Berikut alasan kenapa saya pilah:
+
+**1. Masalah Data Ordinal (Skala)**
+
+Seperti yang kamu bilang, data Ordinal (seperti Academic Pressure 1-5 atau Sleep Duration) itu spesial.
+- Dia punya tingkatan (1 lebih rendah dari 5), tapi dia bukan angka murni seperti CGPA.
+- Alasan: Sebelum dihitung pakai Euclidean, kita harus melakukan Mapping (misal: 'Healthy' jadi 3, 'Moderate' jadi 2, 'Unhealthy' jadi 1). Kalau belum di-mapping, komputer akan bingung membacanya sebagai angka atau teks.
+
+**2. Perbedaan Metrik Jarak**
+- Numerik (Age, CGPA): Pakai Euclidean (dikurangi lalu dikuadratkan).
+- Nominal (Gender, City): Pakai Simple Matching (Sama atau Beda).
+- Jika kita paksa semua kolom masuk ke satu rumus tanpa dipilah, hasil jaraknya jadi tidak akurat (istilahnya Bias).
+
+**3. Kolom Target (Depression/Suicidal Thoughts)**
+- Alasan: Kolom seperti Depression biasanya tidak dimasukkan dalam hitungan jarak kemiripan.
+- Kenapa? Karena ini adalah "jawaban" yang ingin kita prediksi. Kita menghitung jarak berdasarkan "ciri-cirinya" (tekanan, nilai, pola tidur), bukan berdasarkan "hasil akhirnya".
+
+**Perbedaan Nominal dengan Ordinal**
+
+Nominal: Gak ada urutan.
+- Contoh: Warna motor (Merah, Hitam, Biru). Gak ada yang lebih "tinggi" derajatnya.
+
+Ordinal: Ada urutan/tingkatan.
+- Contoh: Kepuasan belajar (Puas, Cukup, Tidak Puas). Di sini jelas kalau "Puas" itu levelnya di atas "Cukup".
+
+---
+Karena dataset Student memiliki variasi tipe data yang berbeda, kita melakukan dekomposisi perhitungan berdasarkan sifat masing-masing fitur (Numerik, Nominal, dan Ordinal) untuk menjaga akurasi kemiripan.
+
+---
+
+#### Menghitung Jarak Numerik pada Student
+Fitur numerik kontinu diukur menggunakan selisih kuadrat untuk melihat jarak fisik antar observasi.
+
+| Fitur Numerik | Sampel A (Row 0) | Sampel B (Row 1) | Selisih ($A-B$) | Kuadrat $(A-B)^2$ |
+| :--- | :---: | :---: | :---: | :---: |
+| **Age** | 33.0 | 24.0 | $9.0$ | $81.0$ |
+| **CGPA** | 8.97 | 5.9 | $3.07$ | $9.4249$ |
 
 
+
+* **Total Varians Numerik ($\sum$):** $81.0 + 9.4249 = \mathbf{90.4249}$
+* **Jarak Numerik ($D_{num}$):** $\sqrt{90.4249} \approx \mathbf{9.51}$
+
+---
+
+#### Menghitung Nominal Pada Student (Simple Matching)
+Untuk fitur label (Nominal), kita menggunakan rasio ketidakcocokan. Jarak akan bernilai **0** jika identik dan **1** jika berbeda.
+
+| Fitur Nominal | Sampel A | Sampel B | Status |
+| :--- | :---: | :---: | :---: |
+| **Gender** | Male | Female | *Mismatch* |
+| **City** | Visakhapatnam | Bangalore | *Mismatch* |
+| **Profession** | Student | Student | **Match** |
+
+* **Total Atribut ($P$):** 3
+* **Jumlah Cocok ($M$):** 1
+* **Jarak Nominal ($D_{nom}$):** $\frac{P - M}{P} = \frac{3 - 1}{3} = \frac{2}{3} \approx \mathbf{0.67}$
+
+---
+
+#### Normalisasi & Menghitung Jarak Ordinal
+Fitur ordinal memiliki tingkatan nilai. Kita melakukan *mapping* ke skala numerik (misal: Healthy=3, Moderate=2, Unhealthy=1) sebelum dilakukan perhitungan.
+
+| Fitur Ordinal | Sampel A (Val) | Sampel B (Val) | Selisih | Kuadrat |
+| :--- | :---: | :---: | :---: | :---: |
+| **Academic Pressure** | 5 | 2 | $3$ | $9$ |
+| **Study Satisfaction** | 2 | 5 | $-3$ | $9$ |
+| **Dietary Habits** | 3 (Healthy) | 2 (Mod) | $1$ | $1$ |
+
+
+
+* **Total Varians Ordinal:** $9 + 9 + 1 = \mathbf{19}$
+* **Jarak Ordinal ($D_{ord}$):** $\sqrt{19} \approx \mathbf{4.36}$
+
+---
+
+#### Akumulasi Jarak Akhir Pada Student
+
+Hasil akhir diperoleh dengan menggabungkan ketiga dimensi jarak tersebut:
+
+$$D_{total} = D_{num} + D_{nom} + D_{ord}$$
+$$D_{total} = 9.51 + 0.67 + 4.36 = \mathbf{14.54}$$
+
+---
+
+#### Analisis & Interpretasi Akhir
+
+Berdasarkan hasil komputasi sebesar **14.54**, dapat disimpulkan bahwa Mahasiswa pada Baris 0 dan Baris 1 memiliki tingkat perbedaan yang signifikan. 
+
+1. **Dominasi Usia:** Perbedaan usia (9 tahun) memberikan kontribusi terbesar ($81.0$ pada varians) terhadap jarak total.
+2. **Kesenjangan Performa:** Terdapat perbedaan drastis pada beban akademik (*Academic Pressure*) dan kepuasan belajar (*Study Satisfaction*) yang saling bertolak belakang.
+3. **Kesesuaian Profesi:** Meskipun memiliki latar belakang sosial dan fisik yang berbeda, keduanya tetap memiliki kemiripan nominal pada fitur **Profession** (keduanya adalah mahasiswa).
+---
