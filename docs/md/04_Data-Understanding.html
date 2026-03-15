@@ -187,6 +187,8 @@
 
 
 
+
+
 </ul>
 
     </div>
@@ -422,6 +424,42 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-menghitung-jarak-ordinal">Normalisasi &amp; Menghitung Jarak Ordinal</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#akumulasi-jarak-akhir-pada-student">Akumulasi Jarak Akhir Pada Student</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-interpretasi-akhir">Analisis &amp; Interpretasi Akhir</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data-normalisasi-dan-penanganan-data-hilang">Preprocessing Data: Normalisasi dan Penanganan Data Hilang</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-tipe-data-atribut">Analisis Tipe Data Atribut</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-min-max">Normalisasi Min-Max</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-dan-atribut-sasaran">1. Tujuan dan Atribut Sasaran</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja">2. Cara Kerja</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alasan-pemilihan-min-max">3. Alasan Pemilihan Min-Max</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-sederhana">4. Penjelasan Sederhana</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-encoding-data-kategorikal">Mapping &amp; Encoding (Data Kategorikal)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. Tujuan dan Atribut Sasaran</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mekanisme-transformasi">2. Mekanisme Transformasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alasan-pemilihan-mapping">3. Alasan Pemilihan Mapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4. Penjelasan Sederhana</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-final-hasil-preprocessing">Dataset Final (Hasil Preprocessing)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-missing-value-dengan-weighted-k-nearest-neighbors">Penanganan Missing Value dengan Weighted K-Nearest Neighbors.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-jarak-euclidean">Perhitungan Jarak Euclidean</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-rumus-dasar">A. Rumus Dasar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-tabel-perhitungan-jarak-manual">B.Tabel Perhitungan Jarak (Manual)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-perhitungan-jarak-code">C. Perhitungan Jarak (code)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-penentuan-tetangga-terdekat-k-3">D. Penentuan Tetangga Terdekat (K=3)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-bobot">Perhitungan Bobot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-bobot-w">1. Menghitung Nilai Bobot (W)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-perkalian-bobot-dengan-nilai-w-y">2. Menghitung Perkalian Bobot dengan Nilai (W * y)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-imputation-menambal-data">3. Final Imputation (Menambal Data)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir"><strong>4. Hasil Akhir</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -1304,7 +1342,403 @@ Dalam Data Mining, kita tidak bisa asal menjumlahkan semua kolom karena “cara 
 <li><p><strong>Kesenjangan Performa:</strong> Terdapat perbedaan drastis pada beban akademik (<em>Academic Pressure</em>) dan kepuasan belajar (<em>Study Satisfaction</em>) yang saling bertolak belakang.</p></li>
 <li><p><strong>Kesesuaian Profesi:</strong> Meskipun memiliki latar belakang sosial dan fisik yang berbeda, keduanya tetap memiliki kemiripan nominal pada fitur <strong>Profession</strong> (keduanya adalah mahasiswa).</p></li>
 </ol>
+</section>
+</section>
+</section>
+<section id="preprocessing-data-normalisasi-dan-penanganan-data-hilang">
+<h1>Preprocessing Data: Normalisasi dan Penanganan Data Hilang<a class="headerlink" href="#preprocessing-data-normalisasi-dan-penanganan-data-hilang" title="Link to this heading">#</a></h1>
+<p>Tahap preprocessing merupakan langkah krusial dalam Data Mining untuk memastikan data mentah siap diolah oleh algoritma. Pada proyek ini, fokus utama preprocessing adalah melakukan Normalisasi untuk menyamakan skala fitur numerik dan Imputasi untuk menangani data yang kosong (missing values) agar informasi dalam dataset tetap utuh dan akurat.</p>
+<section id="analisis-tipe-data-atribut">
+<h2>Analisis Tipe Data Atribut<a class="headerlink" href="#analisis-tipe-data-atribut" title="Link to this heading">#</a></h2>
+<p>Sebelum menerapkan rumus, kita harus mengelompokkan atribut berdasarkan tipe datanya untuk menentukan metode transformasi yang tepat:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kelompok Atribut</p></th>
+<th class="head"><p>Nama Atribut</p></th>
+<th class="head"><p>Tipe Data</p></th>
+<th class="head"><p>Metode Penanganan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Numerik &amp; Ordinal</p></td>
+<td><p>Age, CGPA, Academic Pressure, Financial Stress</p></td>
+<td><p>Angka (Rasio/Ordinal)</p></td>
+<td><p>Min-Max Normalization</p></td>
+</tr>
+<tr class="row-odd"><td><p>Kategorikal</p></td>
+<td><p>Gender, City, Depression, Anxiety, Panic Attack</p></td>
+<td><p>Teks (Kategori)</p></td>
+<td><p>Mapping &amp; Label Encoding</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="normalisasi-min-max">
+<h2>Normalisasi Min-Max<a class="headerlink" href="#normalisasi-min-max" title="Link to this heading">#</a></h2>
+<section id="tujuan-dan-atribut-sasaran">
+<h3>1. Tujuan dan Atribut Sasaran<a class="headerlink" href="#tujuan-dan-atribut-sasaran" title="Link to this heading">#</a></h3>
+<p>Normalisasi Min-Max digunakan untuk menyamakan skala atribut numerik dan ordinal seperti</p>
+<ul class="simple">
+<li><p>Age</p></li>
+<li><p>CGPA</p></li>
+<li><p>Academic Pressure</p></li>
+<li><p>Financial Stress</p></li>
+</ul>
+<p>Tujuannya adalah agar semua nilai berada dalam rentang 0 hingga 1, sehingga perbandingan antar atribut menjadi lebih adil.</p>
+</section>
+<section id="cara-kerja">
+<h3>2. Cara Kerja<a class="headerlink" href="#cara-kerja" title="Link to this heading">#</a></h3>
+<p>Metode ini melakukan transformasi linear pada data asli.</p>
+<ul class="simple">
+<li><p>Nilai terkecil dalam suatu kolom akan menjadi 0.</p></li>
+<li><p>Nilai terbesar akan menjadi 1.</p></li>
+<li><p>Nilai lainnya akan dipetakan ke angka desimal di antara 0 dan 1.<br></p></li>
+</ul>
+<p>Rumus matematisnya adalah:</p>
+<div class="math notranslate nohighlight">
+\[x' = \frac{x - x_{min}}{x_{max} - x_{min}}\]</div>
+</section>
+<section id="alasan-pemilihan-min-max">
+<h3>3. Alasan Pemilihan Min-Max<a class="headerlink" href="#alasan-pemilihan-min-max" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Keadilan Jarak: Tanpa normalisasi, selisih Age (misalnya 10 tahun) bisa terlihat jauh lebih besar dibanding selisih CGPA (misalnya 0.5). Padahal, pengaruh IPK terhadap stres bisa lebih signifikan. Normalisasi membuat perbandingan lebih seimbang.</p></li>
+<li><p>Kompatibilitas: Rentang 0–1 cocok dipadukan dengan data kategorikal yang sudah di-encode menjadi biner (0 dan 1). Hal ini membuat perhitungan jarak Euclidean lebih stabil dan akurat.</p></li>
+</ul>
+</section>
+<section id="penjelasan-sederhana">
+<h3>4. Penjelasan Sederhana<a class="headerlink" href="#penjelasan-sederhana" title="Link to this heading">#</a></h3>
+<p>Bayangkan kamu punya dua penggaris: satu panjang 100 cm (untuk Age), satu lagi hanya 4 cm (untuk CGPA). Kalau dibandingkan langsung, perubahan kecil di CGPA akan kalah terlihat dibanding perubahan besar di Age. Normalisasi Min-Max ibarat menyamakan panjang penggaris menjadi skala yang sama (0–1), sehingga setiap perubahan bisa dibandingkan secara adil.</p>
+</section>
+</section>
+<section id="mapping-encoding-data-kategorikal">
+<h2>Mapping &amp; Encoding (Data Kategorikal)<a class="headerlink" href="#mapping-encoding-data-kategorikal" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>1. Tujuan dan Atribut Sasaran<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Data kategori berbentuk teks (misalnya Gender, City, dan Mental Health Status) tidak bisa langsung diproses dengan rumus matematika.
+Oleh karena itu, dilakukan Encoding agar label teks diubah menjadi angka representatif sehingga bisa digunakan dalam perhitungan jarak.</p>
+</section>
+<section id="mekanisme-transformasi">
+<h3>2. Mekanisme Transformasi<a class="headerlink" href="#mekanisme-transformasi" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Biner (Label Encoding)<br />
+Digunakan untuk atribut dengan dua pilihan.
+Contoh:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Gender → Female = 0, Male = 1</p></li>
+<li><p>Depression → No = 0, Yes = 1</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Multi-Kategori (Mapping)<br />
+Digunakan untuk atribut dengan banyak pilihan.
+Contoh:</p></li>
+</ol>
+<ul class="simple">
+<li><p>City → Visakhapatnam = 0, Bangalore = 1, Srinagar = 2, dan seterusnya. <br>
+Dengan cara ini, setiap kategori teks memiliki representasi angka yang konsisten.</p></li>
+</ul>
+</section>
+<section id="alasan-pemilihan-mapping">
+<h3>3. Alasan Pemilihan Mapping<a class="headerlink" href="#alasan-pemilihan-mapping" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Sederhana &amp; Efisien: Mudah diterapkan tanpa algoritma kompleks.</p></li>
+<li><p>Kompatibel dengan Simple Matching (WKNN):</p></li>
+</ol>
+<ul class="simple">
+<li><p>Jika dua baris memiliki angka encoding yang sama → jarak = 0 (identik).</p></li>
+<li><p>Jika berbeda → jarak = 1 (berbeda).</p></li>
+</ul>
+<p>Hal ini membuat perhitungan jarak antar data kategorikal lebih stabil dan mudah dipahami.</p>
+</section>
+<section id="id2">
+<h3>4. Penjelasan Sederhana<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Bayangkan kamu sedang membandingkan dua orang berdasarkan Gender. Kalau ditulis sebagai teks (“Male” vs “Female”), komputer tidak bisa langsung menghitung jaraknya. Tapi kalau diubah jadi angka (Male = 1, Female = 0), komputer bisa dengan mudah melihat apakah sama (jarak 0) atau berbeda (jarak 1).</p>
+</section>
+</section>
+<section id="dataset-final-hasil-preprocessing">
+<h2>Dataset Final (Hasil Preprocessing)<a class="headerlink" href="#dataset-final-hasil-preprocessing" title="Link to this heading">#</a></h2>
+<p>Setelah tahap Normalisasi Min-Max dan Mapping selesai, inilah tabel final yang siap digunakan untuk perhitungan Weighted K-Nearest Neighbors (WKNN):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Gender</p></th>
+<th class="head text-center"><p>Age</p></th>
+<th class="head text-center"><p>City</p></th>
+<th class="head text-center"><p>Academic</p></th>
+<th class="head text-center"><p>CGPA</p></th>
+<th class="head text-center"><p>Financial Stress</p></th>
+<th class="head text-center"><p>Depression</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0.25</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0.777778</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p>0.333333</p></td>
+<td class="text-center"><p>0.368078</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0.444444</p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p>0.333333</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0.111111</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>0.666667</p></td>
+<td class="text-center"><p>0.726384</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Meskipun fitur CGPA pada Baris 4 masih memiliki data yang kosong (missing value), dataset ini sekarang telah siap untuk diproses lebih lanjut. Tahap selanjutnya adalah menggunakan algoritma Weighted K-Nearest Neighbors untuk memprediksi nilai CGPA yang hilang tersebut berdasarkan kemiripan karakteristik dengan baris data lainnya.</p>
+<p><strong>Penjelasan Singkat:</strong></p>
+<ul class="simple">
+<li><p>Gender: (1 = Male, 0 = Female)</p></li>
+<li><p>City: (0-4 sesuai urutan kota)</p></li>
+<li><p>Depression: (1 = Yes, 0 = No)</p></li>
+<li><p>Age &amp; Academic &amp; CGPA: Sudah dalam skala 0-1 hasil Min-Max Normalization.</p></li>
+</ul>
+</section>
+</section>
+<section id="penanganan-missing-value-dengan-weighted-k-nearest-neighbors">
+<h1>Penanganan Missing Value dengan Weighted K-Nearest Neighbors.<a class="headerlink" href="#penanganan-missing-value-dengan-weighted-k-nearest-neighbors" title="Link to this heading">#</a></h1>
+<p>Dalam dataset Student Mental Health yang kita olah, terdapat satu baris data yang memiliki nilai tidak lengkap (Missing Value) pada atribut CGPA. Baris inilah yang akan menjadi target utama dalam proses imputasi menggunakan algoritma Weighted K-Nearest Neighbors (WKNN).</p>
+<section id="perhitungan-jarak-euclidean">
+<h2>Perhitungan Jarak Euclidean<a class="headerlink" href="#perhitungan-jarak-euclidean" title="Link to this heading">#</a></h2>
+<p>Untuk mencari kemiripan, kita menggunakan rumus Euclidean Distance. Atribut yang dihitung adalah semua atribut kecuali CGPA (karena CGPA Baris 4 kosong).</p>
+<section id="a-rumus-dasar">
+<h3>A. Rumus Dasar<a class="headerlink" href="#a-rumus-dasar" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[d(i, j) = \sqrt{\sum_{k=1}^{n} (x_{ik} - x_{jk})^2}\]</div>
+<p>Catatan: Untuk atribut City, jika kodenya berbeda maka selisihnya dianggap 1, jika sama dianggap 0.</p>
+</section>
+<section id="b-tabel-perhitungan-jarak-manual">
+<h3>B.Tabel Perhitungan Jarak (Manual)<a class="headerlink" href="#b-tabel-perhitungan-jarak-manual" title="Link to this heading">#</a></h3>
+<p>Berikut adalah hasil perhitungan jarak antara Baris 4 (Target) dengan baris referensi lainnya:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Gender</p></th>
+<th class="head"><p>Age</p></th>
+<th class="head"><p>City</p></th>
+<th class="head"><p>Academic</p></th>
+<th class="head"><p>CGPA</p></th>
+<th class="head"><p>Financial</p></th>
+<th class="head"><p>Depression</p></th>
+<th class="head"><p>Jarak</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1.937288</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.25</p></td>
+<td><p>0</p></td>
+<td><p>1.694444</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0.777778</p></td>
+<td><p>2</p></td>
+<td><p>0.333333</p></td>
+<td><p>0.368078</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>2.027588</p></td>
+<td><p>elim</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>0.444444</p></td>
+<td><p>3</p></td>
+<td><p>0.333333</p></td>
+<td><p></p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0.111111</p></td>
+<td><p>4</p></td>
+<td><p>0.666667</p></td>
+<td><p>0.726384</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1.795055</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Statistik Orange" src="../_images/jarak-euclidean.png" /></p>
+</section>
+<section id="c-perhitungan-jarak-code">
+<h3>C. Perhitungan Jarak (code)<a class="headerlink" href="#c-perhitungan-jarak-code" title="Link to this heading">#</a></h3>
+<p><img alt="Statistik Orange" src="../_images/kode-normalisasi.png" /></p>
+<p>=== PERHITUNGAN JARAK EUCLIDEAN ===</p>
+<p>Jarak Target (Baris 4) ke Baris 1: 1.9373 <br>
+Jarak Target (Baris 4) ke Baris 2: 1.6944 <br>
+Jarak Target (Baris 4) ke Baris 3: 2.0276 <br>
+Jarak Target (Baris 4) ke Baris 5: 1.7951 <br></p>
+</section>
+<section id="d-penentuan-tetangga-terdekat-k-3">
+<h3>D. Penentuan Tetangga Terdekat (K=3)<a class="headerlink" href="#d-penentuan-tetangga-terdekat-k-3" title="Link to this heading">#</a></h3>
+<p>Setelah seluruh jarak Euclidean antara Baris 4 (Target) dengan baris lainnya dihitung, langkah selanjutnya adalah mengurutkan jarak tersebut dari yang terkecil hingga terbesar.</p>
+<p>Dalam analisis ini, kita menetapkan nilai K=3, yang berarti kita hanya akan mengambil tiga tetangga terdekat (dengan tingkat kemiripan tertinggi) untuk digunakan dalam proses prediksi nilai CGPA.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Peringkat</p></th>
+<th class="head"><p>Tetangga</p></th>
+<th class="head"><p>Jarak Euclidean (d)</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Baris 2</p></td>
+<td><p>1.6944</p></td>
+<td><p>Terpilih (K-1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Baris 5</p></td>
+<td><p>1.7951</p></td>
+<td><p>Terpilih (K-2)</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Baris 1</p></td>
+<td><p>1.9373</p></td>
+<td><p>Terpilih (K-3)</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Baris 3</p></td>
+<td><p>2.0276</p></td>
+<td><p>Dieliminasi</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Penggunaan K=3 dipilih agar hasil prediksi tidak terlalu sensitif terhadap satu data saja (noise) namun tetap menjaga relevansi kemiripan yang kuat.</p>
+</section>
+</section>
+<section id="perhitungan-bobot">
+<h2>Perhitungan Bobot<a class="headerlink" href="#perhitungan-bobot" title="Link to this heading">#</a></h2>
+<section id="menghitung-nilai-bobot-w">
+<h3>1. Menghitung Nilai Bobot (W)<a class="headerlink" href="#menghitung-nilai-bobot-w" title="Link to this heading">#</a></h3>
+<p>Kita menggunakan rumus Inverse Squared Distance. Intinya: semakin besar jaraknya, semakin kecil bobotnya.</p>
+<p>Rumusnya:</p>
+<div class="math notranslate nohighlight">
+\[W = \frac{1}{d^2}\]</div>
+<p><img alt="Statistik Orange" src="../_images/weight.png" /></p>
+</section>
+<section id="menghitung-perkalian-bobot-dengan-nilai-w-y">
+<h3>2. Menghitung Perkalian Bobot dengan Nilai (W * y)<a class="headerlink" href="#menghitung-perkalian-bobot-dengan-nilai-w-y" title="Link to this heading">#</a></h3>
+<p>Sekarang kita kalikan bobot masing-masing tetangga dengan nilai CGPA mereka yang sudah dinormalisasi</p>
+<p><img alt="Statistik Orange" src="../_images/w-cgpa.png" /></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Baris</p></th>
+<th class="head"><p>Bobot (W)</p></th>
+<th class="head"><p>CGPA</p></th>
+<th class="head"><p>Rumus Excel</p></th>
+<th class="head"><p>Hasil</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1 (Row 5)</p></td>
+<td><p>0.2664</p></td>
+<td><p>1.0000</p></td>
+<td><p>=X5*R5</p></td>
+<td><p>0.2664</p></td>
+</tr>
+<tr class="row-odd"><td><p>2 (Row 6)</p></td>
+<td><p>0.3483</p></td>
+<td><p>0.0000</p></td>
+<td><p>=X6*R6</p></td>
+<td><p>0.0000</p></td>
+</tr>
+<tr class="row-even"><td><p>5 (Row 9)</p></td>
+<td><p>0.3103</p></td>
+<td><p>0.7264</p></td>
+<td><p>=X9*R9</p></td>
+<td><p>0.2254</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="final-imputation-menambal-data">
+<h3>3. Final Imputation (Menambal Data)<a class="headerlink" href="#final-imputation-menambal-data" title="Link to this heading">#</a></h3>
+<p>Di langkah ini, kita akan melakukan dua kali penjumlahan, lalu membaginya.</p>
+<p>Rumus Sederhananya:</p>
+<div class="math notranslate nohighlight">
+\[\text{Hasil Akhir} = \frac{\text{Total dari Kolom Z (W * CGPA)}}{\text{Total dari Kolom Y (Weight)}}\]</div>
+</section>
 <hr class="docutils" />
+<section id="hasil-akhir">
+<h3><strong>4. Hasil Akhir</strong><a class="headerlink" href="#hasil-akhir" title="Link to this heading">#</a></h3>
+<p>Setelah mendapatkan nilai bobot (<span class="math notranslate nohighlight">\(W\)</span>) dan kontribusi nilai (<span class="math notranslate nohighlight">\(W \times CGPA\)</span>) dari 3 tetangga terdekat, tahap terakhir adalah menghitung rata-rata terbobot untuk menentukan nilai CGPA Baris 4.</p>
+<p><strong>A. Rekapitulasi Perhitungan</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Komponen</p></th>
+<th class="head text-left"><p>Rumus</p></th>
+<th class="head text-left"><p>Hasil Perhitungan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Total Bobot (<span class="math notranslate nohighlight">\(\sum W\)</span>)</strong></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(W_1 + W_2 + W_5\)</span></p></td>
+<td class="text-left"><p>0.925068</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Total Kontribusi (<span class="math notranslate nohighlight">\(\sum W \times y\)</span>)</strong></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\((W_1 \times y_1) + (W_2 \times y_2) + (W_5 \times y_5)\)</span></p></td>
+<td class="text-left"><p>0.491873</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>B. Nilai Prediksi Final</strong></p>
+<p>Nilai CGPA untuk Baris 4 dihitung dengan membagi total kontribusi dengan total bobot:</p>
+<div class="math notranslate nohighlight">
+\[CGPA_{baru} = \frac{0.491873}{0.925068} = \mathbf{0.531715}\]</div>
+<p><strong>Kesimpulan:</strong>
+Nilai CGPA Baris 4 yang sebelumnya kosong (Missing Value) kini telah diisi dengan nilai <strong>0.531715</strong> (dalam skala normalisasi). Data ini sekarang siap digunakan untuk proses analisis data mining lebih lanjut.</p>
 </section>
 </section>
 </section>
@@ -1404,6 +1838,42 @@ Dalam Data Mining, kita tidak bisa asal menjumlahkan semua kolom karena “cara 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-menghitung-jarak-ordinal">Normalisasi &amp; Menghitung Jarak Ordinal</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#akumulasi-jarak-akhir-pada-student">Akumulasi Jarak Akhir Pada Student</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-interpretasi-akhir">Analisis &amp; Interpretasi Akhir</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data-normalisasi-dan-penanganan-data-hilang">Preprocessing Data: Normalisasi dan Penanganan Data Hilang</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-tipe-data-atribut">Analisis Tipe Data Atribut</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-min-max">Normalisasi Min-Max</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-dan-atribut-sasaran">1. Tujuan dan Atribut Sasaran</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja">2. Cara Kerja</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alasan-pemilihan-min-max">3. Alasan Pemilihan Min-Max</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-sederhana">4. Penjelasan Sederhana</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-encoding-data-kategorikal">Mapping &amp; Encoding (Data Kategorikal)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. Tujuan dan Atribut Sasaran</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mekanisme-transformasi">2. Mekanisme Transformasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alasan-pemilihan-mapping">3. Alasan Pemilihan Mapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4. Penjelasan Sederhana</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-final-hasil-preprocessing">Dataset Final (Hasil Preprocessing)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-missing-value-dengan-weighted-k-nearest-neighbors">Penanganan Missing Value dengan Weighted K-Nearest Neighbors.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-jarak-euclidean">Perhitungan Jarak Euclidean</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-rumus-dasar">A. Rumus Dasar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-tabel-perhitungan-jarak-manual">B.Tabel Perhitungan Jarak (Manual)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-perhitungan-jarak-code">C. Perhitungan Jarak (code)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-penentuan-tetangga-terdekat-k-3">D. Penentuan Tetangga Terdekat (K=3)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-bobot">Perhitungan Bobot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-bobot-w">1. Menghitung Nilai Bobot (W)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-perkalian-bobot-dengan-nilai-w-y">2. Menghitung Perkalian Bobot dengan Nilai (W * y)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-imputation-menambal-data">3. Final Imputation (Menambal Data)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir"><strong>4. Hasil Akhir</strong></a></li>
 </ul>
 </li>
 </ul>

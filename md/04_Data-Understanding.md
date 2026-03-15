@@ -209,7 +209,6 @@ Logika Singkat: Sumbu X adalah "Apa ukurannya?", Sumbu Y adalah "Berapa banyak j
 ![Statistik Orange](../img/data-understanding/species.png)
 **Fig. 5 Histogram Distribusi Frekuensi Fitur species**
 
-
 ### Scatter plot
 #### Apa itu Scatter Plot?
 Scatter plot (diagram titik) adalah grafik yang digunakan untuk melihat hubungan antara dua variabel angka. Jika histogram hanya melihat satu fitur, scatter plot mempertemukan dua fitur sekaligus untuk melihat apakah mereka saling memengaruhi.
@@ -512,4 +511,193 @@ Berdasarkan hasil komputasi sebesar **14.54**, dapat disimpulkan bahwa Mahasiswa
 1. **Dominasi Usia:** Perbedaan usia (9 tahun) memberikan kontribusi terbesar ($81.0$ pada varians) terhadap jarak total.
 2. **Kesenjangan Performa:** Terdapat perbedaan drastis pada beban akademik (*Academic Pressure*) dan kepuasan belajar (*Study Satisfaction*) yang saling bertolak belakang.
 3. **Kesesuaian Profesi:** Meskipun memiliki latar belakang sosial dan fisik yang berbeda, keduanya tetap memiliki kemiripan nominal pada fitur **Profession** (keduanya adalah mahasiswa).
+
+## Preprocessing Data: Normalisasi dan Penanganan Data Hilang
+Tahap preprocessing merupakan langkah krusial dalam Data Mining untuk memastikan data mentah siap diolah oleh algoritma. Pada proyek ini, fokus utama preprocessing adalah melakukan Normalisasi untuk menyamakan skala fitur numerik dan Imputasi untuk menangani data yang kosong (missing values) agar informasi dalam dataset tetap utuh dan akurat.
+
+### Analisis Tipe Data Atribut
+Sebelum menerapkan rumus, kita harus mengelompokkan atribut berdasarkan tipe datanya untuk menentukan metode transformasi yang tepat:  
+Kelompok Atribut   | Nama Atribut                                | Tipe Data             | Metode Penanganan
+-------------------|---------------------------------------------|-----------------------|-------------------------
+Numerik & Ordinal  | Age, CGPA, Academic Pressure, Financial Stress | Angka (Rasio/Ordinal) | Min-Max Normalization
+Kategorikal        | Gender, City, Depression, Anxiety, Panic Attack | Teks (Kategori)       | Mapping & Label Encoding
+
+### Normalisasi Min-Max
+
+#### 1. Tujuan dan Atribut Sasaran
+Normalisasi Min-Max digunakan untuk menyamakan skala atribut numerik dan ordinal seperti
+- Age
+- CGPA
+- Academic Pressure
+- Financial Stress
+
+Tujuannya adalah agar semua nilai berada dalam rentang 0 hingga 1, sehingga perbandingan antar atribut menjadi lebih adil.
+
+#### 2. Cara Kerja
+Metode ini melakukan transformasi linear pada data asli.
+- Nilai terkecil dalam suatu kolom akan menjadi 0.
+- Nilai terbesar akan menjadi 1.
+- Nilai lainnya akan dipetakan ke angka desimal di antara 0 dan 1.<br>
+
+Rumus matematisnya adalah:
+
+$$x' = \frac{x - x_{min}}{x_{max} - x_{min}}$$
+
+#### 3. Alasan Pemilihan Min-Max
+- Keadilan Jarak: Tanpa normalisasi, selisih Age (misalnya 10 tahun) bisa terlihat jauh lebih besar dibanding selisih CGPA (misalnya 0.5). Padahal, pengaruh IPK terhadap stres bisa lebih signifikan. Normalisasi membuat perbandingan lebih seimbang.
+- Kompatibilitas: Rentang 0–1 cocok dipadukan dengan data kategorikal yang sudah di-encode menjadi biner (0 dan 1). Hal ini membuat perhitungan jarak Euclidean lebih stabil dan akurat.
+
+#### 4. Penjelasan Sederhana
+Bayangkan kamu punya dua penggaris: satu panjang 100 cm (untuk Age), satu lagi hanya 4 cm (untuk CGPA). Kalau dibandingkan langsung, perubahan kecil di CGPA akan kalah terlihat dibanding perubahan besar di Age. Normalisasi Min-Max ibarat menyamakan panjang penggaris menjadi skala yang sama (0–1), sehingga setiap perubahan bisa dibandingkan secara adil.
+
+### Mapping & Encoding (Data Kategorikal)
+#### 1. Tujuan dan Atribut Sasaran
+Data kategori berbentuk teks (misalnya Gender, City, dan Mental Health Status) tidak bisa langsung diproses dengan rumus matematika.
+Oleh karena itu, dilakukan Encoding agar label teks diubah menjadi angka representatif sehingga bisa digunakan dalam perhitungan jarak.
+
+#### 2. Mekanisme Transformasi
+1. Biner (Label Encoding)  
+Digunakan untuk atribut dengan dua pilihan.
+Contoh:
+- Gender → Female = 0, Male = 1
+- Depression → No = 0, Yes = 1
+2. Multi-Kategori (Mapping)  
+Digunakan untuk atribut dengan banyak pilihan.
+Contoh:
+- City → Visakhapatnam = 0, Bangalore = 1, Srinagar = 2, dan seterusnya. <br>
+Dengan cara ini, setiap kategori teks memiliki representasi angka yang konsisten.
+
+#### 3. Alasan Pemilihan Mapping
+1. Sederhana & Efisien: Mudah diterapkan tanpa algoritma kompleks.
+2. Kompatibel dengan Simple Matching (WKNN):
+- Jika dua baris memiliki angka encoding yang sama → jarak = 0 (identik).
+- Jika berbeda → jarak = 1 (berbeda).
+
+Hal ini membuat perhitungan jarak antar data kategorikal lebih stabil dan mudah dipahami.
+
+#### 4. Penjelasan Sederhana
+Bayangkan kamu sedang membandingkan dua orang berdasarkan Gender. Kalau ditulis sebagai teks ("Male" vs "Female"), komputer tidak bisa langsung menghitung jaraknya. Tapi kalau diubah jadi angka (Male = 1, Female = 0), komputer bisa dengan mudah melihat apakah sama (jarak 0) atau berbeda (jarak 1).
+
+### Dataset Final (Hasil Preprocessing)
+Setelah tahap Normalisasi Min-Max dan Mapping selesai, inilah tabel final yang siap digunakan untuk perhitungan Weighted K-Nearest Neighbors (WKNN):
+
+| Gender | Age | City | Academic | CGPA | Financial Stress | Depression |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 1 | 1 | 0 | 1 | 1 | 0 | 1 |
+| 0 | 0 | 1 | 0 | 0 | 0.25 | 0 |
+| 1 | 0.777778 | 2 | 0.333333 | 0.368078 | 0 | 0 |
+| 0 | 0.444444 | 3 | 0.333333 | | 1 | 1 |
+| 0 | 0.111111 | 4 | 0.666667 | 0.726384 | 0 | 0 |
+
+Meskipun fitur CGPA pada Baris 4 masih memiliki data yang kosong (missing value), dataset ini sekarang telah siap untuk diproses lebih lanjut. Tahap selanjutnya adalah menggunakan algoritma Weighted K-Nearest Neighbors untuk memprediksi nilai CGPA yang hilang tersebut berdasarkan kemiripan karakteristik dengan baris data lainnya.
+
+**Penjelasan Singkat:**
+- Gender: (1 = Male, 0 = Female)
+- City: (0-4 sesuai urutan kota)
+- Depression: (1 = Yes, 0 = No)
+- Age & Academic & CGPA: Sudah dalam skala 0-1 hasil Min-Max Normalization.
+
+## Penanganan Missing Value dengan Weighted K-Nearest Neighbors.
+Dalam dataset Student Mental Health yang kita olah, terdapat satu baris data yang memiliki nilai tidak lengkap (Missing Value) pada atribut CGPA. Baris inilah yang akan menjadi target utama dalam proses imputasi menggunakan algoritma Weighted K-Nearest Neighbors (WKNN).
+
+### Perhitungan Jarak Euclidean
+Untuk mencari kemiripan, kita menggunakan rumus Euclidean Distance. Atribut yang dihitung adalah semua atribut kecuali CGPA (karena CGPA Baris 4 kosong).
+
+#### A. Rumus Dasar
+$$d(i, j) = \sqrt{\sum_{k=1}^{n} (x_{ik} - x_{jk})^2}$$
+
+Catatan: Untuk atribut City, jika kodenya berbeda maka selisihnya dianggap 1, jika sama dianggap 0.
+
+#### B.Tabel Perhitungan Jarak (Manual)
+Berikut adalah hasil perhitungan jarak antara Baris 4 (Target) dengan baris referensi lainnya:
+
+| Gender | Age      | City | Academic | CGPA     | Financial | Depression | Jarak    | Status |
+|--------|----------|------|----------|----------|-----------|------------|----------|--------|
+| 1      | 1        | 0    | 1        | 1        | 0         | 1          | 1.937288 | 3      |
+| 0      | 0        | 1    | 0        | 0     | 0.25         | 0          | 1.694444 | 1      |
+| 1      | 0.777778 | 2    | 0.333333 | 0.368078 | 0         | 0          | 2.027588 | elim   |
+| 0      | 0.444444 | 3    | 0.333333 |         | 1         | 1          |          |        |
+| 0      | 0.111111 | 4    | 0.666667 | 0.726384 | 0         | 0          | 1.795055 | 2      |
+
+![Statistik Orange](../img/data-understanding/jarak-euclidean.png)
+
+#### C. Perhitungan Jarak (code)
+![Statistik Orange](../img/data-understanding/kode-normalisasi.png)
+
+=== PERHITUNGAN JARAK EUCLIDEAN ===
+
+Jarak Target (Baris 4) ke Baris 1: 1.9373 <br>
+Jarak Target (Baris 4) ke Baris 2: 1.6944 <br>
+Jarak Target (Baris 4) ke Baris 3: 2.0276 <br>
+Jarak Target (Baris 4) ke Baris 5: 1.7951 <br>
+
+#### D. Penentuan Tetangga Terdekat (K=3)
+Setelah seluruh jarak Euclidean antara Baris 4 (Target) dengan baris lainnya dihitung, langkah selanjutnya adalah mengurutkan jarak tersebut dari yang terkecil hingga terbesar.
+
+Dalam analisis ini, kita menetapkan nilai K=3, yang berarti kita hanya akan mengambil tiga tetangga terdekat (dengan tingkat kemiripan tertinggi) untuk digunakan dalam proses prediksi nilai CGPA.
+
+
+| Peringkat | Tetangga | Jarak Euclidean (d) | Status           |
+|-----------|----------|----------------------|------------------|
+| 1         | Baris 2  | 1.6944               | Terpilih (K-1)   |
+| 2         | Baris 5  | 1.7951               | Terpilih (K-2)   |
+| 3         | Baris 1  | 1.9373               | Terpilih (K-3)   |
+| 4         | Baris 3  | 2.0276               | Dieliminasi      |
+
+Penggunaan K=3 dipilih agar hasil prediksi tidak terlalu sensitif terhadap satu data saja (noise) namun tetap menjaga relevansi kemiripan yang kuat.
+
+### Perhitungan Bobot 
+#### 1. Menghitung Nilai Bobot (W)
+Kita menggunakan rumus Inverse Squared Distance. Intinya: semakin besar jaraknya, semakin kecil bobotnya.
+
+Rumusnya:
+
+$$W = \frac{1}{d^2}$$
+
+![Statistik Orange](../img/data-understanding/weight.png)
+
+#### 2. Menghitung Perkalian Bobot dengan Nilai (W * y)
+Sekarang kita kalikan bobot masing-masing tetangga dengan nilai CGPA mereka yang sudah dinormalisasi
+
+![Statistik Orange](../img/data-understanding/w-cgpa.png)
+
+
+| Baris | Bobot (W) | CGPA   | Rumus Excel | Hasil   |
+|-------|-----------|--------|-------------|---------|
+| 1 (Row 5) | 0.2664    | 1.0000 | =X5*R5      | 0.2664  |
+| 2 (Row 6) | 0.3483    | 0.0000 | =X6*R6      | 0.0000  |
+| 5 (Row 9) | 0.3103    | 0.7264 | =X9*R9      | 0.2254  |
+
+#### 3. Final Imputation (Menambal Data)
+
+Di langkah ini, kita akan melakukan dua kali penjumlahan, lalu membaginya.
+
+Rumus Sederhananya:
+
+$$\text{Hasil Akhir} = \frac{\text{Total dari Kolom Z (W * CGPA)}}{\text{Total dari Kolom Y (Weight)}}$$
+
 ---
+#### **4. Hasil Akhir** 
+
+Setelah mendapatkan nilai bobot ($W$) dan kontribusi nilai ($W \times CGPA$) dari 3 tetangga terdekat, tahap terakhir adalah menghitung rata-rata terbobot untuk menentukan nilai CGPA Baris 4.
+
+**A. Rekapitulasi Perhitungan**
+
+| Komponen | Rumus | Hasil Perhitungan |
+| :--- | :--- | :--- |
+| **Total Bobot ($\sum W$)** | $W_1 + W_2 + W_5$ | 0.925068 |
+| **Total Kontribusi ($\sum W \times y$)** | $(W_1 \times y_1) + (W_2 \times y_2) + (W_5 \times y_5)$ | 0.491873 |
+
+**B. Nilai Prediksi Final**
+
+Nilai CGPA untuk Baris 4 dihitung dengan membagi total kontribusi dengan total bobot:
+
+$$CGPA_{baru} = \frac{0.491873}{0.925068} = \mathbf{0.531715}$$
+
+**Kesimpulan:**
+Nilai CGPA Baris 4 yang sebelumnya kosong (Missing Value) kini telah diisi dengan nilai **0.531715** (dalam skala normalisasi). Data ini sekarang siap digunakan untuk proses analisis data mining lebih lanjut.
+
+
+
+
+
