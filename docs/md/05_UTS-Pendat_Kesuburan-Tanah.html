@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Bussiness Understanding &#8212; My sample book</title>
+    <title>UTS - DATASET KLASIFIKASI KESUBURAN TANAH &#8212; My sample book</title>
   
   
   
@@ -57,11 +57,10 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'md/02_Bussiness-Understanding';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'md/05_UTS-Pendat_Kesuburan-Tanah';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data Understanding" href="04_Data-Understanding.html" />
-    <link rel="prev" title="Profile" href="../intro.html" />
+    <link rel="prev" title="Data Understanding" href="04_Data-Understanding.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,7 +179,7 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bussiness Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Bussiness-Understanding.html">Bussiness Understanding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_Data-Understanding.html">Data Understanding</a></li>
 
 
@@ -188,7 +187,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="05_UTS-Pendat_Kesuburan-Tanah.html">UTS Pendat Kesuburan Tanah</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">UTS Pendat Kesuburan Tanah</a></li>
 </ul>
 
     </div>
@@ -260,7 +259,7 @@
       
       
       
-      <li><a href="https://github.com/Fathulimann123/Pendata.git/issues/new?title=Issue%20on%20page%20%2Fmd/02_Bussiness-Understanding.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/Fathulimann123/Pendata.git/issues/new?title=Issue%20on%20page%20%2Fmd/05_UTS-Pendat_Kesuburan-Tanah.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -290,7 +289,7 @@
       
       
       
-      <li><a href="../_sources/md/02_Bussiness-Understanding.md" target="_blank"
+      <li><a href="../_sources/md/05_UTS-Pendat_Kesuburan-Tanah.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -361,7 +360,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -372,11 +373,23 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Bussiness Understanding</h1>
+    <h1>UTS - DATASET KLASIFIKASI KESUBURAN TANAH</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-kesuburan-tanah">Dataset Kesuburan Tanah</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-yang-dipakai">Atribut yang dipakai</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-knime">Implementasi Knime</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-alur-kerja-knime-klasifikasi-k-nn-dengan-pca">Penjelasan Alur Kerja KNIME (Klasifikasi K-NN dengan PCA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detail-output-node-utama">detail output node utama</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -386,9 +399,153 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="bussiness-understanding">
-<h1>Bussiness Understanding<a class="headerlink" href="#bussiness-understanding" title="Link to this heading">#</a></h1>
-<p>tess</p>
+  <section id="uts-dataset-klasifikasi-kesuburan-tanah">
+<h1>UTS - DATASET KLASIFIKASI KESUBURAN TANAH<a class="headerlink" href="#uts-dataset-klasifikasi-kesuburan-tanah" title="Link to this heading">#</a></h1>
+<section id="dataset-kesuburan-tanah">
+<h2>Dataset Kesuburan Tanah<a class="headerlink" href="#dataset-kesuburan-tanah" title="Link to this heading">#</a></h2>
+<p>Dataset berisi 2.000 sampel data tanah dengan 10 fitur agronomis dan 1 kolom label yang membagi kondisi tanah menjadi dua kelas: Subur dan Tidak Subur.</p>
+</section>
+<section id="atribut-yang-dipakai">
+<h2>Atribut yang dipakai<a class="headerlink" href="#atribut-yang-dipakai" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Atribut</p></th>
+<th class="head text-left"><p>Tipe Data</p></th>
+<th class="head text-left"><p>Penjelasan Singkat</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>pH Tanah</p></td>
+<td class="text-left"><p>Numerik</p></td>
+<td class="text-left"><p>Skala keasaman atau kebasaan tanah (0–14).</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>N Total (%)</p></td>
+<td class="text-left"><p>Numerik</p></td>
+<td class="text-left"><p>Kandungan nitrogen total dalam bentuk persentase.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>P Tersedia (ppm)</p></td>
+<td class="text-left"><p>Numerik</p></td>
+<td class="text-left"><p>Kadar fosfor yang dapat diserap tanaman (dalam ppm).</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>K Tersedia (meq/100g)</p></td>
+<td class="text-left"><p>Numerik</p></td>
+<td class="text-left"><p>Kandungan kalium tersedia dalam satuan miliekuivalen.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>C Organik (%)</p></td>
+<td class="text-left"><p>Numerik</p></td>
+<td class="text-left"><p>Persentase kandungan karbon organik dalam tanah.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>KTK (meq/100g)</p></td>
+<td class="text-left"><p>Numerik</p></td>
+<td class="text-left"><p>Kapasitas tanah dalam mengikat dan menyediakan unsur hara.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Kejenuhan Basa (%)</p></td>
+<td class="text-left"><p>Numerik</p></td>
+<td class="text-left"><p>Persentase kation basa dari total kapasitas tukar kation.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Tekstur Tanah</p></td>
+<td class="text-left"><p>Kategorikal</p></td>
+<td class="text-left"><p>Klasifikasi jenis partikel tanah (Lempung, Pasir, Liat, dll).</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Kadar Air (%)</p></td>
+<td class="text-left"><p>Numerik</p></td>
+<td class="text-left"><p>Persentase kandungan air yang tersimpan di dalam tanah.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Bulk Density (g/cm³)</p></td>
+<td class="text-left"><p>Numerik</p></td>
+<td class="text-left"><p>Tingkat kerapatan atau kepadatan massa tanah.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="implementasi-knime">
+<h2>Implementasi Knime<a class="headerlink" href="#implementasi-knime" title="Link to this heading">#</a></h2>
+<p>Bagian ini menjelaskan rangkaian proses data mining yang dilakukan menggunakan KNIME. Setiap node memiliki peran spesifik dalam mentransformasi data mentah menjadi hasil klasifikasi yang akurat. <br></p>
+<p><img alt="Flow-Knime" src="../_images/knimeflow.png" /></p>
+</section>
+<section id="penjelasan-alur-kerja-knime-klasifikasi-k-nn-dengan-pca">
+<h2>Penjelasan Alur Kerja KNIME (Klasifikasi K-NN dengan PCA)<a class="headerlink" href="#penjelasan-alur-kerja-knime-klasifikasi-k-nn-dengan-pca" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Nama Node</p></th>
+<th class="head text-left"><p>Kegunaan / Fungsi Utama</p></th>
+<th class="head text-left"><p>Penjelasan Singkat</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>CSV Reader</p></td>
+<td class="text-left"><p>Data Input</p></td>
+<td class="text-left"><p>Memasukkan dataset mentah (format .csv) ke dalam sistem.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Table View</p></td>
+<td class="text-left"><p>Inspeksi Data</p></td>
+<td class="text-left"><p>Menampilkan data dalam bentuk tabel untuk pengecekan awal.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Table Partitioner</p></td>
+<td class="text-left"><p>Data Splitting</p></td>
+<td class="text-left"><p>Membagi dataset menjadi dua jalur: Data Training (latih) dan Data Testing (uji).</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Normalizer</p></td>
+<td class="text-left"><p>Preprocessing</p></td>
+<td class="text-left"><p>Menyamakan skala semua angka (misal 0 ke 1) agar atribut dengan nilai besar tidak mendominasi.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Numeric Outliers</p></td>
+<td class="text-left"><p>Data Cleaning</p></td>
+<td class="text-left"><p>Mendeteksi dan menangani nilai ekstrem yang dapat mengganggu akurasi model.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Missing Value</p></td>
+<td class="text-left"><p>Data Cleaning</p></td>
+<td class="text-left"><p>Mengisi atau menghapus data yang kosong/hilang agar alur tidak error.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>PCA Compute</p></td>
+<td class="text-left"><p>Reduksi Dimensi</p></td>
+<td class="text-left"><p>Menghitung komponen utama untuk menyederhanakan jumlah atribut tanpa kehilangan informasi penting.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>PCA Apply</p></td>
+<td class="text-left"><p>Transformasi Data</p></td>
+<td class="text-left"><p>Menerapkan hasil hitungan PCA ke data training dan testing agar memiliki format dimensi yang sama.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>K Nearest Neighbor</p></td>
+<td class="text-left"><p>Model Machine Learning</p></td>
+<td class="text-left"><p>Algoritma klasifikasi yang menentukan kelompok data berdasarkan jarak tetangga terdekat.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Scorer</p></td>
+<td class="text-left"><p>Evaluasi Model</p></td>
+<td class="text-left"><p>Membandingkan hasil prediksi dengan data asli untuk menghitung nilai akurasi (%).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="detail-output-node-utama">
+<h2>detail output node utama<a class="headerlink" href="#detail-output-node-utama" title="Link to this heading">#</a></h2>
+<p>A. NODE SCORER</p>
+<p><img alt="Flow-Knime" src="../_images/scorer1.png" /></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Metrik</p></th>
+<th class="head text-left"><p>Keterangan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Accuracy</strong></p></td>
+<td class="text-left"><p>Persentase prediksi yang benar dibandingkan dengan total keseluruhan data.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Precision</strong></p></td>
+<td class="text-left"><p>Menilai seberapa tepat prediksi kelas positif (Contoh: Dari semua yang diprediksi “Subur”, berapa yang benar-benar “Subur”).</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Recall</strong></p></td>
+<td class="text-left"><p>Menilai seberapa baik model menemukan kembali kelas positif (Contoh: Dari semua tanah yang aslinya “Subur”, berapa banyak yang berhasil dideteksi oleh model).</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>F1-Score</strong></p></td>
+<td class="text-left"><p>Nilai rata-rata harmonis antara Precision dan Recall; memberikan gambaran keseimbangan antara keduanya.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Flow-Knime" src="../_images/scorer2.png" /></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -422,22 +579,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../intro.html"
+       href="04_Data-Understanding.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Profile</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="04_Data-Understanding.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Data Understanding</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -445,6 +593,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-kesuburan-tanah">Dataset Kesuburan Tanah</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-yang-dipakai">Atribut yang dipakai</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-knime">Implementasi Knime</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-alur-kerja-knime-klasifikasi-k-nn-dengan-pca">Penjelasan Alur Kerja KNIME (Klasifikasi K-NN dengan PCA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detail-output-node-utama">detail output node utama</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
