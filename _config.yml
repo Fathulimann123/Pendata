@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: My sample book
-author: "Muhammad Fathul Iman Wahid"
+author: "Arsaa"
 copyright: "2026"
 logo: logo.png
 
@@ -22,7 +22,7 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/Fathulimann123/Pendata.git
+  url: https://github.com/Fathulimann123/Pendata
   path_to_book: .  # Optional path to your book, relative to the repository root
   branch: main
 
