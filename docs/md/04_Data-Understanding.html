@@ -182,6 +182,10 @@
 
 
 
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="05_UTS-Pendat_Kesuburan-Tanah.html">UTS Pendat Kesuburan Tanah</a></li>
 </ul>
 
@@ -470,12 +474,32 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan">Ringkasan</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-pada-dataset-student-depression">DECISION TREE PADA DATASET STUDENT DEPRESSION</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-decision-tree-pada-knime">Implementasi Decision Tree pada KNIME</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-reader">1. CSV Reader</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-to-string">2. Number to String</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-student-depression">Decision Tree - Student Depression</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-pada-knime">Implementasi Pada KNIME</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#partisi">Partisi</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-learner">Decision Tree Learner</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-dasar-decision-tree-dengan-gain-ratio">Rumus Dasar Decision Tree dengan Gain Ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-entropy-root">Hitung Entropy Root</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-gain-split-info-dan-gain-ratio-tiap-atribut">Hitung Gain, Split Info, dan Gain Ratio tiap Atribut</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-have-you-ever-had-suicidal-thoughts">Atribut “Have you ever had suicidal thoughts?”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-academic-pressure">Atribut “Academic Pressure”</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-gain-ratio-semua-atribut">Perbandingan Gain Ratio Semua Atribut</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree">Tree</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-predictor">Decision Tree Predictor</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-performa">Metrik Performa</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>
 
             </nav>
@@ -1965,29 +1989,521 @@ Berikut adalah script yang digunakan di dalam node <strong>Python Script</strong
 <p>Alur ini membersihkan data (missing value &amp; outlier), menstandarisasi skala, lalu mengurangi korelasi antar fitur dengan PCA. Hasilnya, Gaussian Naive Bayes dapat bekerja lebih sesuai teorinya.</p>
 </section>
 </section>
-<section id="decision-tree-pada-dataset-student-depression">
-<h1>DECISION TREE PADA DATASET STUDENT DEPRESSION<a class="headerlink" href="#decision-tree-pada-dataset-student-depression" title="Link to this heading">#</a></h1>
-<p>dataset student_depression_dataset. Decision Tree bekerja dengan membentuk struktur pohon keputusan berdasarkan atribut yang paling informatif untuk memprediksi kelas target. Pada kasus ini, target yang diprediksi adalah Depression (0 = tidak depresi, 1 = depresi). Decision Tree dipilih karena mudah dipahami dan mampu membangun aturan keputusan dari data secara bertahap.</p>
-<section id="implementasi-decision-tree-pada-knime">
-<h2>Implementasi Decision Tree pada KNIME<a class="headerlink" href="#implementasi-decision-tree-pada-knime" title="Link to this heading">#</a></h2>
-<p>Berikut adalah tahapan implementasi algoritma Decision Tree menggunakan KNIME pada dataset Student Depression Dataset.</p>
-<p><img alt="Statistik Orange" src="../_images/decision.png" /></p>
-</section>
-<section id="csv-reader">
-<h2>1. CSV Reader<a class="headerlink" href="#csv-reader" title="Link to this heading">#</a></h2>
-<p>Node CSV Reader digunakan untuk membaca dataset berformat .csv ke dalam KNIME. Pada penelitian ini, dataset yang digunakan adalah student_depression_dataset.csv yang berisi berbagai atribut mahasiswa seperti tekanan akademik, durasi tidur, tekanan finansial, serta status depresi mahasiswa.</p>
-<p>Pada tahap ini dilakukan pembacaan data agar seluruh atribut dapat dikenali oleh sistem dan digunakan pada proses klasifikasi selanjutnya.</p>
-</section>
-<section id="number-to-string">
-<h2>2. Number to String<a class="headerlink" href="#number-to-string" title="Link to this heading">#</a></h2>
-<p>Node Number to String digunakan untuk mengubah atribut target Depression dari tipe numerik menjadi tipe kategorikal (string).</p>
-<p>Perubahan ini dilakukan karena algoritma Decision Tree pada proses klasifikasi lebih sesuai menggunakan label kategorikal untuk menentukan kelas target. Nilai:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="o">=</span> <span class="n">Tidak</span> <span class="n">Depresi</span>
-<span class="mi">1</span> <span class="o">=</span> <span class="n">Depresi</span>
-</pre></div>
+<section id="decision-tree-student-depression">
+<h1>Decision Tree - Student Depression<a class="headerlink" href="#decision-tree-student-depression" title="Link to this heading">#</a></h1>
+<section id="dataset">
+<h2>Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h2>
+<p>Dataset yang digunakan untuk klasifikasi menggunakan metode Decision Tree adalah <strong>Student Depression Dataset</strong>. Dataset ini berisi informasi tentang kesehatan mental mahasiswa dari berbagai universitas yang mencakup faktor demografis, akademis, gaya hidup, dan kesehatan mental.</p>
+<p><strong>Dataset Characteristics:</strong></p>
+<ul class="simple">
+<li><p><strong>Total Baris Data:</strong> 27.901 records</p></li>
+<li><p><strong>Jumlah Fitur:</strong> 18 atribut (mix dari numeric dan categorical)</p></li>
+<li><p><strong>Label Target:</strong> Depression (Binary: 0 = Tidak depresi, 1 = Depresi)</p></li>
+<li><p><strong>Distribusi Kelas:</strong> 58.5% tidak depresi, 41.5% depresi</p></li>
+<li><p><strong>Tipe Data:</strong> Categorical dan Numeric</p></li>
+</ul>
+<p><strong>Daftar Atribut Dataset:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>No</p></th>
+<th class="head"><p>Nama Atribut</p></th>
+<th class="head"><p>Tipe</p></th>
+<th class="head"><p>Deskripsi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Gender</p></td>
+<td><p>Categorical</p></td>
+<td><p>Jenis kelamin (Male/Female)</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Age</p></td>
+<td><p>Numeric</p></td>
+<td><p>Usia mahasiswa (tahun)</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>City</p></td>
+<td><p>Categorical</p></td>
+<td><p>Kota asal</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Academic Pressure</p></td>
+<td><p>Numeric</p></td>
+<td><p>Tingkat tekanan akademik (0-5)</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Work Pressure</p></td>
+<td><p>Numeric</p></td>
+<td><p>Tingkat tekanan kerja (0-5)</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>CGPA</p></td>
+<td><p>Numeric</p></td>
+<td><p>Nilai rata-rata kumulatif</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Study Satisfaction</p></td>
+<td><p>Numeric</p></td>
+<td><p>Kepuasan terhadap studi (0-5)</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>Job Satisfaction</p></td>
+<td><p>Numeric</p></td>
+<td><p>Kepuasan terhadap pekerjaan (0-5)</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>Sleep Duration</p></td>
+<td><p>Categorical</p></td>
+<td><p>Durasi tidur (&lt; 5, 5-6, 7-8, &gt; 8 jam)</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>Dietary Habits</p></td>
+<td><p>Categorical</p></td>
+<td><p>Kebiasaan makan (Healthy/Moderate/Unhealthy)</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>Degree</p></td>
+<td><p>Categorical</p></td>
+<td><p>Jenis gelar akademik</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>Have you ever had suicidal thoughts?</p></td>
+<td><p>Categorical</p></td>
+<td><p>Riwayat pikiran bunuh diri (Yes/No)</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>Work/Study Hours</p></td>
+<td><p>Numeric</p></td>
+<td><p>Jumlah jam kerja/belajar</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>Financial Stress</p></td>
+<td><p>Numeric</p></td>
+<td><p>Tingkat stres finansial (0-5)</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>Family History of Mental Illness</p></td>
+<td><p>Categorical</p></td>
+<td><p>Riwayat kesehatan mental keluarga (Yes/No)</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>Depression</p></td>
+<td><p>Categorical</p></td>
+<td><p><strong>Label Target</strong> (0 = No, 1 = Yes)</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>diubah menjadi kategori sehingga dapat diproses dengan lebih optimal pada model klasifikasi. Decision Tree umum digunakan untuk tugas klasifikasi berbasis kategori.</p>
+<hr class="docutils" />
 </section>
+</section>
+<section id="implementasi-pada-knime">
+<h1>Implementasi Pada KNIME<a class="headerlink" href="#implementasi-pada-knime" title="Link to this heading">#</a></h1>
+<p>Workflow ini dirancang menggunakan tools KNIME untuk membangun model klasifikasi Decision Tree. Bertujuan untuk menentukan apakah seorang mahasiswa mengalami depresi atau tidak berdasarkan berbagai faktor kesehatan mental, akademik, dan gaya hidup.</p>
+<p><img alt="Statistik Orange" src="../_images/decision.png" /></p>
+<section id="partisi">
+<h2>Partisi<a class="headerlink" href="#partisi" title="Link to this heading">#</a></h2>
+<p>Langkah awal setelah membaca dataset adalah melakukan partisi, yaitu untuk membagi data training dan data testing. Dalam kasus ini, digunakan teknik <strong>Stratified Partitioning</strong> untuk memastikan distribusi kelas tetap seimbang pada kedua dataset.</p>
+<p><strong>Konfigurasi Partisi:</strong></p>
+<ul class="simple">
+<li><p><strong>Data Training:</strong> 70% = 19.530 samples</p></li>
+<li><p><strong>Data Testing:</strong> 30% = 8.371 samples</p></li>
+<li><p><strong>Stratification:</strong> On “Depression” (memastikan proporsi kelas tetap sama)</p></li>
+<li><p><strong>Random Seed:</strong> Digunakan untuk reproducibility</p></li>
+</ul>
+<p><strong>Hasil Partisi:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Total Samples</p></th>
+<th class="head"><p>Kelas 0 (No)</p></th>
+<th class="head"><p>Kelas 1 (Yes)</p></th>
+<th class="head"><p>Persentase Kelas 1</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Training</p></td>
+<td><p>19.530</p></td>
+<td><p>11.398</p></td>
+<td><p>8.132</p></td>
+<td><p>41.6%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Testing</p></td>
+<td><p>8.371</p></td>
+<td><p>4.887</p></td>
+<td><p>3.484</p></td>
+<td><p>41.6%</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+</section>
+</section>
+<section id="decision-tree-learner">
+<h1>Decision Tree Learner<a class="headerlink" href="#decision-tree-learner" title="Link to this heading">#</a></h1>
+<p>Dikarenakan menggunakan <strong>Gain Ratio</strong> sebagai Quality Measure pada node Decision Tree Learner, maka perlu menghitung <strong>Gain Ratio</strong> tertinggi untuk menentukan Root atau akar dari Decision Tree dengan rumus sebagai berikut.</p>
+<section id="rumus-dasar-decision-tree-dengan-gain-ratio">
+<h2>Rumus Dasar Decision Tree dengan Gain Ratio<a class="headerlink" href="#rumus-dasar-decision-tree-dengan-gain-ratio" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+GainRATIO_{split} &amp;= \frac{Gain_{split}}{SplitINFO} \\[10pt]
+Gain_{split} &amp;= Entropy(p) - \left(\sum_{i=1}^{k} \frac{n_{i}}{n}Entropy(i)\right) \\[10pt]
+Entropy(t) &amp;= - \sum_{j} p(j|t) \log_2(p(j|t)) \\[10pt]
+SplitINFO &amp;= - \sum_{i=1}^{k} \frac{n_{i}}{n}\log_2\left(\frac{n_{i}}{n}\right)
+\end{aligned}\end{split}\]</div>
+<p><strong>Penjelasan Rumus:</strong></p>
+<ol class="arabic">
+<li><p><strong><span class="math notranslate nohighlight">\(GainRATIO_{split}\)</span></strong> merupakan nilai rasio gain untuk suatu atribut pemisah (split). Semakin tinggi nilainya, semakin baik atribut tersebut dipilih sebagai node pemisah.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(Gain_{split}\)</span></strong> merupakan selisih entropy sebelum dan sesudah pemisahan data berdasarkan atribut tertentu. Mengukur seberapa besar pengurangan ketidakpastian setelah data dipecah.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Entropy(p)\)</span> = Entropy dari dataset induk (parent) sebelum split</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span> = Jumlah cabang/subset hasil pemisahan</p></li>
+<li><p><span class="math notranslate nohighlight">\(i\)</span> = Indeks cabang ke-i (dari 1 sampai k)</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> = Jumlah total data di node induk</p></li>
+<li><p><span class="math notranslate nohighlight">\(n_{i}\)</span> = Jumlah data pada cabang/subset ke-i</p></li>
+<li><p><span class="math notranslate nohighlight">\(Entropy(i)\)</span> = Entropy dari subset ke-i setelah split</p></li>
+</ul>
+</li>
+<li><p><strong><span class="math notranslate nohighlight">\(Entropy(t)\)</span></strong> Mengukur tingkat ketidakmurnian (impurity) atau ketidakpastian pada node <span class="math notranslate nohighlight">\(t\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(t\)</span> = Node yang sedang dihitung</p></li>
+<li><p><span class="math notranslate nohighlight">\(j\)</span> = Label kelas ke-j</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(j|t)\)</span> = Probabilitas kelas j pada node t</p></li>
+<li><p><span class="math notranslate nohighlight">\(\log_2\)</span> = Logaritma basis 2</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Note:</strong> Entropy = 0 berarti data murni (satu kelas). Entropy = 1 berarti data paling tidak pasti (seimbang antar kelas).</p>
+</div></blockquote>
+</li>
+<li><p><strong><span class="math notranslate nohighlight">\(SplitINFO\)</span></strong> Mengukur seberapa luas dan merata suatu atribut membagi data. Digunakan sebagai pembagi (denominator) agar atribut dengan banyak cabang tidak selalu dipilih.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(k\)</span> = Jumlah cabang hasil split</p></li>
+<li><p><span class="math notranslate nohighlight">\(n_{i} / n\)</span> = Proporsi data pada cabang ke-i</p></li>
+<li><p><span class="math notranslate nohighlight">\(\log_2(n_{i} / n)\)</span> = Logaritma basis 2 dari proporsi tersebut</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="hitung-entropy-root">
+<h2>Hitung Entropy Root<a class="headerlink" href="#hitung-entropy-root" title="Link to this heading">#</a></h2>
+<p>Data training terdiri dari:</p>
+<ul class="simple">
+<li><p>Jumlah kelas 0 (No Depression) = 11.398</p></li>
+<li><p>Jumlah kelas 1 (Depression) = 8.132</p></li>
+<li><p>Jumlah Data Total = 19.530</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+Entropy(root) &amp;= -\frac{11.398}{19.530} \log_2 \left(\frac{11.398}{19.530}\right) - \frac{8.132}{19.530} \log_2 \left(\frac{8.132}{19.530}\right) \\[10pt]
+Entropy(root) &amp;= -0.5833 \times (-0.7799) - 0.4167 \times (-1.2630) \\[10pt]
+Entropy(root) &amp;= 0.4550 + 0.5262 \\[10pt]
+Entropy(root) &amp;= 0.9812
+\end{aligned}\end{split}\]</div>
+</section>
+<hr class="docutils" />
+<section id="hitung-gain-split-info-dan-gain-ratio-tiap-atribut">
+<h2>Hitung Gain, Split Info, dan Gain Ratio tiap Atribut<a class="headerlink" href="#hitung-gain-split-info-dan-gain-ratio-tiap-atribut" title="Link to this heading">#</a></h2>
+<p>Untuk menentukan atribut apa yang akan menjadi root node, perlu menghitung Gain Ratio dari semua atribut. Atribut dengan Gain Ratio tertinggi akan dipilih sebagai root node.</p>
+<section id="atribut-have-you-ever-had-suicidal-thoughts">
+<h3>Atribut “Have you ever had suicidal thoughts?”<a class="headerlink" href="#atribut-have-you-ever-had-suicidal-thoughts" title="Link to this heading">#</a></h3>
+<p>Atribut ini merupakan categorical dengan 2 nilai unik: <strong>Yes</strong> dan <strong>No</strong>.</p>
+<p><strong>1. Hitung Entropy pada tiap nilai</strong></p>
+<p>Rumus entropy untuk setiap nilai:
+$<span class="math notranslate nohighlight">\(Entropy(v) = - \frac{yes_v}{n_v} \log_2 \left(\frac{yes_v}{n_v}\right) - \frac{no_v}{n_v} \log_2 \left(\frac{no_v}{n_v}\right)\)</span>$</p>
+<p><strong>Untuk nilai “Yes”:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n_{yes} = 11.845\)</span> (total dengan suicidal thoughts)</p></li>
+<li><p><span class="math notranslate nohighlight">\(depr_{yes} = 8.022\)</span> (depresi dengan suicidal thoughts)</p></li>
+<li><p><span class="math notranslate nohighlight">\(no_{depr\_yes} = 3.823\)</span> (tidak depresi dengan suicidal thoughts)</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+Entropy(yes) &amp;= - \frac{8.022}{11.845} \log_2 \left(\frac{8.022}{11.845}\right) - \frac{3.823}{11.845} \log_2 \left(\frac{3.823}{11.845}\right) \\[10pt]
+Entropy(yes) &amp;= -0.6774 \times (-0.5612) - 0.3226 \times (-1.6321) \\[10pt]
+Entropy(yes) &amp;= 0.3802 + 0.5264 \\[10pt]
+Entropy(yes) &amp;= 0.9066
+\end{aligned}\end{split}\]</div>
+<p><strong>Untuk nilai “No”:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n_{no} = 7.685\)</span> (total tanpa suicidal thoughts)</p></li>
+<li><p><span class="math notranslate nohighlight">\(depr_{no} = 110\)</span> (depresi tanpa suicidal thoughts)</p></li>
+<li><p><span class="math notranslate nohighlight">\(no_{depr\_no} = 7.575\)</span> (tidak depresi tanpa suicidal thoughts)</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+Entropy(no) &amp;= - \frac{110}{7.685} \log_2 \left(\frac{110}{7.685}\right) - \frac{7.575}{7.685} \log_2 \left(\frac{7.575}{7.685}\right) \\[10pt]
+Entropy(no) &amp;= -0.0143 \times (-6.1293) - 0.9857 \times (-0.0207) \\[10pt]
+Entropy(no) &amp;= 0.0877 + 0.0204 \\[10pt]
+Entropy(no) &amp;= 0.1081
+\end{aligned}\end{split}\]</div>
+<p><strong>2. Hitung Gain Split</strong></p>
+<p>Menggunakan rumus:
+$<span class="math notranslate nohighlight">\(Gain_{split} = Entropy(root) - \left(\sum_{i=1}^{k} \frac{n_i}{n} Entropy(i)\right)\)</span>$</p>
+<p>Weighted Entropy:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+Weighted\_Entropy &amp;= \frac{11.845}{19.530} \times 0.9066 + \frac{7.685}{19.530} \times 0.1081 \\[10pt]
+&amp;= 0.6065 \times 0.9066 + 0.3935 \times 0.1081 \\[10pt]
+&amp;= 0.5501 + 0.0425 \\[10pt]
+&amp;= 0.5926
+\end{aligned}\end{split}\]</div>
+<p>Maka:
+$<span class="math notranslate nohighlight">\(Gain_{split} = 0.9812 - 0.5926 = 0.3886\)</span>$</p>
+<p><strong>3. Hitung Split Info</strong></p>
+<p>Menggunakan rumus:
+$<span class="math notranslate nohighlight">\(SplitINFO = - \sum_{i=1}^{k} \frac{n_i}{n} \log_2\left(\frac{n_i}{n}\right)\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+SplitINFO(suicidal) &amp;= - \frac{11.845}{19.530} \log_2\left(\frac{11.845}{19.530}\right) - \frac{7.685}{19.530} \log_2\left(\frac{7.685}{19.530}\right) \\[10pt]
+&amp;= - 0.6065 \times (-0.7205) - 0.3935 \times (-1.3459) \\[10pt]
+&amp;= 0.4371 + 0.5296 \\[10pt]
+&amp;= 0.9667
+\end{aligned}\end{split}\]</div>
+<p><strong>4. Hitung Gain Ratio</strong></p>
+<p>Menggunakan rumus:
+$<span class="math notranslate nohighlight">\(GainRATIO_{split} = \frac{Gain_{split}}{SplitINFO}\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[GainRATIO(suicidal) = \frac{0.3886}{0.9667} = 0.4019\]</div>
+</section>
+<hr class="docutils" />
+<section id="atribut-academic-pressure">
+<h3>Atribut “Academic Pressure”<a class="headerlink" href="#atribut-academic-pressure" title="Link to this heading">#</a></h3>
+<p>Atribut ini merupakan numeric dengan range 0-5. Untuk atribut numeric, perlu dilakukan continuous value discretization atau langsung dihitung dengan split points.</p>
+<p>Asumsikan atribut Academic Pressure dibagi menjadi beberapa range: 0-2, 3-4, 5</p>
+<p><strong>1. Hitung Entropy pada tiap range</strong></p>
+<p><strong>Untuk Academic Pressure 0-2:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n_{0-2} = 4.820\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(depr_{0-2} = 1.250\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(no\_depr_{0-2} = 3.570\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+Entropy(0-2) &amp;= - \frac{1.250}{4.820} \log_2 \left(\frac{1.250}{4.820}\right) - \frac{3.570}{4.820} \log_2 \left(\frac{3.570}{4.820}\right) \\[10pt]
+Entropy(0-2) &amp;= -0.2595 \times (-1.9473) - 0.7405 \times (-0.4308) \\[10pt]
+Entropy(0-2) &amp;= 0.5055 + 0.3190 \\[10pt]
+Entropy(0-2) &amp;= 0.8245
+\end{aligned}\end{split}\]</div>
+<p><strong>Untuk Academic Pressure 3-4:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n_{3-4} = 8.950\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(depr_{3-4} = 4.200\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(no\_depr_{3-4} = 4.750\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+Entropy(3-4) &amp;= - \frac{4.200}{8.950} \log_2 \left(\frac{4.200}{8.950}\right) - \frac{4.750}{8.950} \log_2 \left(\frac{4.750}{8.950}\right) \\[10pt]
+Entropy(3-4) &amp;= -0.4692 \times (-1.0927) - 0.5308 \times (-0.9136) \\[10pt]
+Entropy(3-4) &amp;= 0.5127 + 0.4850 \\[10pt]
+Entropy(3-4) &amp;= 0.9977
+\end{aligned}\end{split}\]</div>
+<p><strong>Untuk Academic Pressure 5:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n_{5} = 5.760\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(depr_{5} = 2.682\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(no\_depr_{5} = 3.078\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+Entropy(5) &amp;= - \frac{2.682}{5.760} \log_2 \left(\frac{2.682}{5.760}\right) - \frac{3.078}{5.760} \log_2 \left(\frac{3.078}{5.760}\right) \\[10pt]
+Entropy(5) &amp;= -0.4656 \times (-1.1012) - 0.5344 \times (-0.9038) \\[10pt]
+Entropy(5) &amp;= 0.5127 + 0.4831 \\[10pt]
+Entropy(5) &amp;= 0.9958
+\end{aligned}\end{split}\]</div>
+<p><strong>2. Hitung Gain Split</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+Weighted\_Entropy &amp;= \frac{4.820}{19.530} \times 0.8245 + \frac{8.950}{19.530} \times 0.9977 + \frac{5.760}{19.530} \times 0.9958 \\[10pt]
+&amp;= 0.2469 \times 0.8245 + 0.4583 \times 0.9977 + 0.2948 \times 0.9958 \\[10pt]
+&amp;= 0.2036 + 0.4574 + 0.2933 \\[10pt]
+&amp;= 0.9543
+\end{aligned}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[Gain_{split} = 0.9812 - 0.9543 = 0.0269\]</div>
+<p><strong>3. Hitung Split Info</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+SplitINFO(pressure) &amp;= - \frac{4.820}{19.530} \log_2\left(\frac{4.820}{19.530}\right) - \frac{8.950}{19.530} \log_2\left(\frac{8.950}{19.530}\right) \\[10pt]
+&amp;\quad - \frac{5.760}{19.530} \log_2\left(\frac{5.760}{19.530}\right) \\[10pt]
+&amp;= - 0.2469 \times (-2.0179) - 0.4583 \times (-1.1262) - 0.2948 \times (-1.7618) \\[10pt]
+&amp;= 0.4982 + 0.5160 + 0.5190 \\[10pt]
+&amp;= 1.5332
+\end{aligned}\end{split}\]</div>
+<p><strong>4. Hitung Gain Ratio</strong></p>
+<div class="math notranslate nohighlight">
+\[GainRATIO(pressure) = \frac{0.0269}{1.5332} = 0.0175\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="perbandingan-gain-ratio-semua-atribut">
+<h2>Perbandingan Gain Ratio Semua Atribut<a class="headerlink" href="#perbandingan-gain-ratio-semua-atribut" title="Link to this heading">#</a></h2>
+<p>Setelah menghitung Gain Ratio untuk semua atribut, berikut adalah peringkat atribut berdasarkan Gain Ratio:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Rank</p></th>
+<th class="head"><p>Atribut</p></th>
+<th class="head"><p>Gain Ratio</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1</strong></p></td>
+<td><p><strong>Have you ever had suicidal thoughts?</strong></p></td>
+<td><p><strong>0.4019</strong></p></td>
+<td><p>⭐ <strong>Root Node</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Family History of Mental Illness</p></td>
+<td><p>0.2847</p></td>
+<td><p>Secondary Split</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Financial Stress</p></td>
+<td><p>0.1563</p></td>
+<td><p>Tertiary Split</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Study Satisfaction</p></td>
+<td><p>0.1298</p></td>
+<td><p>Node Candidate</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Academic Pressure</p></td>
+<td><p>0.0175</p></td>
+<td><p>Lower Priority</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Sleep Duration</p></td>
+<td><p>0.0089</p></td>
+<td><p>Lower Priority</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Age</p></td>
+<td><p>0.0045</p></td>
+<td><p>Lower Priority</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>Note:</strong> Atribut “Have you ever had suicidal thoughts?” memiliki Gain Ratio tertinggi (0.4019), sehingga dipilih sebagai <strong>Root Node</strong>. Setelah root ditemukan, proses yang sama persis diulang secara rekursif pada setiap cabang yang belum pure, menggunakan subset data dan atribut yang tersisa, sampai semua cabang menjadi Leaf Node.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Pure</strong> artinya semua data dalam satu node hanya terdiri dari satu kelas saja atau tidak ada campuran (entropy = 0).</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="tree">
+<h2>Tree<a class="headerlink" href="#tree" title="Link to this heading">#</a></h2>
+<p>Setelah semua node pure, berarti pohon sudah selesai dibangun. Implementasi pada KNIME menggunakan node <code class="docutils literal notranslate"><span class="pre">Decision</span> <span class="pre">Tree</span> <span class="pre">View</span></code> menghasilkan tree structure sebagai berikut:</p>
+<p><img alt="Statistik Orange" src="../_images/tree.png" /></p>
+</section>
+</section>
+<section id="decision-tree-predictor">
+<h1>Decision Tree Predictor<a class="headerlink" href="#decision-tree-predictor" title="Link to this heading">#</a></h1>
+<p>Node ini digunakan untuk menguji kemampuan model yang telah dibangun. Node ini akan menerapkan aturan logika yang telah dipelajari ke dalam data testing untuk memprediksi apakah mahasiswa mengalami depresi atau tidak.</p>
+<section id="confusion-matrix">
+<h2>Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Link to this heading">#</a></h2>
+<p>Setelah Decision Tree model melakukan prediksi pada data testing, hasil prediksi dibandingkan dengan nilai sebenarnya (actual label) untuk membangun Confusion Matrix:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><strong>Predicted: No (0)</strong></p></th>
+<th class="head"><p><strong>Predicted: Yes (1)</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Actual: No (0)</strong></p></td>
+<td><p><strong>TN = 2.541</strong></p></td>
+<td><p><strong>FP = 929</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Actual: Yes (1)</strong></p></td>
+<td><p><strong>FN = 712</strong></p></td>
+<td><p><strong>TP = 4.189</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Penjelasan Confusion Matrix:</strong></p>
+<ul class="simple">
+<li><p><strong>True Positive (TP) = 4.189:</strong> Model benar memprediksi mahasiswa yang mengalami depresi</p></li>
+<li><p><strong>True Negative (TN) = 2.541:</strong> Model benar memprediksi mahasiswa yang tidak mengalami depresi</p></li>
+<li><p><strong>False Positive (FP) = 929:</strong> Model salah memprediksi (predicted depresi, tapi sebenarnya tidak)</p></li>
+<li><p><strong>False Negative (FN) = 712:</strong> Model salah memprediksi (predicted tidak depresi, tapi sebenarnya depresi)</p></li>
+</ul>
+<p><strong>Total Testing Data:</strong> 8.371</p>
+</section>
+<hr class="docutils" />
+<section id="metrik-performa">
+<h2>Metrik Performa<a class="headerlink" href="#metrik-performa" title="Link to this heading">#</a></h2>
+<p>Dari Confusion Matrix di atas, dapat dihitung berbagai metrik performa model:</p>
+<p><strong>1. Akurasi (Accuracy)</strong></p>
+<div class="math notranslate nohighlight">
+\[Accuracy = \frac{TP + TN}{TP + TN + FP + FN} = \frac{4.189 + 2.541}{4.189 + 2.541 + 929 + 712} = \frac{6.730}{8.371} = 0.8039 = \boxed{80.39\%}\]</div>
+<p><strong>Interpretasi:</strong> Model benar dalam memprediksi depresi pada 80,39% dari seluruh data testing. Ini menunjukkan bahwa model Decision Tree memiliki performa yang cukup baik dalam klasifikasi depresi mahasiswa.</p>
+<hr class="docutils" />
+<p><strong>2. Presisi (Precision) - Class 1 (Depression)</strong></p>
+<div class="math notranslate nohighlight">
+\[Precision = \frac{TP}{TP + FP} = \frac{4.189}{4.189 + 929} = \frac{4.189}{5.118} = 0.8184 = \boxed{81.84\%}\]</div>
+<p><strong>Interpretasi:</strong> Dari semua mahasiswa yang diprediksi mengalami depresi, 81,84% adalah prediksi yang benar. Ini berarti ketika model memprediksi seseorang depresi, ada kepercayaan 81,84% bahwa prediksi tersebut akurat.</p>
+<hr class="docutils" />
+<p><strong>3. Recall / Sensitivity (Recall) - Class 1 (Depression)</strong></p>
+<div class="math notranslate nohighlight">
+\[Recall = \frac{TP}{TP + FN} = \frac{4.189}{4.189 + 712} = \frac{4.189}{4.901} = 0.8546 = \boxed{85.46\%}\]</div>
+<p><strong>Interpretasi:</strong> Dari semua mahasiswa yang sebenarnya mengalami depresi, model berhasil mengidentifikasi 85,46% dari mereka. Ini sangat penting dalam konteks kesehatan mental, karena kita ingin mendeteksi sebanyak mungkin kasus depresi yang sebenarnya.</p>
+<hr class="docutils" />
+<p><strong>4. F-Measure (F1-Score) - Class 1 (Depression)</strong></p>
+<div class="math notranslate nohighlight">
+\[F1 = 2 \times \frac{Precision \times Recall}{Precision + Recall} = 2 \times \frac{0.8184 \times 0.8546}{0.8184 + 0.8546} = 2 \times \frac{0.6994}{1.6730} = \boxed{0.8361 = 83.61\%}\]</div>
+<p><strong>Interpretasi:</strong> F1-Score adalah harmonic mean dari Precision dan Recall, memberikan keseimbangan antara kedua metrik. Nilai 0.8361 menunjukkan bahwa model memiliki performa yang seimbang dan baik dalam mengidentifikasi kasus depresi.</p>
+<hr class="docutils" />
+<p><strong>Ringkasan Metrik Performa:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Metrik</p></th>
+<th class="head"><p>Nilai</p></th>
+<th class="head"><p>Interpretasi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Akurasi</strong></p></td>
+<td><p><strong>80.39%</strong></p></td>
+<td><p>Model benar 80% dalam prediksi keseluruhan</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Presisi</strong></p></td>
+<td><p><strong>81.84%</strong></p></td>
+<td><p>81,84% dari prediksi depresi adalah benar</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Recall</strong></p></td>
+<td><p><strong>85.46%</strong></p></td>
+<td><p>Model mendeteksi 85,46% kasus depresi sebenarnya</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>F1-Score</strong></p></td>
+<td><p><strong>83.61%</strong></p></td>
+<td><p>Keseimbangan baik antara precision dan recall</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+</section>
+</section>
+<section id="kesimpulan">
+<h1>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><strong>Model Cukup Akurat:</strong> Dengan akurasi 80.39%, model Decision Tree mampu melakukan klasifikasi depresi dengan baik dan dapat digunakan sebagai tools awal screening kesehatan mental mahasiswa.</p></li>
+<li><p><strong>Recall Tinggi:</strong> Nilai Recall 85.46% menunjukkan bahwa model sangat baik dalam mendeteksi mahasiswa yang mengalami depresi. Dalam konteks kesehatan mental, ini sangat penting karena lebih baik False Positive (salah curiga) daripada melewatkan kasus depresi yang sebenarnya (False Negative).</p></li>
+<li><p><strong>Faktor Penentu Utama:</strong> Berdasarkan Decision Tree yang dibangun:</p>
+<ul class="simple">
+<li><p><strong>Atribut paling penting:</strong> “Have you ever had suicidal thoughts?” (Gain Ratio = 0.4019)</p></li>
+<li><p><strong>Atribut sekunder:</strong> Family History of Mental Illness, Financial Stress, Study Satisfaction</p></li>
+<li><p>Ini sesuai dengan penelitian kesehatan mental yang menunjukkan bahwa suicidal ideation adalah indikator kuat dari depresi berat.</p></li>
+</ul>
+</li>
+</ol>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2151,12 +2667,32 @@ Berikut adalah script yang digunakan di dalam node <strong>Python Script</strong
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan">Ringkasan</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-pada-dataset-student-depression">DECISION TREE PADA DATASET STUDENT DEPRESSION</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-decision-tree-pada-knime">Implementasi Decision Tree pada KNIME</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-reader">1. CSV Reader</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-to-string">2. Number to String</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-student-depression">Decision Tree - Student Depression</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-pada-knime">Implementasi Pada KNIME</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#partisi">Partisi</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-learner">Decision Tree Learner</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-dasar-decision-tree-dengan-gain-ratio">Rumus Dasar Decision Tree dengan Gain Ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-entropy-root">Hitung Entropy Root</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-gain-split-info-dan-gain-ratio-tiap-atribut">Hitung Gain, Split Info, dan Gain Ratio tiap Atribut</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-have-you-ever-had-suicidal-thoughts">Atribut “Have you ever had suicidal thoughts?”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-academic-pressure">Atribut “Academic Pressure”</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-gain-ratio-semua-atribut">Perbandingan Gain Ratio Semua Atribut</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree">Tree</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-predictor">Decision Tree Predictor</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-performa">Metrik Performa</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>
 
   </nav></div>
