@@ -812,5 +812,34 @@ Algoritma yang digunakan dalam penelitian ini adalah **Gaussian Naive Bayes** ya
 
 Alur ini membersihkan data (missing value & outlier), menstandarisasi skala, lalu mengurangi korelasi antar fitur dengan PCA. Hasilnya, Gaussian Naive Bayes dapat bekerja lebih sesuai teorinya.
 
+##  DECISION TREE PADA DATASET STUDENT DEPRESSION
+
+dataset student_depression_dataset. Decision Tree bekerja dengan membentuk struktur pohon keputusan berdasarkan atribut yang paling informatif untuk memprediksi kelas target. Pada kasus ini, target yang diprediksi adalah Depression (0 = tidak depresi, 1 = depresi). Decision Tree dipilih karena mudah dipahami dan mampu membangun aturan keputusan dari data secara bertahap.
+
+### Implementasi Decision Tree pada KNIME
+
+Berikut adalah tahapan implementasi algoritma Decision Tree menggunakan KNIME pada dataset Student Depression Dataset. 
+
+![Statistik Orange](../img/data-understanding/decision.png)
+
+### 1. CSV Reader
+Node CSV Reader digunakan untuk membaca dataset berformat .csv ke dalam KNIME. Pada penelitian ini, dataset yang digunakan adalah student_depression_dataset.csv yang berisi berbagai atribut mahasiswa seperti tekanan akademik, durasi tidur, tekanan finansial, serta status depresi mahasiswa.
+
+Pada tahap ini dilakukan pembacaan data agar seluruh atribut dapat dikenali oleh sistem dan digunakan pada proses klasifikasi selanjutnya.
+### 2. Number to String
+Node Number to String digunakan untuk mengubah atribut target Depression dari tipe numerik menjadi tipe kategorikal (string).
+
+Perubahan ini dilakukan karena algoritma Decision Tree pada proses klasifikasi lebih sesuai menggunakan label kategorikal untuk menentukan kelas target. Nilai:
+```
+0 = Tidak Depresi
+1 = Depresi
+```
+diubah menjadi kategori sehingga dapat diproses dengan lebih optimal pada model klasifikasi. Decision Tree umum digunakan untuk tugas klasifikasi berbasis kategori.
+
+
+
+
+
+
 
 
