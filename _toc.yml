@@ -7,3 +7,9 @@ chapters:
   title: "Data Understanding"
 - file: md/05_UTS-Pendat_Kesuburan-Tanah
   title: "UTS - DATASET KLASIFIKASI KESUBURAN TANAH"
+- file: md/06_Analisis-Data-Menggunakan-Naive-Bayes
+  title: "Analisis Data Menggunakan  Naive Bayes"
+- file: md/07_Analisis-Data-Menggunakan-Decision-Tree
+  title: "Analisis Data Menggunakan Decision Tree"
+- file: md/08_Analisis-Data-Menggunakan-Random-Forest
+  title: "Analisis Data Menggunakan Random Forest"
