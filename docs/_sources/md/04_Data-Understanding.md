@@ -1,9 +1,9 @@
-## Data Understanding
+# Data Understanding
 
-### Apa itu Metodologi CRISP-DM?
+## Apa itu Metodologi CRISP-DM?
 Dalam mengerjakan proyek penambangan data ini, kita mengikuti alur **CRISP-DM** (*Cross-Industry Standard Process for Data Mining*). Metodologi ini punya 6 tahapan utama, mulai dari memahami bisnis sampai modelnya siap dipakai. Tahap **Data Understanding** adalah fase kedua setelah *Business Understanding*. Kalau di fase pertama kita fokus ke "apa masalahnya?", di fase kedua ini kita fokus ke "mana datanya?" dan "gimana kondisi datanya?".
 
-### Tujuan Utama Fase Ini:
+## Tujuan Utama Fase Ini:
 1. **Kenalan sama data**: Biar kita gak asing sama isi tabelnya.
 2. **Cek Kualitas**: Mastiin datanya bersih, gak ada yang kosong (*missing values*), atau gak ada yang aneh (*outliers*).
 3. **Cari Insight Awal**: Nemu pola-pola menarik lewat statistik simpel.

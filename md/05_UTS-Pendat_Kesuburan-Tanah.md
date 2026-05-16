@@ -1,4 +1,4 @@
-## UTS - DATASET KLASIFIKASI KESUBURAN TANAH 
+# UTS - DATASET KLASIFIKASI KESUBURAN TANAH 
 ### Dataset Kesuburan Tanah 
 Dataset berisi 2.000 sampel data tanah dengan 10 fitur agronomis dan 1 kolom label yang membagi kondisi tanah menjadi dua kelas: Subur dan Tidak Subur.
 

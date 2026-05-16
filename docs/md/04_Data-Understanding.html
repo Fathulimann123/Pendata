@@ -173,20 +173,7 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="02_Bussiness-Understanding.html">Bussiness Understanding</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Understanding</a></li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="05_UTS-Pendat_Kesuburan-Tanah.html">UTS Pendat Kesuburan Tanah</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_UTS-Pendat_Kesuburan-Tanah.html">UTS - DATASET KLASIFIKASI KESUBURAN TANAH</a></li>
 </ul>
 
     </div>
@@ -379,129 +366,125 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Understanding</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-metodologi-crisp-dm">Apa itu Metodologi CRISP-DM?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-utama-fase-ini">Tujuan Utama Fase Ini:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-akses-data">Persiapan Akses Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-kualitas-data-null-duplicate">Verifikasi Kualitas Data (Null &amp; Duplicate)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-histogram">Apa itu Histogram?</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-akses-data">Persiapan Akses Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-kualitas-data-null-duplicate">Verifikasi Kualitas Data (Null &amp; Duplicate)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-histogram">Apa itu Histogram?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-scatter-plot">Apa itu Scatter Plot?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kenapa-kita-melakukan-visualisasi-ini">Kenapa Kita Melakukan Visualisasi Ini?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#memahami-sumbu-x-dan-y-titik-pertemuan">Memahami Sumbu X dan Y (Titik Pertemuan)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter plot</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-scatter-plot">Apa itu Scatter Plot?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kenapa-kita-melakukan-visualisasi-ini">Kenapa Kita Melakukan Visualisasi Ini?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memahami-sumbu-x-dan-y-titik-pertemuan">Memahami Sumbu X dan Y (Titik Pertemuan)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outlier">Outlier</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-outlier">Apa itu Outlier?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outlier">Outlier</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-outlier">Apa itu Outlier?</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-data-distance">Mengukur jarak data  (distance)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-data-iris">Menghitung jarak data iris <br/></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-numerik-pada-iris">Menghitung Jarak Numerik Pada IRIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-kategorikal-pada-iris">Menghitung Jarak Kategorikal Pada IRIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#akumulasi-jarak-akhir-pada-iris">Akumulasi Jarak Akhir Pada IRIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-tambahan-cosine-similarity-arah-kedekatan">Analisis Tambahan: Cosine Similarity (Arah Kedekatan)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insight-akhir">Insight Akhir</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-pada-orange-data-mining">Implementasi pada Orange Data Mining</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-data-distance">Mengukur jarak data  (distance)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-data-iris">Menghitung jarak data iris <br/></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-numerik-pada-iris">Menghitung Jarak Numerik Pada IRIS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-kategorikal-pada-iris">Menghitung Jarak Kategorikal Pada IRIS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#akumulasi-jarak-akhir-pada-iris">Akumulasi Jarak Akhir Pada IRIS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-tambahan-cosine-similarity-arah-kedekatan">Analisis Tambahan: Cosine Similarity (Arah Kedekatan)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#insight-akhir">Insight Akhir</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-pada-orange-data-mining">Implementasi pada Orange Data Mining</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-data-student">Menghitung jarak data student</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-numerik-pada-student">Menghitung Jarak Numerik pada Student</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nominal-pada-student-simple-matching">Menghitung Nominal Pada Student (Simple Matching)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-menghitung-jarak-ordinal">Normalisasi &amp; Menghitung Jarak Ordinal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#akumulasi-jarak-akhir-pada-student">Akumulasi Jarak Akhir Pada Student</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-interpretasi-akhir">Analisis &amp; Interpretasi Akhir</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data-normalisasi-dan-penanganan-data-hilang">Preprocessing Data: Normalisasi dan Penanganan Data Hilang</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-tipe-data-atribut">Analisis Tipe Data Atribut</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-min-max">Normalisasi Min-Max</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-dan-atribut-sasaran">1. Tujuan dan Atribut Sasaran</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja">2. Cara Kerja</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alasan-pemilihan-min-max">3. Alasan Pemilihan Min-Max</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-sederhana">4. Penjelasan Sederhana</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-encoding-data-kategorikal">Mapping &amp; Encoding (Data Kategorikal)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. Tujuan dan Atribut Sasaran</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mekanisme-transformasi">2. Mekanisme Transformasi</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alasan-pemilihan-mapping">3. Alasan Pemilihan Mapping</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4. Penjelasan Sederhana</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-final-hasil-preprocessing">Dataset Final (Hasil Preprocessing)</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-missing-value-dengan-weighted-k-nearest-neighbors">Penanganan Missing Value dengan Weighted K-Nearest Neighbors.</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-jarak-euclidean">Perhitungan Jarak Euclidean</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-rumus-dasar">A. Rumus Dasar</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-tabel-perhitungan-jarak-manual">B.Tabel Perhitungan Jarak (Manual)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-perhitungan-jarak-code">C. Perhitungan Jarak (code)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-penentuan-tetangga-terdekat-k-3">D. Penentuan Tetangga Terdekat (K=3)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-bobot">Perhitungan Bobot</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-bobot-w">1. Menghitung Nilai Bobot (W)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-perkalian-bobot-dengan-nilai-w-y">2. Menghitung Perkalian Bobot dengan Nilai (W * y)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-imputation-menambal-data">3. Final Imputation (Menambal Data)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir"><strong>4. Hasil Akhir</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-data-student">Menghitung jarak data student</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-numerik-pada-student">Menghitung Jarak Numerik pada Student</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nominal-pada-student-simple-matching">Menghitung Nominal Pada Student (Simple Matching)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-menghitung-jarak-ordinal">Normalisasi &amp; Menghitung Jarak Ordinal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#akumulasi-jarak-akhir-pada-student">Akumulasi Jarak Akhir Pada Student</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-interpretasi-akhir">Analisis &amp; Interpretasi Akhir</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-dataset-student-depression">GAUSSIAN DATASET STUDENT DEPRESSION</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-yang-digunakan">Atribut yang Digunakan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-knime">implementasi Knime</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data-normalisasi-dan-penanganan-data-hilang">Preprocessing Data: Normalisasi dan Penanganan Data Hilang</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-tipe-data-atribut">Analisis Tipe Data Atribut</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-min-max">Normalisasi Min-Max</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-dan-atribut-sasaran">1. Tujuan dan Atribut Sasaran</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja">2. Cara Kerja</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alasan-pemilihan-min-max">3. Alasan Pemilihan Min-Max</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-sederhana">4. Penjelasan Sederhana</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-workflow-knime-optimasi-gaussian-naive-bayes">Analisis Workflow KNIME: Optimasi Gaussian Naive Bayes</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daftar-node-dan-fungsinya">Daftar Node dan Fungsinya</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-node-knime-optimasi-gaussian-naive-bayes">Tabel Node KNIME: Optimasi Gaussian Naive Bayes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-encoding-data-kategorikal">Mapping &amp; Encoding (Data Kategorikal)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. Tujuan dan Atribut Sasaran</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mekanisme-transformasi">2. Mekanisme Transformasi</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alasan-pemilihan-mapping">3. Alasan Pemilihan Mapping</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4. Penjelasan Sederhana</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-teknis-python-script">Penjelasan Teknis Python Script</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keunggulan-alur-optimasi">3 Keunggulan Alur Optimasi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan">Ringkasan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-final-hasil-preprocessing">Dataset Final (Hasil Preprocessing)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-student-depression">Decision Tree - Student Depression</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-missing-value-dengan-weighted-k-nearest-neighbors">Penanganan Missing Value dengan Weighted K-Nearest Neighbors.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-jarak-euclidean">Perhitungan Jarak Euclidean</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-rumus-dasar">A. Rumus Dasar</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-tabel-perhitungan-jarak-manual">B.Tabel Perhitungan Jarak (Manual)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-perhitungan-jarak-code">C. Perhitungan Jarak (code)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d-penentuan-tetangga-terdekat-k-3">D. Penentuan Tetangga Terdekat (K=3)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-pada-knime">Implementasi Pada KNIME</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#partisi">Partisi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-bobot">Perhitungan Bobot</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-bobot-w">1. Menghitung Nilai Bobot (W)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-perkalian-bobot-dengan-nilai-w-y">2. Menghitung Perkalian Bobot dengan Nilai (W * y)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#final-imputation-menambal-data">3. Final Imputation (Menambal Data)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir"><strong>4. Hasil Akhir</strong></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-learner">Decision Tree Learner</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-dasar-decision-tree-dengan-gain-ratio">Rumus Dasar Decision Tree dengan Gain Ratio</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-entropy-root">Hitung Entropy Root</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-gain-split-info-dan-gain-ratio-tiap-atribut">Hitung Gain, Split Info, dan Gain Ratio tiap Atribut</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-have-you-ever-had-suicidal-thoughts">Atribut “Have you ever had suicidal thoughts?”</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-academic-pressure">Atribut “Academic Pressure”</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-gain-ratio-semua-atribut">Perbandingan Gain Ratio Semua Atribut</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree">Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-dataset-student-depression">GAUSSIAN DATASET STUDENT DEPRESSION</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-yang-digunakan">Atribut yang Digunakan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-knime">implementasi Knime</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-predictor">Decision Tree Predictor</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion Matrix</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-performa">Metrik Performa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-workflow-knime-optimasi-gaussian-naive-bayes">Analisis Workflow KNIME: Optimasi Gaussian Naive Bayes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daftar-node-dan-fungsinya">Daftar Node dan Fungsinya</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-node-knime-optimasi-gaussian-naive-bayes">Tabel Node KNIME: Optimasi Gaussian Naive Bayes</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-teknis-python-script">Penjelasan Teknis Python Script</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keunggulan-alur-optimasi">3 Keunggulan Alur Optimasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan">Ringkasan</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-student-depression">Decision Tree - Student Depression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-pada-knime">Implementasi Pada KNIME</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partisi">Partisi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-learner">Decision Tree Learner</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-dasar-decision-tree-dengan-gain-ratio">Rumus Dasar Decision Tree dengan Gain Ratio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-entropy-root">Hitung Entropy Root</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-gain-split-info-dan-gain-ratio-tiap-atribut">Hitung Gain, Split Info, dan Gain Ratio tiap Atribut</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-have-you-ever-had-suicidal-thoughts">Atribut “Have you ever had suicidal thoughts?”</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-academic-pressure">Atribut “Academic Pressure”</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-gain-ratio-semua-atribut">Perbandingan Gain Ratio Semua Atribut</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tree">Tree</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-predictor">Decision Tree Predictor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-performa">Metrik Performa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -512,7 +495,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="data-understanding">
+  <section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
 <h1>Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
 <section id="apa-itu-metodologi-crisp-dm">
 <h2>Apa itu Metodologi CRISP-DM?<a class="headerlink" href="#apa-itu-metodologi-crisp-dm" title="Link to this heading">#</a></h2>
@@ -525,11 +508,10 @@
 <li><p><strong>Cek Kualitas</strong>: Mastiin datanya bersih, gak ada yang kosong (<em>missing values</em>), atau gak ada yang aneh (<em>outliers</em>).</p></li>
 <li><p><strong>Cari Insight Awal</strong>: Nemu pola-pola menarik lewat statistik simpel.</p></li>
 </ol>
+</section>
 <hr class="docutils" />
-</section>
-</section>
 <section id="persiapan-akses-data">
-<h1>Persiapan Akses Data<a class="headerlink" href="#persiapan-akses-data" title="Link to this heading">#</a></h1>
+<h2>Persiapan Akses Data<a class="headerlink" href="#persiapan-akses-data" title="Link to this heading">#</a></h2>
 <p>Sebelum kita bisa memahami pola dan karakteristik data, kita perlu memastikan data bisa diakses dengan baik. Tahap ini termasuk bagian dari <strong>Data Understanding</strong>, karena kita sedang mengenali sumber data dan cara membacanya.</p>
 <p><strong>Install Library &amp; Connect Python ke Database</strong><br />
 Jalankan perintah berikut di terminal/command prompt untuk menginstal library yang dibutuhkan:</p>
@@ -745,10 +727,10 @@ Dataset ini terdiri dari 4 atribut numerik yang merepresentasikan ukuran bagian 
 <li><p><strong>Min</strong>: Nilai terkecil yang ditemukan dalam kolom tersebut.</p></li>
 <li><p><strong>Max</strong>: Nilai terbesar yang ditemukan dalam kolom tersebut.</p></li>
 </ol>
-<hr class="docutils" />
 </section>
+<hr class="docutils" />
 <section id="verifikasi-kualitas-data-null-duplicate">
-<h1>Verifikasi Kualitas Data (Null &amp; Duplicate)<a class="headerlink" href="#verifikasi-kualitas-data-null-duplicate" title="Link to this heading">#</a></h1>
+<h2>Verifikasi Kualitas Data (Null &amp; Duplicate)<a class="headerlink" href="#verifikasi-kualitas-data-null-duplicate" title="Link to this heading">#</a></h2>
 <p>Setelah kita cek angka-angkanya, sekarang kita pastikan data ini benar-benar bersih. Di dunia penambangan data, ada istilah <strong>“Garbage In, Garbage Out”</strong>; kalau datanya sampah, hasilnya pun bakal sampah.</p>
 <p><strong>Pemeriksaan Nilai Null (Missing Values)</strong></p>
 <p>Data kosong bisa bikin algoritma kita <em>error</em> atau salah hitung. Kita pakai fungsi <code class="docutils literal notranslate"><span class="pre">isnull()</span></code> untuk melihat apakah ada baris yang bolong.</p>
@@ -847,11 +829,11 @@ Jika hasilnya semua 0, berarti data Iris kamu sudah aman dan lengkap. Tidak perl
 </div></blockquote>
 </section>
 <section id="visualisasi-data">
-<h1>Visualisasi Data<a class="headerlink" href="#visualisasi-data" title="Link to this heading">#</a></h1>
+<h2>Visualisasi Data<a class="headerlink" href="#visualisasi-data" title="Link to this heading">#</a></h2>
 <section id="histogram">
-<h2>Histogram<a class="headerlink" href="#histogram" title="Link to this heading">#</a></h2>
+<h3>Histogram<a class="headerlink" href="#histogram" title="Link to this heading">#</a></h3>
 <section id="apa-itu-histogram">
-<h3>Apa itu Histogram?<a class="headerlink" href="#apa-itu-histogram" title="Link to this heading">#</a></h3>
+<h4>Apa itu Histogram?<a class="headerlink" href="#apa-itu-histogram" title="Link to this heading">#</a></h4>
 <p>Histogram adalah grafik batang yang menggambarkan distribusi atau penyebaran frekuensi data. Alih alih melihat tumpukan angka dalam tabel, histogram mengubahnya menjadi bentuk visual agar kita bisa melihat pola data secara instan.</p>
 <p><strong>Kenapa Kita Melakukan Visualisasi Ini?</strong> <br>
 Tujuannya adalah untuk memahami karakteristik fisik (seperti panjang dan lebar kelopak bunga) secara cepat. Kita bisa langsung mengetahui:</p>
@@ -880,13 +862,13 @@ Agar mudah dipahami, bayangkan sumbu ini sebagai koordinat dasar:</p>
 </section>
 </section>
 <section id="scatter-plot">
-<h2>Scatter plot<a class="headerlink" href="#scatter-plot" title="Link to this heading">#</a></h2>
+<h3>Scatter plot<a class="headerlink" href="#scatter-plot" title="Link to this heading">#</a></h3>
 <section id="apa-itu-scatter-plot">
-<h3>Apa itu Scatter Plot?<a class="headerlink" href="#apa-itu-scatter-plot" title="Link to this heading">#</a></h3>
+<h4>Apa itu Scatter Plot?<a class="headerlink" href="#apa-itu-scatter-plot" title="Link to this heading">#</a></h4>
 <p>Scatter plot (diagram titik) adalah grafik yang digunakan untuk melihat hubungan antara dua variabel angka. Jika histogram hanya melihat satu fitur, scatter plot mempertemukan dua fitur sekaligus untuk melihat apakah mereka saling memengaruhi.</p>
 </section>
 <section id="kenapa-kita-melakukan-visualisasi-ini">
-<h3>Kenapa Kita Melakukan Visualisasi Ini?<a class="headerlink" href="#kenapa-kita-melakukan-visualisasi-ini" title="Link to this heading">#</a></h3>
+<h4>Kenapa Kita Melakukan Visualisasi Ini?<a class="headerlink" href="#kenapa-kita-melakukan-visualisasi-ini" title="Link to this heading">#</a></h4>
 <p>Tujuannya adalah untuk mencari Korelasi (pola hubungan). Dengan scatter plot, kita bisa menjawab pertanyaan seperti:</p>
 <ul class="simple">
 <li><p>“Kalau kelopak bunganya makin panjang, apakah lebarnya otomatis makin besar juga?”</p></li>
@@ -894,7 +876,7 @@ Agar mudah dipahami, bayangkan sumbu ini sebagai koordinat dasar:</p>
 </ul>
 </section>
 <section id="memahami-sumbu-x-dan-y-titik-pertemuan">
-<h3>Memahami Sumbu X dan Y (Titik Pertemuan)<a class="headerlink" href="#memahami-sumbu-x-dan-y-titik-pertemuan" title="Link to this heading">#</a></h3>
+<h4>Memahami Sumbu X dan Y (Titik Pertemuan)<a class="headerlink" href="#memahami-sumbu-x-dan-y-titik-pertemuan" title="Link to this heading">#</a></h4>
 <p>Cara membacanya sangat sederhana, bayangkan seperti koordinat di peta:</p>
 <ul class="simple">
 <li><p><em><strong>Sumbu X (Horizontal)</strong></em>: Variabel pertama (misal: Panjang Sepal).</p></li>
@@ -928,9 +910,9 @@ berikut jika di implementasikan di python</p>
 </section>
 </section>
 <section id="outlier">
-<h2>Outlier<a class="headerlink" href="#outlier" title="Link to this heading">#</a></h2>
+<h3>Outlier<a class="headerlink" href="#outlier" title="Link to this heading">#</a></h3>
 <section id="apa-itu-outlier">
-<h3>Apa itu Outlier?<a class="headerlink" href="#apa-itu-outlier" title="Link to this heading">#</a></h3>
+<h4>Apa itu Outlier?<a class="headerlink" href="#apa-itu-outlier" title="Link to this heading">#</a></h4>
 <p>Outlier (Pencilan) adalah titik data yang nilainya sangat jauh berbeda dari mayoritas data lainnya dalam satu kelompok. Bayangkan jika kamu mendata tinggi badan mahasiswa di kelasmu yang rata-rata 160–170 cm, tiba-tiba ada satu orang yang tingginya 210 cm. Nah, orang tersebut adalah outlier.</p>
 <p><strong>Kenapa Kita Harus Mendeteksi Outlier?</strong> <br>
 Dalam pengolahan data, outlier bisa terjadi karena dua hal:</p>
@@ -975,9 +957,9 @@ Nomor Baris Outlier: <br>
 </section>
 </section>
 <section id="mengukur-jarak-data-distance">
-<h1>Mengukur jarak data  (distance)<a class="headerlink" href="#mengukur-jarak-data-distance" title="Link to this heading">#</a></h1>
+<h2>Mengukur jarak data  (distance)<a class="headerlink" href="#mengukur-jarak-data-distance" title="Link to this heading">#</a></h2>
 <section id="menghitung-jarak-data-iris">
-<h2>Menghitung jarak data iris <br><a class="headerlink" href="#menghitung-jarak-data-iris" title="Link to this heading">#</a></h2>
+<h3>Menghitung jarak data iris <br><a class="headerlink" href="#menghitung-jarak-data-iris" title="Link to this heading">#</a></h3>
 <p>Diatas tadi kita sudah explorasi data kita sudah tau bahwa data pada <code class="docutils literal notranslate"><span class="pre">IRIS</span></code> yang semua datanya Numerik, sehingga kita hanya akan menggunakan tipe jarak Euclidean, dan jarak kategorikal pada kolom spesies</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -1017,7 +999,7 @@ Nomor Baris Outlier: <br>
 </table>
 </div>
 <section id="menghitung-jarak-numerik-pada-iris">
-<h3>Menghitung Jarak Numerik Pada IRIS<a class="headerlink" href="#menghitung-jarak-numerik-pada-iris" title="Link to this heading">#</a></h3>
+<h4>Menghitung Jarak Numerik Pada IRIS<a class="headerlink" href="#menghitung-jarak-numerik-pada-iris" title="Link to this heading">#</a></h4>
 <p>Tujuan perhitungan ini adalah untuk mengukur kemiripan (<em>similarity</em>) dua sampel data dengan melihat selisih nilai pada tiap fitur <code class="docutils literal notranslate"><span class="pre">numeriknya</span></code>.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -1074,7 +1056,7 @@ Nilai jarak <strong>0.5385</strong> yang mendekati angka <strong>0</strong> memb
 </section>
 <hr class="docutils" />
 <section id="menghitung-jarak-kategorikal-pada-iris">
-<h3>Menghitung Jarak Kategorikal Pada IRIS<a class="headerlink" href="#menghitung-jarak-kategorikal-pada-iris" title="Link to this heading">#</a></h3>
+<h4>Menghitung Jarak Kategorikal Pada IRIS<a class="headerlink" href="#menghitung-jarak-kategorikal-pada-iris" title="Link to this heading">#</a></h4>
 <p>Untuk atribut non-numerik seperti ‘Species’, kita menggunakan metode <strong><code class="docutils literal notranslate"><span class="pre">Simple</span> <span class="pre">Matching</span></code></strong>. Logikanya sederhana: jika data sama maka jaraknya 0 (identik), jika berbeda maka jaraknya 1 (maksimal).</p>
 <p>Rumus yang digunakan adalah <span class="math notranslate nohighlight">\(D_{cat} = \frac{P - M}{P}\)</span>, di mana <span class="math notranslate nohighlight">\(P\)</span> adalah total fitur kategorikal dan <span class="math notranslate nohighlight">\(M\)</span> adalah jumlah kecocokan (<em>match</em>).</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -1106,7 +1088,7 @@ Nilai jarak <strong>0.5385</strong> yang mendekati angka <strong>0</strong> memb
 </section>
 <hr class="docutils" />
 <section id="akumulasi-jarak-akhir-pada-iris">
-<h3>Akumulasi Jarak Akhir Pada IRIS<a class="headerlink" href="#akumulasi-jarak-akhir-pada-iris" title="Link to this heading">#</a></h3>
+<h4>Akumulasi Jarak Akhir Pada IRIS<a class="headerlink" href="#akumulasi-jarak-akhir-pada-iris" title="Link to this heading">#</a></h4>
 <p>Setelah mendapatkan nilai dari dua aspek berbeda (Numerik dan Kategorikal), kita menggabungkannya untuk mendapatkan skor jarak total. Dalam kasus ini, kita menggunakan penjumlahan sederhana:</p>
 <div class="math notranslate nohighlight">
 \[D_{total} = D_{num} + D_{cat}\]</div>
@@ -1115,7 +1097,7 @@ $<span class="math notranslate nohighlight">\(D_{total} = 0.5385 + 0 = \mathbf{0
 </section>
 <hr class="docutils" />
 <section id="analisis-tambahan-cosine-similarity-arah-kedekatan">
-<h3>Analisis Tambahan: Cosine Similarity (Arah Kedekatan)<a class="headerlink" href="#analisis-tambahan-cosine-similarity-arah-kedekatan" title="Link to this heading">#</a></h3>
+<h4>Analisis Tambahan: Cosine Similarity (Arah Kedekatan)<a class="headerlink" href="#analisis-tambahan-cosine-similarity-arah-kedekatan" title="Link to this heading">#</a></h4>
 <p>Selain melihat jarak “garis lurus” (Euclidean), kita juga menggunakan <strong>Cosine Similarity</strong> untuk melihat kemiripan proporsi atau arah sudut antar fitur numerik. Jika Euclidean melihat seberapa “jauh” perbedaannya, Cosine melihat seberapa “searah” polanya.</p>
 <p><strong>Rumus Komputasi:</strong>
 $<span class="math notranslate nohighlight">\(\cos(\theta) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\| \|\mathbf{B}\|}\)</span>$</p>
@@ -1131,7 +1113,7 @@ $<span class="math notranslate nohighlight">\(\cos(\theta) = \frac{\mathbf{A} \c
 </ol>
 </section>
 <section id="insight-akhir">
-<h3>Insight Akhir<a class="headerlink" href="#insight-akhir" title="Link to this heading">#</a></h3>
+<h4>Insight Akhir<a class="headerlink" href="#insight-akhir" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>Jarak Total (0.5385):</strong> Mengonfirmasi bahwa secara fisik, kedua bunga ini berada pada posisi yang berdekatan di ruang data.</p></li>
 <li><p><strong>Cosine Similarity (0.9984):</strong> Angka yang sangat mendekati <strong>1.0</strong> ini menunjukkan bahwa pola pertumbuhan (proporsi) antara Baris 0 dan Baris 1 hampir identik secara arah sudut.</p></li>
@@ -1141,7 +1123,7 @@ $<span class="math notranslate nohighlight">\(\cos(\theta) = \frac{\mathbf{A} \c
 </div></blockquote>
 </section>
 <section id="implementasi-pada-orange-data-mining">
-<h3>Implementasi pada Orange Data Mining<a class="headerlink" href="#implementasi-pada-orange-data-mining" title="Link to this heading">#</a></h3>
+<h4>Implementasi pada Orange Data Mining<a class="headerlink" href="#implementasi-pada-orange-data-mining" title="Link to this heading">#</a></h4>
 <p>Dalam praktikum menggunakan Orange Data Mining, kita memanfaatkan widget Distances. Poin krusial dalam langkah ini adalah penggunaan metode Normalized Euclidean.</p>
 <p>Mengapa Harus Normalisasi? Karena setiap fitur mungkin memiliki skala yang berbeda. Normalisasi memastikan bahwa fitur dengan angka besar (misal Sepal Length) tidak mendominasi fitur dengan angka kecil (misal Petal Width).</p>
 <p>Output: Hasilnya diproyeksikan ke dalam Distance Matrix, yang memvisualisasikan skor jarak antar setiap sampel data secara head-to-head.
@@ -1155,7 +1137,7 @@ $<span class="math notranslate nohighlight">\(\cos(\theta) = \frac{\mathbf{A} \c
 </section>
 <hr class="docutils" />
 <section id="menghitung-jarak-data-student">
-<h2>Menghitung jarak data student<a class="headerlink" href="#menghitung-jarak-data-student" title="Link to this heading">#</a></h2>
+<h3>Menghitung jarak data student<a class="headerlink" href="#menghitung-jarak-data-student" title="Link to this heading">#</a></h3>
 <p>Berikut adalah data sampel untuk pengujian (Row 0 dan Row 1):</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -1251,7 +1233,7 @@ Dalam Data Mining, kita tidak bisa asal menjumlahkan semua kolom karena “cara 
 <p>Karena dataset Student memiliki variasi tipe data yang berbeda, kita melakukan dekomposisi perhitungan berdasarkan sifat masing-masing fitur (Numerik, Nominal, dan Ordinal) untuk menjaga akurasi kemiripan.</p>
 <hr class="docutils" />
 <section id="menghitung-jarak-numerik-pada-student">
-<h3>Menghitung Jarak Numerik pada Student<a class="headerlink" href="#menghitung-jarak-numerik-pada-student" title="Link to this heading">#</a></h3>
+<h4>Menghitung Jarak Numerik pada Student<a class="headerlink" href="#menghitung-jarak-numerik-pada-student" title="Link to this heading">#</a></h4>
 <p>Fitur numerik kontinu diukur menggunakan selisih kuadrat untuk melihat jarak fisik antar observasi.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -1285,7 +1267,7 @@ Dalam Data Mining, kita tidak bisa asal menjumlahkan semua kolom karena “cara 
 </section>
 <hr class="docutils" />
 <section id="menghitung-nominal-pada-student-simple-matching">
-<h3>Menghitung Nominal Pada Student (Simple Matching)<a class="headerlink" href="#menghitung-nominal-pada-student-simple-matching" title="Link to this heading">#</a></h3>
+<h4>Menghitung Nominal Pada Student (Simple Matching)<a class="headerlink" href="#menghitung-nominal-pada-student-simple-matching" title="Link to this heading">#</a></h4>
 <p>Untuk fitur label (Nominal), kita menggunakan rasio ketidakcocokan. Jarak akan bernilai <strong>0</strong> jika identik dan <strong>1</strong> jika berbeda.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -1322,7 +1304,7 @@ Dalam Data Mining, kita tidak bisa asal menjumlahkan semua kolom karena “cara 
 </section>
 <hr class="docutils" />
 <section id="normalisasi-menghitung-jarak-ordinal">
-<h3>Normalisasi &amp; Menghitung Jarak Ordinal<a class="headerlink" href="#normalisasi-menghitung-jarak-ordinal" title="Link to this heading">#</a></h3>
+<h4>Normalisasi &amp; Menghitung Jarak Ordinal<a class="headerlink" href="#normalisasi-menghitung-jarak-ordinal" title="Link to this heading">#</a></h4>
 <p>Fitur ordinal memiliki tingkatan nilai. Kita melakukan <em>mapping</em> ke skala numerik (misal: Healthy=3, Moderate=2, Unhealthy=1) sebelum dilakukan perhitungan.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -1362,7 +1344,7 @@ Dalam Data Mining, kita tidak bisa asal menjumlahkan semua kolom karena “cara 
 </section>
 <hr class="docutils" />
 <section id="akumulasi-jarak-akhir-pada-student">
-<h3>Akumulasi Jarak Akhir Pada Student<a class="headerlink" href="#akumulasi-jarak-akhir-pada-student" title="Link to this heading">#</a></h3>
+<h4>Akumulasi Jarak Akhir Pada Student<a class="headerlink" href="#akumulasi-jarak-akhir-pada-student" title="Link to this heading">#</a></h4>
 <p>Hasil akhir diperoleh dengan menggabungkan ketiga dimensi jarak tersebut:</p>
 <div class="math notranslate nohighlight">
 \[D_{total} = D_{num} + D_{nom} + D_{ord}\]</div>
@@ -1371,7 +1353,7 @@ Dalam Data Mining, kita tidak bisa asal menjumlahkan semua kolom karena “cara 
 </section>
 <hr class="docutils" />
 <section id="analisis-interpretasi-akhir">
-<h3>Analisis &amp; Interpretasi Akhir<a class="headerlink" href="#analisis-interpretasi-akhir" title="Link to this heading">#</a></h3>
+<h4>Analisis &amp; Interpretasi Akhir<a class="headerlink" href="#analisis-interpretasi-akhir" title="Link to this heading">#</a></h4>
 <p>Berdasarkan hasil komputasi sebesar <strong>14.54</strong>, dapat disimpulkan bahwa Mahasiswa pada Baris 0 dan Baris 1 memiliki tingkat perbedaan yang signifikan.</p>
 <ol class="arabic simple">
 <li><p><strong>Dominasi Usia:</strong> Perbedaan usia (9 tahun) memberikan kontribusi terbesar (<span class="math notranslate nohighlight">\(81.0\)</span> pada varians) terhadap jarak total.</p></li>
@@ -1382,10 +1364,10 @@ Dalam Data Mining, kita tidak bisa asal menjumlahkan semua kolom karena “cara 
 </section>
 </section>
 <section id="preprocessing-data-normalisasi-dan-penanganan-data-hilang">
-<h1>Preprocessing Data: Normalisasi dan Penanganan Data Hilang<a class="headerlink" href="#preprocessing-data-normalisasi-dan-penanganan-data-hilang" title="Link to this heading">#</a></h1>
+<h2>Preprocessing Data: Normalisasi dan Penanganan Data Hilang<a class="headerlink" href="#preprocessing-data-normalisasi-dan-penanganan-data-hilang" title="Link to this heading">#</a></h2>
 <p>Tahap preprocessing merupakan langkah krusial dalam Data Mining untuk memastikan data mentah siap diolah oleh algoritma. Pada proyek ini, fokus utama preprocessing adalah melakukan Normalisasi untuk menyamakan skala fitur numerik dan Imputasi untuk menangani data yang kosong (missing values) agar informasi dalam dataset tetap utuh dan akurat.</p>
 <section id="analisis-tipe-data-atribut">
-<h2>Analisis Tipe Data Atribut<a class="headerlink" href="#analisis-tipe-data-atribut" title="Link to this heading">#</a></h2>
+<h3>Analisis Tipe Data Atribut<a class="headerlink" href="#analisis-tipe-data-atribut" title="Link to this heading">#</a></h3>
 <p>Sebelum menerapkan rumus, kita harus mengelompokkan atribut berdasarkan tipe datanya untuk menentukan metode transformasi yang tepat:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -1411,9 +1393,9 @@ Dalam Data Mining, kita tidak bisa asal menjumlahkan semua kolom karena “cara 
 </div>
 </section>
 <section id="normalisasi-min-max">
-<h2>Normalisasi Min-Max<a class="headerlink" href="#normalisasi-min-max" title="Link to this heading">#</a></h2>
+<h3>Normalisasi Min-Max<a class="headerlink" href="#normalisasi-min-max" title="Link to this heading">#</a></h3>
 <section id="tujuan-dan-atribut-sasaran">
-<h3>1. Tujuan dan Atribut Sasaran<a class="headerlink" href="#tujuan-dan-atribut-sasaran" title="Link to this heading">#</a></h3>
+<h4>1. Tujuan dan Atribut Sasaran<a class="headerlink" href="#tujuan-dan-atribut-sasaran" title="Link to this heading">#</a></h4>
 <p>Normalisasi Min-Max digunakan untuk menyamakan skala atribut numerik dan ordinal seperti</p>
 <ul class="simple">
 <li><p>Age</p></li>
@@ -1424,7 +1406,7 @@ Dalam Data Mining, kita tidak bisa asal menjumlahkan semua kolom karena “cara 
 <p>Tujuannya adalah agar semua nilai berada dalam rentang 0 hingga 1, sehingga perbandingan antar atribut menjadi lebih adil.</p>
 </section>
 <section id="cara-kerja">
-<h3>2. Cara Kerja<a class="headerlink" href="#cara-kerja" title="Link to this heading">#</a></h3>
+<h4>2. Cara Kerja<a class="headerlink" href="#cara-kerja" title="Link to this heading">#</a></h4>
 <p>Metode ini melakukan transformasi linear pada data asli.</p>
 <ul class="simple">
 <li><p>Nilai terkecil dalam suatu kolom akan menjadi 0.</p></li>
@@ -1436,26 +1418,26 @@ Dalam Data Mining, kita tidak bisa asal menjumlahkan semua kolom karena “cara 
 \[x' = \frac{x - x_{min}}{x_{max} - x_{min}}\]</div>
 </section>
 <section id="alasan-pemilihan-min-max">
-<h3>3. Alasan Pemilihan Min-Max<a class="headerlink" href="#alasan-pemilihan-min-max" title="Link to this heading">#</a></h3>
+<h4>3. Alasan Pemilihan Min-Max<a class="headerlink" href="#alasan-pemilihan-min-max" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Keadilan Jarak: Tanpa normalisasi, selisih Age (misalnya 10 tahun) bisa terlihat jauh lebih besar dibanding selisih CGPA (misalnya 0.5). Padahal, pengaruh IPK terhadap stres bisa lebih signifikan. Normalisasi membuat perbandingan lebih seimbang.</p></li>
 <li><p>Kompatibilitas: Rentang 0–1 cocok dipadukan dengan data kategorikal yang sudah di-encode menjadi biner (0 dan 1). Hal ini membuat perhitungan jarak Euclidean lebih stabil dan akurat.</p></li>
 </ul>
 </section>
 <section id="penjelasan-sederhana">
-<h3>4. Penjelasan Sederhana<a class="headerlink" href="#penjelasan-sederhana" title="Link to this heading">#</a></h3>
+<h4>4. Penjelasan Sederhana<a class="headerlink" href="#penjelasan-sederhana" title="Link to this heading">#</a></h4>
 <p>Bayangkan kamu punya dua penggaris: satu panjang 100 cm (untuk Age), satu lagi hanya 4 cm (untuk CGPA). Kalau dibandingkan langsung, perubahan kecil di CGPA akan kalah terlihat dibanding perubahan besar di Age. Normalisasi Min-Max ibarat menyamakan panjang penggaris menjadi skala yang sama (0–1), sehingga setiap perubahan bisa dibandingkan secara adil.</p>
 </section>
 </section>
 <section id="mapping-encoding-data-kategorikal">
-<h2>Mapping &amp; Encoding (Data Kategorikal)<a class="headerlink" href="#mapping-encoding-data-kategorikal" title="Link to this heading">#</a></h2>
+<h3>Mapping &amp; Encoding (Data Kategorikal)<a class="headerlink" href="#mapping-encoding-data-kategorikal" title="Link to this heading">#</a></h3>
 <section id="id1">
-<h3>1. Tujuan dan Atribut Sasaran<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h4>1. Tujuan dan Atribut Sasaran<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <p>Data kategori berbentuk teks (misalnya Gender, City, dan Mental Health Status) tidak bisa langsung diproses dengan rumus matematika.
 Oleh karena itu, dilakukan Encoding agar label teks diubah menjadi angka representatif sehingga bisa digunakan dalam perhitungan jarak.</p>
 </section>
 <section id="mekanisme-transformasi">
-<h3>2. Mekanisme Transformasi<a class="headerlink" href="#mekanisme-transformasi" title="Link to this heading">#</a></h3>
+<h4>2. Mekanisme Transformasi<a class="headerlink" href="#mekanisme-transformasi" title="Link to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p>Biner (Label Encoding)<br />
 Digunakan untuk atribut dengan dua pilihan.
@@ -1476,7 +1458,7 @@ Dengan cara ini, setiap kategori teks memiliki representasi angka yang konsisten
 </ul>
 </section>
 <section id="alasan-pemilihan-mapping">
-<h3>3. Alasan Pemilihan Mapping<a class="headerlink" href="#alasan-pemilihan-mapping" title="Link to this heading">#</a></h3>
+<h4>3. Alasan Pemilihan Mapping<a class="headerlink" href="#alasan-pemilihan-mapping" title="Link to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p>Sederhana &amp; Efisien: Mudah diterapkan tanpa algoritma kompleks.</p></li>
 <li><p>Kompatibel dengan Simple Matching (WKNN):</p></li>
@@ -1488,12 +1470,12 @@ Dengan cara ini, setiap kategori teks memiliki representasi angka yang konsisten
 <p>Hal ini membuat perhitungan jarak antar data kategorikal lebih stabil dan mudah dipahami.</p>
 </section>
 <section id="id2">
-<h3>4. Penjelasan Sederhana<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h4>4. Penjelasan Sederhana<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p>Bayangkan kamu sedang membandingkan dua orang berdasarkan Gender. Kalau ditulis sebagai teks (“Male” vs “Female”), komputer tidak bisa langsung menghitung jaraknya. Tapi kalau diubah jadi angka (Male = 1, Female = 0), komputer bisa dengan mudah melihat apakah sama (jarak 0) atau berbeda (jarak 1).</p>
 </section>
 </section>
 <section id="dataset-final-hasil-preprocessing">
-<h2>Dataset Final (Hasil Preprocessing)<a class="headerlink" href="#dataset-final-hasil-preprocessing" title="Link to this heading">#</a></h2>
+<h3>Dataset Final (Hasil Preprocessing)<a class="headerlink" href="#dataset-final-hasil-preprocessing" title="Link to this heading">#</a></h3>
 <p>Setelah tahap Normalisasi Min-Max dan Mapping selesai, inilah tabel final yang siap digunakan untuk perhitungan Weighted K-Nearest Neighbors (WKNN):</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -1561,19 +1543,19 @@ Dengan cara ini, setiap kategori teks memiliki representasi angka yang konsisten
 </section>
 </section>
 <section id="penanganan-missing-value-dengan-weighted-k-nearest-neighbors">
-<h1>Penanganan Missing Value dengan Weighted K-Nearest Neighbors.<a class="headerlink" href="#penanganan-missing-value-dengan-weighted-k-nearest-neighbors" title="Link to this heading">#</a></h1>
+<h2>Penanganan Missing Value dengan Weighted K-Nearest Neighbors.<a class="headerlink" href="#penanganan-missing-value-dengan-weighted-k-nearest-neighbors" title="Link to this heading">#</a></h2>
 <p>Dalam dataset Student Mental Health yang kita olah, terdapat satu baris data yang memiliki nilai tidak lengkap (Missing Value) pada atribut CGPA. Baris inilah yang akan menjadi target utama dalam proses imputasi menggunakan algoritma Weighted K-Nearest Neighbors (WKNN).</p>
 <section id="perhitungan-jarak-euclidean">
-<h2>Perhitungan Jarak Euclidean<a class="headerlink" href="#perhitungan-jarak-euclidean" title="Link to this heading">#</a></h2>
+<h3>Perhitungan Jarak Euclidean<a class="headerlink" href="#perhitungan-jarak-euclidean" title="Link to this heading">#</a></h3>
 <p>Untuk mencari kemiripan, kita menggunakan rumus Euclidean Distance. Atribut yang dihitung adalah semua atribut kecuali CGPA (karena CGPA Baris 4 kosong).</p>
 <section id="a-rumus-dasar">
-<h3>A. Rumus Dasar<a class="headerlink" href="#a-rumus-dasar" title="Link to this heading">#</a></h3>
+<h4>A. Rumus Dasar<a class="headerlink" href="#a-rumus-dasar" title="Link to this heading">#</a></h4>
 <div class="math notranslate nohighlight">
 \[d(i, j) = \sqrt{\sum_{k=1}^{n} (x_{ik} - x_{jk})^2}\]</div>
 <p>Catatan: Untuk atribut City, jika kodenya berbeda maka selisihnya dianggap 1, jika sama dianggap 0.</p>
 </section>
 <section id="b-tabel-perhitungan-jarak-manual">
-<h3>B.Tabel Perhitungan Jarak (Manual)<a class="headerlink" href="#b-tabel-perhitungan-jarak-manual" title="Link to this heading">#</a></h3>
+<h4>B.Tabel Perhitungan Jarak (Manual)<a class="headerlink" href="#b-tabel-perhitungan-jarak-manual" title="Link to this heading">#</a></h4>
 <p>Berikut adalah hasil perhitungan jarak antara Baris 4 (Target) dengan baris referensi lainnya:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -1645,7 +1627,7 @@ Dengan cara ini, setiap kategori teks memiliki representasi angka yang konsisten
 <p><img alt="Statistik Orange" src="../_images/jarak-euclidean.png" /></p>
 </section>
 <section id="c-perhitungan-jarak-code">
-<h3>C. Perhitungan Jarak (code)<a class="headerlink" href="#c-perhitungan-jarak-code" title="Link to this heading">#</a></h3>
+<h4>C. Perhitungan Jarak (code)<a class="headerlink" href="#c-perhitungan-jarak-code" title="Link to this heading">#</a></h4>
 <p><img alt="Statistik Orange" src="../_images/kode-normalisasi.png" /></p>
 <p>=== PERHITUNGAN JARAK EUCLIDEAN ===</p>
 <p>Jarak Target (Baris 4) ke Baris 1: 1.9373 <br>
@@ -1654,7 +1636,7 @@ Jarak Target (Baris 4) ke Baris 3: 2.0276 <br>
 Jarak Target (Baris 4) ke Baris 5: 1.7951 <br></p>
 </section>
 <section id="d-penentuan-tetangga-terdekat-k-3">
-<h3>D. Penentuan Tetangga Terdekat (K=3)<a class="headerlink" href="#d-penentuan-tetangga-terdekat-k-3" title="Link to this heading">#</a></h3>
+<h4>D. Penentuan Tetangga Terdekat (K=3)<a class="headerlink" href="#d-penentuan-tetangga-terdekat-k-3" title="Link to this heading">#</a></h4>
 <p>Setelah seluruh jarak Euclidean antara Baris 4 (Target) dengan baris lainnya dihitung, langkah selanjutnya adalah mengurutkan jarak tersebut dari yang terkecil hingga terbesar.</p>
 <p>Dalam analisis ini, kita menetapkan nilai K=3, yang berarti kita hanya akan mengambil tiga tetangga terdekat (dengan tingkat kemiripan tertinggi) untuk digunakan dalam proses prediksi nilai CGPA.</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -1693,9 +1675,9 @@ Jarak Target (Baris 4) ke Baris 5: 1.7951 <br></p>
 </section>
 </section>
 <section id="perhitungan-bobot">
-<h2>Perhitungan Bobot<a class="headerlink" href="#perhitungan-bobot" title="Link to this heading">#</a></h2>
+<h3>Perhitungan Bobot<a class="headerlink" href="#perhitungan-bobot" title="Link to this heading">#</a></h3>
 <section id="menghitung-nilai-bobot-w">
-<h3>1. Menghitung Nilai Bobot (W)<a class="headerlink" href="#menghitung-nilai-bobot-w" title="Link to this heading">#</a></h3>
+<h4>1. Menghitung Nilai Bobot (W)<a class="headerlink" href="#menghitung-nilai-bobot-w" title="Link to this heading">#</a></h4>
 <p>Kita menggunakan rumus Inverse Squared Distance. Intinya: semakin besar jaraknya, semakin kecil bobotnya.</p>
 <p>Rumusnya:</p>
 <div class="math notranslate nohighlight">
@@ -1703,7 +1685,7 @@ Jarak Target (Baris 4) ke Baris 5: 1.7951 <br></p>
 <p><img alt="Statistik Orange" src="../_images/weight.png" /></p>
 </section>
 <section id="menghitung-perkalian-bobot-dengan-nilai-w-y">
-<h3>2. Menghitung Perkalian Bobot dengan Nilai (W * y)<a class="headerlink" href="#menghitung-perkalian-bobot-dengan-nilai-w-y" title="Link to this heading">#</a></h3>
+<h4>2. Menghitung Perkalian Bobot dengan Nilai (W * y)<a class="headerlink" href="#menghitung-perkalian-bobot-dengan-nilai-w-y" title="Link to this heading">#</a></h4>
 <p>Sekarang kita kalikan bobot masing-masing tetangga dengan nilai CGPA mereka yang sudah dinormalisasi</p>
 <p><img alt="Statistik Orange" src="../_images/w-cgpa.png" /></p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -1739,7 +1721,7 @@ Jarak Target (Baris 4) ke Baris 5: 1.7951 <br></p>
 </div>
 </section>
 <section id="final-imputation-menambal-data">
-<h3>3. Final Imputation (Menambal Data)<a class="headerlink" href="#final-imputation-menambal-data" title="Link to this heading">#</a></h3>
+<h4>3. Final Imputation (Menambal Data)<a class="headerlink" href="#final-imputation-menambal-data" title="Link to this heading">#</a></h4>
 <p>Di langkah ini, kita akan melakukan dua kali penjumlahan, lalu membaginya.</p>
 <p>Rumus Sederhananya:</p>
 <div class="math notranslate nohighlight">
@@ -1747,7 +1729,7 @@ Jarak Target (Baris 4) ke Baris 5: 1.7951 <br></p>
 </section>
 <hr class="docutils" />
 <section id="hasil-akhir">
-<h3><strong>4. Hasil Akhir</strong><a class="headerlink" href="#hasil-akhir" title="Link to this heading">#</a></h3>
+<h4><strong>4. Hasil Akhir</strong><a class="headerlink" href="#hasil-akhir" title="Link to this heading">#</a></h4>
 <p>Setelah mendapatkan nilai bobot (<span class="math notranslate nohighlight">\(W\)</span>) dan kontribusi nilai (<span class="math notranslate nohighlight">\(W \times CGPA\)</span>) dari 3 tetangga terdekat, tahap terakhir adalah menghitung rata-rata terbobot untuk menentukan nilai CGPA Baris 4.</p>
 <p><strong>A. Rekapitulasi Perhitungan</strong></p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -1779,10 +1761,10 @@ Nilai CGPA Baris 4 yang sebelumnya kosong (Missing Value) kini telah diisi denga
 </section>
 </section>
 <section id="gaussian-dataset-student-depression">
-<h1>GAUSSIAN DATASET STUDENT DEPRESSION<a class="headerlink" href="#gaussian-dataset-student-depression" title="Link to this heading">#</a></h1>
+<h2>GAUSSIAN DATASET STUDENT DEPRESSION<a class="headerlink" href="#gaussian-dataset-student-depression" title="Link to this heading">#</a></h2>
 <p>Dataset ini merupakan kumpulan data komprehensif yang mencakup informasi demografis, akademik, hingga riwayat kesehatan personal untuk memprediksi risiko depresi pada mahasiswa.</p>
 <section id="atribut-yang-digunakan">
-<h2>Atribut yang Digunakan<a class="headerlink" href="#atribut-yang-digunakan" title="Link to this heading">#</a></h2>
+<h3>Atribut yang Digunakan<a class="headerlink" href="#atribut-yang-digunakan" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>No</p></th>
@@ -1867,17 +1849,17 @@ Nilai CGPA Baris 4 yang sebelumnya kosong (Missing Value) kini telah diisi denga
 </div>
 </section>
 <section id="implementasi-knime">
-<h2>implementasi Knime<a class="headerlink" href="#implementasi-knime" title="Link to this heading">#</a></h2>
+<h3>implementasi Knime<a class="headerlink" href="#implementasi-knime" title="Link to this heading">#</a></h3>
 <p><img alt="Statistik Orange" src="../_images/gaussian.png" /></p>
 </section>
 </section>
 <section id="analisis-workflow-knime-optimasi-gaussian-naive-bayes">
-<h1>Analisis Workflow KNIME: Optimasi Gaussian Naive Bayes<a class="headerlink" href="#analisis-workflow-knime-optimasi-gaussian-naive-bayes" title="Link to this heading">#</a></h1>
+<h2>Analisis Workflow KNIME: Optimasi Gaussian Naive Bayes<a class="headerlink" href="#analisis-workflow-knime-optimasi-gaussian-naive-bayes" title="Link to this heading">#</a></h2>
 <p>Workflow ini dirancang untuk meningkatkan performa algoritma Gaussian Naive Bayes dengan fokus pada pembersihan data dan pemenuhan asumsi independensi fitur.</p>
 <section id="daftar-node-dan-fungsinya">
-<h2>Daftar Node dan Fungsinya<a class="headerlink" href="#daftar-node-dan-fungsinya" title="Link to this heading">#</a></h2>
+<h3>Daftar Node dan Fungsinya<a class="headerlink" href="#daftar-node-dan-fungsinya" title="Link to this heading">#</a></h3>
 <section id="tabel-node-knime-optimasi-gaussian-naive-bayes">
-<h3>Tabel Node KNIME: Optimasi Gaussian Naive Bayes<a class="headerlink" href="#tabel-node-knime-optimasi-gaussian-naive-bayes" title="Link to this heading">#</a></h3>
+<h4>Tabel Node KNIME: Optimasi Gaussian Naive Bayes<a class="headerlink" href="#tabel-node-knime-optimasi-gaussian-naive-bayes" title="Link to this heading">#</a></h4>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Nama Node</p></th>
@@ -1961,7 +1943,7 @@ Berikut adalah script yang digunakan di dalam node <strong>Python Script</strong
 </section>
 </section>
 <section id="penjelasan-teknis-python-script">
-<h2>Penjelasan Teknis Python Script<a class="headerlink" href="#penjelasan-teknis-python-script" title="Link to this heading">#</a></h2>
+<h3>Penjelasan Teknis Python Script<a class="headerlink" href="#penjelasan-teknis-python-script" title="Link to this heading">#</a></h3>
 <p>Algoritma yang digunakan dalam penelitian ini adalah <strong>Gaussian Naive Bayes</strong> yang diimplementasikan melalui pustaka <strong>Scikit-Learn</strong>. Berikut adalah breakdown logikanya:</p>
 <ol class="arabic simple">
 <li><p><strong>Integrasi Library</strong>: Menggunakan <code class="docutils literal notranslate"><span class="pre">knio</span></code> untuk menjembatani aliran data antara KNIME dan Python, serta <code class="docutils literal notranslate"><span class="pre">pandas</span></code> untuk manipulasi tabel data.</p></li>
@@ -1977,7 +1959,7 @@ Berikut adalah script yang digunakan di dalam node <strong>Python Script</strong
 </ol>
 </section>
 <section id="keunggulan-alur-optimasi">
-<h2>3 Keunggulan Alur Optimasi<a class="headerlink" href="#keunggulan-alur-optimasi" title="Link to this heading">#</a></h2>
+<h3>3 Keunggulan Alur Optimasi<a class="headerlink" href="#keunggulan-alur-optimasi" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>PCA membuat fitur independen, sesuai asumsi Naive Bayes.</p></li>
 <li><p>Outlier ditangani sehingga prediksi lebih stabil.</p></li>
@@ -1985,14 +1967,14 @@ Berikut adalah script yang digunakan di dalam node <strong>Python Script</strong
 </ol>
 </section>
 <section id="ringkasan">
-<h2>Ringkasan<a class="headerlink" href="#ringkasan" title="Link to this heading">#</a></h2>
+<h3>Ringkasan<a class="headerlink" href="#ringkasan" title="Link to this heading">#</a></h3>
 <p>Alur ini membersihkan data (missing value &amp; outlier), menstandarisasi skala, lalu mengurangi korelasi antar fitur dengan PCA. Hasilnya, Gaussian Naive Bayes dapat bekerja lebih sesuai teorinya.</p>
 </section>
 </section>
 <section id="decision-tree-student-depression">
-<h1>Decision Tree - Student Depression<a class="headerlink" href="#decision-tree-student-depression" title="Link to this heading">#</a></h1>
+<h2>Decision Tree - Student Depression<a class="headerlink" href="#decision-tree-student-depression" title="Link to this heading">#</a></h2>
 <section id="dataset">
-<h2>Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h2>
+<h3>Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h3>
 <p>Dataset yang digunakan untuk klasifikasi menggunakan metode Decision Tree adalah <strong>Student Depression Dataset</strong>. Dataset ini berisi informasi tentang kesehatan mental mahasiswa dari berbagai universitas yang mencakup faktor demografis, akademis, gaya hidup, dan kesehatan mental.</p>
 <p><strong>Dataset Characteristics:</strong></p>
 <ul class="simple">
@@ -2095,15 +2077,15 @@ Berikut adalah script yang digunakan di dalam node <strong>Python Script</strong
 </tbody>
 </table>
 </div>
+</section>
+</section>
 <hr class="docutils" />
-</section>
-</section>
 <section id="implementasi-pada-knime">
-<h1>Implementasi Pada KNIME<a class="headerlink" href="#implementasi-pada-knime" title="Link to this heading">#</a></h1>
+<h2>Implementasi Pada KNIME<a class="headerlink" href="#implementasi-pada-knime" title="Link to this heading">#</a></h2>
 <p>Workflow ini dirancang menggunakan tools KNIME untuk membangun model klasifikasi Decision Tree. Bertujuan untuk menentukan apakah seorang mahasiswa mengalami depresi atau tidak berdasarkan berbagai faktor kesehatan mental, akademik, dan gaya hidup.</p>
 <p><img alt="Statistik Orange" src="../_images/decision.png" /></p>
 <section id="partisi">
-<h2>Partisi<a class="headerlink" href="#partisi" title="Link to this heading">#</a></h2>
+<h3>Partisi<a class="headerlink" href="#partisi" title="Link to this heading">#</a></h3>
 <p>Langkah awal setelah membaca dataset adalah melakukan partisi, yaitu untuk membagi data training dan data testing. Dalam kasus ini, digunakan teknik <strong>Stratified Partitioning</strong> untuk memastikan distribusi kelas tetap seimbang pada kedua dataset.</p>
 <p><strong>Konfigurasi Partisi:</strong></p>
 <ul class="simple">
@@ -2138,14 +2120,14 @@ Berikut adalah script yang digunakan di dalam node <strong>Python Script</strong
 </tbody>
 </table>
 </div>
+</section>
+</section>
 <hr class="docutils" />
-</section>
-</section>
 <section id="decision-tree-learner">
-<h1>Decision Tree Learner<a class="headerlink" href="#decision-tree-learner" title="Link to this heading">#</a></h1>
+<h2>Decision Tree Learner<a class="headerlink" href="#decision-tree-learner" title="Link to this heading">#</a></h2>
 <p>Dikarenakan menggunakan <strong>Gain Ratio</strong> sebagai Quality Measure pada node Decision Tree Learner, maka perlu menghitung <strong>Gain Ratio</strong> tertinggi untuk menentukan Root atau akar dari Decision Tree dengan rumus sebagai berikut.</p>
 <section id="rumus-dasar-decision-tree-dengan-gain-ratio">
-<h2>Rumus Dasar Decision Tree dengan Gain Ratio<a class="headerlink" href="#rumus-dasar-decision-tree-dengan-gain-ratio" title="Link to this heading">#</a></h2>
+<h3>Rumus Dasar Decision Tree dengan Gain Ratio<a class="headerlink" href="#rumus-dasar-decision-tree-dengan-gain-ratio" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
 GainRATIO_{split} &amp;= \frac{Gain_{split}}{SplitINFO} \\[10pt]
@@ -2188,7 +2170,7 @@ SplitINFO &amp;= - \sum_{i=1}^{k} \frac{n_{i}}{n}\log_2\left(\frac{n_{i}}{n}\rig
 </section>
 <hr class="docutils" />
 <section id="hitung-entropy-root">
-<h2>Hitung Entropy Root<a class="headerlink" href="#hitung-entropy-root" title="Link to this heading">#</a></h2>
+<h3>Hitung Entropy Root<a class="headerlink" href="#hitung-entropy-root" title="Link to this heading">#</a></h3>
 <p>Data training terdiri dari:</p>
 <ul class="simple">
 <li><p>Jumlah kelas 0 (No Depression) = 11.398</p></li>
@@ -2205,10 +2187,10 @@ Entropy(root) &amp;= 0.9812
 </section>
 <hr class="docutils" />
 <section id="hitung-gain-split-info-dan-gain-ratio-tiap-atribut">
-<h2>Hitung Gain, Split Info, dan Gain Ratio tiap Atribut<a class="headerlink" href="#hitung-gain-split-info-dan-gain-ratio-tiap-atribut" title="Link to this heading">#</a></h2>
+<h3>Hitung Gain, Split Info, dan Gain Ratio tiap Atribut<a class="headerlink" href="#hitung-gain-split-info-dan-gain-ratio-tiap-atribut" title="Link to this heading">#</a></h3>
 <p>Untuk menentukan atribut apa yang akan menjadi root node, perlu menghitung Gain Ratio dari semua atribut. Atribut dengan Gain Ratio tertinggi akan dipilih sebagai root node.</p>
 <section id="atribut-have-you-ever-had-suicidal-thoughts">
-<h3>Atribut “Have you ever had suicidal thoughts?”<a class="headerlink" href="#atribut-have-you-ever-had-suicidal-thoughts" title="Link to this heading">#</a></h3>
+<h4>Atribut “Have you ever had suicidal thoughts?”<a class="headerlink" href="#atribut-have-you-ever-had-suicidal-thoughts" title="Link to this heading">#</a></h4>
 <p>Atribut ini merupakan categorical dengan 2 nilai unik: <strong>Yes</strong> dan <strong>No</strong>.</p>
 <p><strong>1. Hitung Entropy pada tiap nilai</strong></p>
 <p>Rumus entropy untuk setiap nilai:
@@ -2270,7 +2252,7 @@ $<span class="math notranslate nohighlight">\(GainRATIO_{split} = \frac{Gain_{sp
 </section>
 <hr class="docutils" />
 <section id="atribut-academic-pressure">
-<h3>Atribut “Academic Pressure”<a class="headerlink" href="#atribut-academic-pressure" title="Link to this heading">#</a></h3>
+<h4>Atribut “Academic Pressure”<a class="headerlink" href="#atribut-academic-pressure" title="Link to this heading">#</a></h4>
 <p>Atribut ini merupakan numeric dengan range 0-5. Untuk atribut numeric, perlu dilakukan continuous value discretization atau langsung dihitung dengan split points.</p>
 <p>Asumsikan atribut Academic Pressure dibagi menjadi beberapa range: 0-2, 3-4, 5</p>
 <p><strong>1. Hitung Entropy pada tiap range</strong></p>
@@ -2339,7 +2321,7 @@ SplitINFO(pressure) &amp;= - \frac{4.820}{19.530} \log_2\left(\frac{4.820}{19.53
 </section>
 <hr class="docutils" />
 <section id="perbandingan-gain-ratio-semua-atribut">
-<h2>Perbandingan Gain Ratio Semua Atribut<a class="headerlink" href="#perbandingan-gain-ratio-semua-atribut" title="Link to this heading">#</a></h2>
+<h3>Perbandingan Gain Ratio Semua Atribut<a class="headerlink" href="#perbandingan-gain-ratio-semua-atribut" title="Link to this heading">#</a></h3>
 <p>Setelah menghitung Gain Ratio untuk semua atribut, berikut adalah peringkat atribut berdasarkan Gain Ratio:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -2397,16 +2379,16 @@ SplitINFO(pressure) &amp;= - \frac{4.820}{19.530} \log_2\left(\frac{4.820}{19.53
 </section>
 <hr class="docutils" />
 <section id="tree">
-<h2>Tree<a class="headerlink" href="#tree" title="Link to this heading">#</a></h2>
+<h3>Tree<a class="headerlink" href="#tree" title="Link to this heading">#</a></h3>
 <p>Setelah semua node pure, berarti pohon sudah selesai dibangun. Implementasi pada KNIME menggunakan node <code class="docutils literal notranslate"><span class="pre">Decision</span> <span class="pre">Tree</span> <span class="pre">View</span></code> menghasilkan tree structure sebagai berikut:</p>
 <p><img alt="Statistik Orange" src="../_images/tree.png" /></p>
 </section>
 </section>
 <section id="decision-tree-predictor">
-<h1>Decision Tree Predictor<a class="headerlink" href="#decision-tree-predictor" title="Link to this heading">#</a></h1>
+<h2>Decision Tree Predictor<a class="headerlink" href="#decision-tree-predictor" title="Link to this heading">#</a></h2>
 <p>Node ini digunakan untuk menguji kemampuan model yang telah dibangun. Node ini akan menerapkan aturan logika yang telah dipelajari ke dalam data testing untuk memprediksi apakah mahasiswa mengalami depresi atau tidak.</p>
 <section id="confusion-matrix">
-<h2>Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Link to this heading">#</a></h2>
+<h3>Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Link to this heading">#</a></h3>
 <p>Setelah Decision Tree model melakukan prediksi pada data testing, hasil prediksi dibandingkan dengan nilai sebenarnya (actual label) untuk membangun Confusion Matrix:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -2438,7 +2420,7 @@ SplitINFO(pressure) &amp;= - \frac{4.820}{19.530} \log_2\left(\frac{4.820}{19.53
 </section>
 <hr class="docutils" />
 <section id="metrik-performa">
-<h2>Metrik Performa<a class="headerlink" href="#metrik-performa" title="Link to this heading">#</a></h2>
+<h3>Metrik Performa<a class="headerlink" href="#metrik-performa" title="Link to this heading">#</a></h3>
 <p>Dari Confusion Matrix di atas, dapat dihitung berbagai metrik performa model:</p>
 <p><strong>1. Akurasi (Accuracy)</strong></p>
 <div class="math notranslate nohighlight">
@@ -2488,11 +2470,11 @@ SplitINFO(pressure) &amp;= - \frac{4.820}{19.530} \log_2\left(\frac{4.820}{19.53
 </tbody>
 </table>
 </div>
+</section>
+</section>
 <hr class="docutils" />
-</section>
-</section>
 <section id="kesimpulan">
-<h1>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h1>
+<h2>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><strong>Model Cukup Akurat:</strong> Dengan akurasi 80.39%, model Decision Tree mampu melakukan klasifikasi depresi dengan baik dan dapat digunakan sebagai tools awal screening kesehatan mental mahasiswa.</p></li>
 <li><p><strong>Recall Tinggi:</strong> Nilai Recall 85.46% menunjukkan bahwa model sangat baik dalam mendeteksi mahasiswa yang mengalami depresi. Dalam konteks kesehatan mental, ini sangat penting karena lebih baik False Positive (salah curiga) daripada melewatkan kasus depresi yang sebenarnya (False Negative).</p></li>
@@ -2504,6 +2486,7 @@ SplitINFO(pressure) &amp;= - \frac{4.820}{19.530} \log_2\left(\frac{4.820}{19.53
 </ul>
 </li>
 </ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2572,129 +2555,125 @@ SplitINFO(pressure) &amp;= - \frac{4.820}{19.530} \log_2\left(\frac{4.820}{19.53
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Understanding</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-metodologi-crisp-dm">Apa itu Metodologi CRISP-DM?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-utama-fase-ini">Tujuan Utama Fase Ini:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-akses-data">Persiapan Akses Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-kualitas-data-null-duplicate">Verifikasi Kualitas Data (Null &amp; Duplicate)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-histogram">Apa itu Histogram?</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-akses-data">Persiapan Akses Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-kualitas-data-null-duplicate">Verifikasi Kualitas Data (Null &amp; Duplicate)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-histogram">Apa itu Histogram?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-scatter-plot">Apa itu Scatter Plot?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kenapa-kita-melakukan-visualisasi-ini">Kenapa Kita Melakukan Visualisasi Ini?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#memahami-sumbu-x-dan-y-titik-pertemuan">Memahami Sumbu X dan Y (Titik Pertemuan)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter plot</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-scatter-plot">Apa itu Scatter Plot?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kenapa-kita-melakukan-visualisasi-ini">Kenapa Kita Melakukan Visualisasi Ini?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memahami-sumbu-x-dan-y-titik-pertemuan">Memahami Sumbu X dan Y (Titik Pertemuan)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outlier">Outlier</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-outlier">Apa itu Outlier?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outlier">Outlier</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-outlier">Apa itu Outlier?</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-data-distance">Mengukur jarak data  (distance)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-data-iris">Menghitung jarak data iris <br/></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-numerik-pada-iris">Menghitung Jarak Numerik Pada IRIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-kategorikal-pada-iris">Menghitung Jarak Kategorikal Pada IRIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#akumulasi-jarak-akhir-pada-iris">Akumulasi Jarak Akhir Pada IRIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-tambahan-cosine-similarity-arah-kedekatan">Analisis Tambahan: Cosine Similarity (Arah Kedekatan)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insight-akhir">Insight Akhir</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-pada-orange-data-mining">Implementasi pada Orange Data Mining</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-data-distance">Mengukur jarak data  (distance)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-data-iris">Menghitung jarak data iris <br/></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-numerik-pada-iris">Menghitung Jarak Numerik Pada IRIS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-kategorikal-pada-iris">Menghitung Jarak Kategorikal Pada IRIS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#akumulasi-jarak-akhir-pada-iris">Akumulasi Jarak Akhir Pada IRIS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-tambahan-cosine-similarity-arah-kedekatan">Analisis Tambahan: Cosine Similarity (Arah Kedekatan)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#insight-akhir">Insight Akhir</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-pada-orange-data-mining">Implementasi pada Orange Data Mining</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-data-student">Menghitung jarak data student</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-numerik-pada-student">Menghitung Jarak Numerik pada Student</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nominal-pada-student-simple-matching">Menghitung Nominal Pada Student (Simple Matching)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-menghitung-jarak-ordinal">Normalisasi &amp; Menghitung Jarak Ordinal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#akumulasi-jarak-akhir-pada-student">Akumulasi Jarak Akhir Pada Student</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-interpretasi-akhir">Analisis &amp; Interpretasi Akhir</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data-normalisasi-dan-penanganan-data-hilang">Preprocessing Data: Normalisasi dan Penanganan Data Hilang</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-tipe-data-atribut">Analisis Tipe Data Atribut</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-min-max">Normalisasi Min-Max</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-dan-atribut-sasaran">1. Tujuan dan Atribut Sasaran</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja">2. Cara Kerja</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alasan-pemilihan-min-max">3. Alasan Pemilihan Min-Max</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-sederhana">4. Penjelasan Sederhana</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-encoding-data-kategorikal">Mapping &amp; Encoding (Data Kategorikal)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. Tujuan dan Atribut Sasaran</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mekanisme-transformasi">2. Mekanisme Transformasi</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alasan-pemilihan-mapping">3. Alasan Pemilihan Mapping</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4. Penjelasan Sederhana</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-final-hasil-preprocessing">Dataset Final (Hasil Preprocessing)</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-missing-value-dengan-weighted-k-nearest-neighbors">Penanganan Missing Value dengan Weighted K-Nearest Neighbors.</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-jarak-euclidean">Perhitungan Jarak Euclidean</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-rumus-dasar">A. Rumus Dasar</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-tabel-perhitungan-jarak-manual">B.Tabel Perhitungan Jarak (Manual)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-perhitungan-jarak-code">C. Perhitungan Jarak (code)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-penentuan-tetangga-terdekat-k-3">D. Penentuan Tetangga Terdekat (K=3)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-bobot">Perhitungan Bobot</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-bobot-w">1. Menghitung Nilai Bobot (W)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-perkalian-bobot-dengan-nilai-w-y">2. Menghitung Perkalian Bobot dengan Nilai (W * y)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-imputation-menambal-data">3. Final Imputation (Menambal Data)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir"><strong>4. Hasil Akhir</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-data-student">Menghitung jarak data student</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-numerik-pada-student">Menghitung Jarak Numerik pada Student</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nominal-pada-student-simple-matching">Menghitung Nominal Pada Student (Simple Matching)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-menghitung-jarak-ordinal">Normalisasi &amp; Menghitung Jarak Ordinal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#akumulasi-jarak-akhir-pada-student">Akumulasi Jarak Akhir Pada Student</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-interpretasi-akhir">Analisis &amp; Interpretasi Akhir</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-dataset-student-depression">GAUSSIAN DATASET STUDENT DEPRESSION</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-yang-digunakan">Atribut yang Digunakan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-knime">implementasi Knime</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data-normalisasi-dan-penanganan-data-hilang">Preprocessing Data: Normalisasi dan Penanganan Data Hilang</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-tipe-data-atribut">Analisis Tipe Data Atribut</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-min-max">Normalisasi Min-Max</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-dan-atribut-sasaran">1. Tujuan dan Atribut Sasaran</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja">2. Cara Kerja</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alasan-pemilihan-min-max">3. Alasan Pemilihan Min-Max</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-sederhana">4. Penjelasan Sederhana</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-workflow-knime-optimasi-gaussian-naive-bayes">Analisis Workflow KNIME: Optimasi Gaussian Naive Bayes</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daftar-node-dan-fungsinya">Daftar Node dan Fungsinya</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-node-knime-optimasi-gaussian-naive-bayes">Tabel Node KNIME: Optimasi Gaussian Naive Bayes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-encoding-data-kategorikal">Mapping &amp; Encoding (Data Kategorikal)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. Tujuan dan Atribut Sasaran</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mekanisme-transformasi">2. Mekanisme Transformasi</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alasan-pemilihan-mapping">3. Alasan Pemilihan Mapping</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4. Penjelasan Sederhana</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-teknis-python-script">Penjelasan Teknis Python Script</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keunggulan-alur-optimasi">3 Keunggulan Alur Optimasi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan">Ringkasan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-final-hasil-preprocessing">Dataset Final (Hasil Preprocessing)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-student-depression">Decision Tree - Student Depression</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-missing-value-dengan-weighted-k-nearest-neighbors">Penanganan Missing Value dengan Weighted K-Nearest Neighbors.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-jarak-euclidean">Perhitungan Jarak Euclidean</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-rumus-dasar">A. Rumus Dasar</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-tabel-perhitungan-jarak-manual">B.Tabel Perhitungan Jarak (Manual)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-perhitungan-jarak-code">C. Perhitungan Jarak (code)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d-penentuan-tetangga-terdekat-k-3">D. Penentuan Tetangga Terdekat (K=3)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-pada-knime">Implementasi Pada KNIME</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#partisi">Partisi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-bobot">Perhitungan Bobot</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-bobot-w">1. Menghitung Nilai Bobot (W)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-perkalian-bobot-dengan-nilai-w-y">2. Menghitung Perkalian Bobot dengan Nilai (W * y)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#final-imputation-menambal-data">3. Final Imputation (Menambal Data)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir"><strong>4. Hasil Akhir</strong></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-learner">Decision Tree Learner</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-dasar-decision-tree-dengan-gain-ratio">Rumus Dasar Decision Tree dengan Gain Ratio</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-entropy-root">Hitung Entropy Root</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-gain-split-info-dan-gain-ratio-tiap-atribut">Hitung Gain, Split Info, dan Gain Ratio tiap Atribut</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-have-you-ever-had-suicidal-thoughts">Atribut “Have you ever had suicidal thoughts?”</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-academic-pressure">Atribut “Academic Pressure”</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-gain-ratio-semua-atribut">Perbandingan Gain Ratio Semua Atribut</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree">Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-dataset-student-depression">GAUSSIAN DATASET STUDENT DEPRESSION</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-yang-digunakan">Atribut yang Digunakan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-knime">implementasi Knime</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-predictor">Decision Tree Predictor</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion Matrix</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-performa">Metrik Performa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-workflow-knime-optimasi-gaussian-naive-bayes">Analisis Workflow KNIME: Optimasi Gaussian Naive Bayes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daftar-node-dan-fungsinya">Daftar Node dan Fungsinya</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-node-knime-optimasi-gaussian-naive-bayes">Tabel Node KNIME: Optimasi Gaussian Naive Bayes</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-teknis-python-script">Penjelasan Teknis Python Script</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keunggulan-alur-optimasi">3 Keunggulan Alur Optimasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan">Ringkasan</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-student-depression">Decision Tree - Student Depression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-pada-knime">Implementasi Pada KNIME</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partisi">Partisi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-learner">Decision Tree Learner</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-dasar-decision-tree-dengan-gain-ratio">Rumus Dasar Decision Tree dengan Gain Ratio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-entropy-root">Hitung Entropy Root</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-gain-split-info-dan-gain-ratio-tiap-atribut">Hitung Gain, Split Info, dan Gain Ratio tiap Atribut</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-have-you-ever-had-suicidal-thoughts">Atribut “Have you ever had suicidal thoughts?”</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-academic-pressure">Atribut “Academic Pressure”</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-gain-ratio-semua-atribut">Perbandingan Gain Ratio Semua Atribut</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tree">Tree</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-predictor">Decision Tree Predictor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-performa">Metrik Performa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
   </nav></div>
 
 </div></div>
