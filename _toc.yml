@@ -13,3 +13,5 @@ chapters:
   title: "Analisis Data Menggunakan Decision Tree"
 - file: md/08_Analisis-Data-Menggunakan-Random-Forest
   title: "Analisis Data Menggunakan Random Forest"
+- file: md/09_Tugas-Linear-regression
+  title: "MENGHITUNG MENGGUNAKAN LINEAR REGRESSION"
