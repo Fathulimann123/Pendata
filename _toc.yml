@@ -15,3 +15,5 @@ chapters:
   title: "Analisis Data Menggunakan Random Forest"
 - file: md/09_Tugas-Linear-regression
   title: "MENGHITUNG MENGGUNAKAN LINEAR REGRESSION"
+- file: md/10_Peramalan-kadar--NO2-di-daerah-Bangkalan-Madura
+  title: "Analisis Time Series NO2 Menggunakan OpenEO di Google Colab menggunakan daerah MEDAN"
