@@ -16,4 +16,6 @@ chapters:
 - file: md/09_Tugas-Linear-regression
   title: "MENGHITUNG MENGGUNAKAN LINEAR REGRESSION"
 - file: md/10_Peramalan-kadar--NO2-di-daerah-Bangkalan-Madura
-  title: "Analisis Time Series NO2 Menggunakan OpenEO di Google Colab menggunakan daerah MEDAN"
+  title: "Prosedur Peramalan Kadar NO2 di Kota Medan Menggunakan KNN Regression"
+- file: md/11_Tugas-Forecasting
+  title: "Tugas: Time Series Forecasting (skforecast)"
